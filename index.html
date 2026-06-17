@@ -27,35 +27,29 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
 
-  /* ── Header ── */
   .header { background: linear-gradient(135deg, #0F172A 0%, #1a2540 100%); border-bottom: 1px solid var(--border); padding: 2.5rem 2rem 2rem; text-align: center; }
   .header-badge { display: inline-block; background: var(--amber); color: #0F172A; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.3rem 0.9rem; border-radius: 99px; margin-bottom: 1rem; }
   .header h1 { font-size: 2rem; font-weight: 800; color: var(--text); margin-bottom: 0.5rem; letter-spacing: -0.02em; }
   .header .tagline { font-size: 1.05rem; color: var(--amber); font-weight: 600; margin-bottom: 0.4rem; }
   .header .sub { color: var(--text-muted); font-size: 0.88rem; }
 
-  /* ── Nav ── */
   .nav { display: flex; background: var(--surface); border-bottom: 1px solid var(--border); overflow-x: auto; padding: 0 1rem; }
   .nav button { background: none; border: none; color: var(--text-muted); font-size: 0.8rem; font-weight: 600; padding: 1rem 1.1rem; cursor: pointer; white-space: nowrap; border-bottom: 2px solid transparent; transition: all 0.15s; }
   .nav button:hover { color: var(--text); }
   .nav button.active { color: var(--amber); border-bottom-color: var(--amber); }
 
-  /* ── Panels ── */
   .panel { display: none; padding: 2.5rem 2rem; max-width: 1140px; margin: 0 auto; }
   .panel.active { display: block; }
   .section-title { font-size: 1.4rem; font-weight: 800; color: var(--text); margin-bottom: 0.35rem; letter-spacing: -0.01em; }
   .section-sub { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 2rem; }
 
-  /* ── Cards ── */
   .card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 1.75rem; margin-bottom: 1.5rem; }
   .card-title { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1.25rem; }
 
-  /* ── Layout ── */
   .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
   .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.25rem; margin-bottom: 1.5rem; }
   @media (max-width: 700px) { .two-col, .three-col { grid-template-columns: 1fr; } }
 
-  /* ── Flow nodes ── */
   .flow { display: flex; flex-direction: column; align-items: center; }
   .flow-node { background: var(--surface2); border: 1.5px solid var(--border); border-radius: 10px; padding: 0.75rem 1.75rem; font-size: 0.9rem; font-weight: 600; color: var(--text); text-align: center; min-width: 230px; }
   .flow-node.amber { background: linear-gradient(135deg,#2d1f00,#3d2800); border-color: var(--amber-dark); color: var(--amber-light); }
@@ -69,9 +63,7 @@
   .flow-arrow.a { background:var(--amber-dark); } .flow-arrow.a::after { color:var(--amber); }
   .flow-arrow.o { background:var(--orange); } .flow-arrow.o::after { color:var(--orange); }
   .flow-arrow.g { background:var(--green); opacity:0.6; } .flow-arrow.g::after { color:var(--green); }
-  .flow-arrow.p { background:var(--pink); opacity:0.7; } .flow-arrow.p::after { color:var(--pink); }
 
-  /* ── Ecosystem tree ── */
   .ecosystem { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; background: var(--border); border-radius: 16px; overflow: hidden; margin-bottom: 1.5rem; }
   .eco-col { background: var(--surface); display: flex; flex-direction: column; }
   .eco-header { padding: 1.25rem 1.25rem 1rem; }
@@ -79,32 +71,22 @@
   .eco-header .eco-name { font-size: 1rem; font-weight: 800; letter-spacing: -0.01em; }
   .eco-header .eco-tag { font-size: 0.75rem; margin-top: 0.3rem; font-weight: 500; }
   .eco-col.freemium .eco-header { background: linear-gradient(135deg,#001a10,#002214); border-bottom: 1px solid rgba(16,185,129,0.3); }
-  .eco-col.freemium .eco-num { color: var(--green); }
-  .eco-col.freemium .eco-name { color: #6EE7B7; }
-  .eco-col.freemium .eco-tag { color: rgba(110,231,183,0.6); }
+  .eco-col.freemium .eco-num { color: var(--green); } .eco-col.freemium .eco-name { color: #6EE7B7; } .eco-col.freemium .eco-tag { color: rgba(110,231,183,0.6); }
   .eco-col.network .eco-header { background: linear-gradient(135deg,#0a1530,#101e3a); border-bottom: 1px solid rgba(59,130,246,0.3); }
-  .eco-col.network .eco-num { color: var(--blue); }
-  .eco-col.network .eco-name { color: #93C5FD; }
-  .eco-col.network .eco-tag { color: rgba(147,197,253,0.6); }
+  .eco-col.network .eco-num { color: var(--blue); } .eco-col.network .eco-name { color: #93C5FD; } .eco-col.network .eco-tag { color: rgba(147,197,253,0.6); }
   .eco-col.clash-col .eco-header { background: linear-gradient(135deg,#1a0014,#2a0a22); border-bottom: 1px solid rgba(236,72,153,0.3); }
-  .eco-col.clash-col .eco-num { color: var(--pink); }
-  .eco-col.clash-col .eco-name { color: #F9A8D4; }
-  .eco-col.clash-col .eco-tag { color: rgba(249,168,212,0.6); }
+  .eco-col.clash-col .eco-num { color: var(--pink); } .eco-col.clash-col .eco-name { color: #F9A8D4; } .eco-col.clash-col .eco-tag { color: rgba(249,168,212,0.6); }
   .eco-items { padding: 1rem 1.25rem 1.25rem; display: flex; flex-direction: column; gap: 0.4rem; flex: 1; }
   .eco-item { display: flex; align-items: flex-start; gap: 0.5rem; font-size: 0.83rem; color: var(--text); padding: 0.35rem 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
   .eco-item:last-child { border-bottom: none; }
   .eco-item .ei-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; margin-top: 0.35rem; }
-  .eco-col.freemium .ei-dot { background: var(--green); }
-  .eco-col.network .ei-dot { background: var(--blue); }
-  .eco-col.clash-col .ei-dot { background: var(--pink); }
+  .eco-col.freemium .ei-dot { background: var(--green); } .eco-col.network .ei-dot { background: var(--blue); } .eco-col.clash-col .ei-dot { background: var(--pink); }
   .eco-item .ei-label { flex: 1; line-height: 1.4; }
   .eco-item .ei-badge { font-size: 0.65rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 99px; white-space: nowrap; flex-shrink: 0; margin-top: 0.1rem; }
   .badge-live { background: rgba(16,185,129,0.15); color: #6EE7B7; }
   .badge-planned { background: rgba(148,163,184,0.1); color: var(--text-muted); border: 1px solid var(--border); }
-
   @media (max-width: 750px) { .ecosystem { grid-template-columns: 1fr; } }
 
-  /* ── Core statement ── */
   .core-statement { background: linear-gradient(135deg,#1a1500,#2a1f00); border: 1px solid var(--amber-dark); border-radius: 14px; padding: 1.5rem 2rem; margin-bottom: 1.75rem; }
   .core-statement .label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber); margin-bottom: 0.4rem; }
   .gate-row { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.4rem; }
@@ -113,7 +95,6 @@
   .gate-to { font-size: 1.05rem; font-weight: 700; color: var(--green); }
   .gate-tagline { font-size: 0.85rem; color: var(--text-muted); }
 
-  /* ── Magic box ── */
   .magic-box { background: linear-gradient(135deg,#1a0800,#2d1200); border: 2px solid var(--orange); border-radius: 14px; padding: 1.75rem; margin-bottom: 1.5rem; box-shadow: 0 0 32px rgba(249,115,22,0.12); }
   .magic-box h3 { font-size: 1.1rem; font-weight: 800; color: var(--orange); margin-bottom: 0.4rem; }
   .magic-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 1rem; }
@@ -122,7 +103,6 @@
   .magic-item { display: flex; gap: 0.5rem; margin-bottom: 0.4rem; font-size: 0.85rem; color: #FED7AA; }
   .magic-item::before { content:'✓'; color:var(--orange); font-weight:700; flex-shrink:0; }
 
-  /* ── Vault ── */
   .vault-box { background: linear-gradient(135deg,#13082a,#1e1040); border: 1.5px solid var(--purple); border-radius: 14px; padding: 1.5rem; }
   .vault-title { font-size: 1.1rem; font-weight: 800; color: #C4B5FD; margin-bottom: 0.2rem; }
   .vault-sub { font-size: 0.8rem; color: #A78BFA; margin-bottom: 1.1rem; }
@@ -134,20 +114,18 @@
   .vault-stat .vs.alert { background: rgba(239,68,68,0.15); color: #FCA5A5; }
   .vault-hook { margin-top: 1.1rem; padding: 0.85rem; background: rgba(139,92,246,0.08); border-radius: 8px; font-size: 0.82rem; color: #A78BFA; text-align: center; font-style: italic; }
 
-  /* ── Principle cards ── */
   .principle { background: var(--surface2); border: 1px solid var(--border); border-left: 3px solid var(--amber); border-radius: 8px; padding: 1rem 1.2rem; }
   .principle .p-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--amber); margin-bottom: 0.35rem; }
   .principle .p-text { font-size: 0.86rem; color: var(--text); line-height: 1.5; }
 
-  /* ── Compare table ── */
   .compare-wrap { overflow-x: auto; }
   .compare-table { width: 100%; min-width: 680px; border-collapse: collapse; }
   .th-cell { padding: 0.7rem 0.9rem; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; text-align: center; }
-  .th-feature { background: var(--surface2); color: var(--text-muted); text-align: left; border-radius: 10px 0 0 0; }
+  .th-feature { background: var(--surface2); color: var(--text-muted); text-align: left; }
   .th-free-t { background: #001a10; color: #6EE7B7; }
   .th-paid-t { background: #0a1530; color: #93C5FD; }
   .th-student { background: #1a0d2e; color: #C4B5FD; }
-  .th-b2c { background: #1a1200; color: var(--amber-light); border-radius: 0 10px 0 0; }
+  .th-b2c { background: #1a1200; color: var(--amber-light); }
   .section-row td { background: rgba(255,255,255,0.025); padding: 0.45rem 0.9rem; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
   .sc-amber { color: var(--amber); } .sc-blue { color: #60A5FA; }
   .data-row td { border-bottom: 1px solid rgba(255,255,255,0.04); padding: 0.5rem 0.9rem; font-size: 0.84rem; }
@@ -158,10 +136,8 @@
   .data-row td.na { text-align: center; color: rgba(255,255,255,0.1); font-size: 0.72rem; }
   .data-row td.lk { text-align: center; font-size: 0.9rem; }
 
-  /* ── Distinction banner ── */
   .distinction { display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem; margin-bottom: 1.5rem; }
   @media (max-width: 800px) { .distinction { grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 460px) { .distinction { grid-template-columns: 1fr; } }
   .dist-card { border-radius: 12px; padding: 1.1rem; text-align: center; }
   .dist-card .dl { font-size: 0.67rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.35rem; }
   .dist-card .dw { font-size: 1.35rem; font-weight: 900; letter-spacing: -0.02em; margin-bottom: 0.2rem; }
@@ -175,7 +151,6 @@
   .dc-bc { background: linear-gradient(135deg,#1a1200,#2d1f00); border: 1.5px solid var(--amber); }
   .dc-bc .dl { color: var(--amber); } .dc-bc .dw { color: var(--amber-light); }
 
-  /* ── Network cards ── */
   .net-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem; }
   .net-card h3 { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding-bottom: 0.75rem; margin-bottom: 1rem; }
   .net-card.school h3 { color: var(--teal); border-bottom: 1px solid rgba(20,184,166,0.2); }
@@ -189,7 +164,6 @@
   .nn-end { font-weight: 800; }
   .net-arrow { text-align: center; color: var(--text-muted); font-size: 0.78rem; padding: 0.1rem 0; }
 
-  /* ── Hive Clash components ── */
   .hiq-box { background: linear-gradient(135deg,#0d0010,#1a0a2e,#0a1a0a); border: 2px solid var(--pink); border-radius: 14px; padding: 1.75rem; box-shadow: 0 0 40px rgba(236,72,153,0.1); }
   .hiq-box h3 { font-size: 1.1rem; font-weight: 800; color: var(--pink); margin-bottom: 0.35rem; }
   .hiq-sub { font-size: 0.82rem; color: #F9A8D4; opacity: 0.75; margin-bottom: 1.25rem; }
@@ -200,7 +174,6 @@
   .hiq-text strong { color: #F9A8D4; }
 
   .component-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
-  @media (max-width: 500px) { .component-grid { grid-template-columns: 1fr; } }
   .comp-item { background: var(--surface2); border: 1px solid var(--border); border-radius: 9px; padding: 0.9rem 1rem; display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
   .comp-item .ci-name { font-size: 0.86rem; font-weight: 600; color: var(--text); }
   .comp-item .ci-badge { font-size: 0.65rem; font-weight: 700; padding: 0.2rem 0.55rem; border-radius: 99px; white-space: nowrap; }
@@ -213,14 +186,11 @@
   .scenario.a { background: linear-gradient(135deg,#001a10,#002214); border: 1.5px solid var(--green); }
   .scenario.b { background: linear-gradient(135deg,#1a0014,#2a0820); border: 1.5px solid var(--pink); }
   .scenario .sc-label { font-size: 0.68rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.4rem; }
-  .scenario.a .sc-label { color: var(--green); }
-  .scenario.b .sc-label { color: var(--pink); }
+  .scenario.a .sc-label { color: var(--green); } .scenario.b .sc-label { color: var(--pink); }
   .scenario .sc-title { font-size: 1rem; font-weight: 800; margin-bottom: 0.5rem; }
-  .scenario.a .sc-title { color: #6EE7B7; }
-  .scenario.b .sc-title { color: #F9A8D4; }
+  .scenario.a .sc-title { color: #6EE7B7; } .scenario.b .sc-title { color: #F9A8D4; }
   .scenario .sc-body { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
 
-  /* ── Learn & Upside ── */
   .learn-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.25rem; margin-bottom: 1.5rem; }
   @media (max-width: 750px) { .learn-grid { grid-template-columns: 1fr; } }
   .learn-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
@@ -244,8 +214,38 @@
   .rev-item .ri-name { font-size: 0.86rem; font-weight: 700; color: var(--text); margin-bottom: 0.25rem; }
   .rev-item .ri-desc { font-size: 0.76rem; color: var(--text-muted); line-height: 1.4; }
 
-  /* ── Footer ── */
   .footer { text-align: center; padding: 2rem; color: var(--text-muted); font-size: 0.78rem; border-top: 1px solid var(--border); margin-top: 2rem; }
+
+  /* ── User Flows tab ── */
+  .flows-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; }
+  @media (max-width: 900px) { .flows-grid { grid-template-columns: repeat(2,1fr); } }
+  @media (max-width: 560px) { .flows-grid { grid-template-columns: 1fr; } }
+  .lane { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+  .lane-header { padding: 0.75rem 1rem; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
+  .lh-new-t { background: linear-gradient(135deg,#001a10,#002214); color: #6EE7B7; border-bottom: 1px solid rgba(16,185,129,0.25); }
+  .lh-ret-t { background: linear-gradient(135deg,#0a1530,#101e3a); color: #93C5FD; border-bottom: 1px solid rgba(59,130,246,0.25); }
+  .lh-paid-t { background: linear-gradient(135deg,#001830,#001f40); color: #7DD3FC; border-bottom: 1px solid rgba(14,165,233,0.25); }
+  .lh-student { background: linear-gradient(135deg,#1a0d2e,#2a1a48); color: #C4B5FD; border-bottom: 1px solid rgba(139,92,246,0.25); }
+  .lh-b2c { background: linear-gradient(135deg,#1a1200,#2d1f00); color: #FCD34D; border-bottom: 1px solid rgba(245,158,11,0.25); }
+  .lh-viral { background: linear-gradient(135deg,#1a0014,#2a0a22); color: #F9A8D4; border-bottom: 1px solid rgba(236,72,153,0.25); }
+  .lane-body { padding: 0.75rem; display: flex; flex-direction: column; }
+  .ln { border-radius: 7px; padding: 0.42rem 0.65rem; font-size: 0.75rem; font-weight: 600; text-align: center; line-height: 1.35; }
+  .ln-entry { background: rgba(255,255,255,0.05); border: 1px solid #475569; color: #CBD5E1; }
+  .ln-action { background: rgba(255,255,255,0.03); border: 1px solid #334155; color: #94A3B8; }
+  .ln-magic { background: linear-gradient(135deg,#2d1200,#3d1800); border: 1.5px solid var(--orange); color: #FED7AA; font-weight: 700; box-shadow: 0 0 10px rgba(249,115,22,0.12); }
+  .ln-vault { background: linear-gradient(135deg,#13082a,#1e1040); border: 1px solid #7C3AED; color: #C4B5FD; }
+  .ln-paid { background: linear-gradient(135deg,#001f14,#003020); border: 1.5px solid var(--green); color: #6EE7B7; font-weight: 700; }
+  .ln-convert { background: linear-gradient(135deg,#0a1530,#1a2a5e); border: 1.5px solid var(--blue); color: #93C5FD; font-weight: 700; }
+  .ln-clash { background: linear-gradient(135deg,#1a0014,#2a0a22); border: 1px solid var(--pink); color: #F9A8D4; }
+  .ln-free { background: rgba(245,158,11,0.06); border: 1px solid rgba(245,158,11,0.3); color: #FCD34D; }
+  .la { text-align: center; color: #475569; font-size: 0.62rem; padding: 0.1rem 0; line-height: 1; }
+  .la-o { color: rgba(249,115,22,0.55); }
+  .la-g { color: rgba(16,185,129,0.5); }
+  .la-p { color: rgba(236,72,153,0.5); }
+  .ln-sub { font-size: 0.63rem; font-weight: 400; opacity: 0.65; display: block; margin-top: 0.1rem; }
+  .flows-legend { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .fl-item { display: flex; align-items: center; gap: 0.35rem; font-size: 0.7rem; color: var(--text-muted); }
+  .fl-dot { width: 9px; height: 9px; border-radius: 2px; }
 </style>
 </head>
 <body>
@@ -264,24 +264,17 @@
   <button onclick="show('network',this)">4. Network Effects</button>
   <button onclick="show('clash',this)">5. Hive Clash</button>
   <button onclick="show('learn',this)">6. Validation &amp; Upside</button>
+  <button onclick="show('flows',this)">7. User Flows</button>
 </nav>
 
-<!-- ═══════════════════════════════════════════════
-     1. STRATEGIC OVERVIEW
-═══════════════════════════════════════════════ -->
+<!-- PANEL 1 -->
 <div id="panel-overview" class="panel active">
   <div class="section-title">Number Hive Ecosystem</div>
   <div class="section-sub">Three interconnected layers — each one reinforces the others.</div>
 
-  <!-- Ecosystem tree -->
   <div class="ecosystem">
-    <!-- Freemium Engine -->
     <div class="eco-col freemium">
-      <div class="eco-header">
-        <div class="eco-num">Layer 1</div>
-        <div class="eco-name">Freemium Classroom Engine</div>
-        <div class="eco-tag">The foundation. Always free to experience.</div>
-      </div>
+      <div class="eco-header"><div class="eco-num">Layer 1</div><div class="eco-name">Freemium Classroom Engine</div><div class="eco-tag">The foundation. Always free to experience.</div></div>
       <div class="eco-items">
         <div class="eco-item"><div class="ei-dot"></div><span class="ei-label">Hives</span><span class="ei-badge badge-live">Live</span></div>
         <div class="eco-item"><div class="ei-dot"></div><span class="ei-label">Learning Journeys</span><span class="ei-badge badge-live">Live</span></div>
@@ -292,14 +285,8 @@
         <div class="eco-item"><div class="ei-dot"></div><span class="ei-label" style="color:#C4B5FD;font-weight:600;">🔒 Hive Vault (analytics)</span><span class="ei-badge" style="background:rgba(139,92,246,0.15);color:#C4B5FD;">Paid</span></div>
       </div>
     </div>
-
-    <!-- Network Effects -->
     <div class="eco-col network">
-      <div class="eco-header">
-        <div class="eco-num">Layer 2</div>
-        <div class="eco-name">Network Effects</div>
-        <div class="eco-tag">Users become the acquisition engine.</div>
-      </div>
+      <div class="eco-header"><div class="eco-num">Layer 2</div><div class="eco-name">Network Effects</div><div class="eco-tag">Users become the acquisition engine.</div></div>
       <div class="eco-items">
         <div class="eco-item"><div class="ei-dot"></div><span class="ei-label">Teacher invites teacher</span></div>
         <div class="eco-item"><div class="ei-dot"></div><span class="ei-label">Class challenges class</span></div>
@@ -309,14 +296,8 @@
         <div class="eco-item"><div class="ei-dot"></div><span class="ei-label">Friend joins as free user</span></div>
       </div>
     </div>
-
-    <!-- Hive Clash -->
     <div class="eco-col clash-col">
-      <div class="eco-header">
-        <div class="eco-num">Layer 3</div>
-        <div class="eco-name">Hive Clash</div>
-        <div class="eco-tag">Integrated competitive layer. Asymmetric upside.</div>
-      </div>
+      <div class="eco-header"><div class="eco-num">Layer 3</div><div class="eco-name">Hive Clash</div><div class="eco-tag">Integrated competitive layer. Asymmetric upside.</div></div>
       <div class="eco-items">
         <div class="eco-item"><div class="ei-dot"></div><span class="ei-label">Hive IQ (global ranking)</span><span class="ei-badge badge-live">Live</span></div>
         <div class="eco-item"><div class="ei-dot"></div><span class="ei-label">Global leaderboard</span><span class="ei-badge badge-live">Live</span></div>
@@ -331,11 +312,7 @@
 
   <div class="core-statement">
     <div class="label">Core Strategic Move</div>
-    <div class="gate-row">
-      <span class="gate-from">Gameplay gated</span>
-      <span class="gate-arrow">→</span>
-      <span class="gate-to">Analytics gated</span>
-    </div>
+    <div class="gate-row"><span class="gate-from">Gameplay gated</span><span class="gate-arrow">→</span><span class="gate-to">Analytics gated</span></div>
     <div class="gate-tagline">Teachers do not pay for gameplay. Teachers pay to understand what the gameplay is revealing.</div>
   </div>
 
@@ -349,7 +326,7 @@
         <div class="flow-arrow o"></div>
         <div class="flow-node magic">🔥 Magic Moment<br><span style="font-size:0.76rem;font-weight:500;color:#FDA974">Engaged · competing · asking to play again</span></div>
         <div class="flow-arrow o"></div>
-        <div class="flow-node clash">⚡ Hive Clash — Hive IQ<br><span style="font-size:0.75rem;font-weight:500;color:rgba(249,168,212,0.7);">Students challenge friends. Network spreads.</span></div>
+        <div class="flow-node clash">⚡ Hive Clash — Hive IQ<br><span style="font-size:0.75rem;font-weight:500;color:rgba(249,168,212,0.7)">Students challenge friends. Network spreads.</span></div>
         <div class="flow-arrow"></div>
         <div class="flow-node vault">🔒 Hive Vault builds silently</div>
         <div class="flow-arrow g"></div>
@@ -358,29 +335,15 @@
         <div class="flow-node paid">Unlock Analytics → Subscription</div>
       </div>
     </div>
-
     <div>
       <div class="magic-box">
         <h3>🔥 The Magic Moment</h3>
         <p style="font-size:0.82rem;color:#FDA974;">Must happen before any paywall. The entire strategy depends on it.</p>
         <div class="magic-cols">
-          <div class="magic-group">
-            <h4>Students</h4>
-            <div class="magic-item">Engaged in play</div>
-            <div class="magic-item">Competing with peers</div>
-            <div class="magic-item">Climbing Hive IQ</div>
-            <div class="magic-item">Asking to play again</div>
-          </div>
-          <div class="magic-group">
-            <h4>Teachers</h4>
-            <div class="magic-item">See immediate value</div>
-            <div class="magic-item">Minimal setup</div>
-            <div class="magic-item">High participation</div>
-            <div class="magic-item">Students want more</div>
-          </div>
+          <div class="magic-group"><h4>Students</h4><div class="magic-item">Engaged in play</div><div class="magic-item">Competing with peers</div><div class="magic-item">Climbing Hive IQ</div><div class="magic-item">Asking to play again</div></div>
+          <div class="magic-group"><h4>Teachers</h4><div class="magic-item">See immediate value</div><div class="magic-item">Minimal setup</div><div class="magic-item">High participation</div><div class="magic-item">Students want more</div></div>
         </div>
       </div>
-
       <div class="card">
         <div class="card-title">Strategic Principles</div>
         <div style="display:flex;flex-direction:column;gap:0.75rem;">
@@ -394,13 +357,10 @@
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════
-     2. TEACHER JOURNEY
-═══════════════════════════════════════════════ -->
+<!-- PANEL 2 -->
 <div id="panel-teacher" class="panel">
   <div class="section-title">Teacher Journey</div>
   <div class="section-sub">How a teacher reaches value — and conversion — entirely before the paywall.</div>
-
   <div class="two-col">
     <div class="card">
       <div class="card-title">Full Journey Flow</div>
@@ -424,7 +384,6 @@
         <div class="flow-node paid">Unlock Analytics → Trial → Subscription</div>
       </div>
     </div>
-
     <div>
       <div class="vault-box">
         <div style="font-size:1.6rem;margin-bottom:0.4rem;">🔒</div>
@@ -440,46 +399,29 @@
         <div class="vault-stat"><span class="vn">✦</span><span class="vw">Hive Gym Analytics</span><span class="vs">Locked</span></div>
         <div class="vault-hook">"I know Priya's data exists — I just can't read it yet."</div>
       </div>
-
       <div class="card" style="margin-top:1.5rem;">
         <div class="card-title">Conversion Mechanics</div>
         <div style="display:flex;flex-direction:column;gap:0.75rem;">
-          <div style="display:flex;gap:0.75rem;align-items:flex-start;">
-            <div style="background:rgba(249,115,22,0.12);color:var(--orange);border-radius:8px;padding:0.5rem;font-size:0.9rem;flex-shrink:0;">👁</div>
-            <div><div style="font-size:0.84rem;font-weight:600;margin-bottom:0.15rem;">Data accumulates visibly</div><div style="font-size:0.78rem;color:var(--text-muted);">Blurred sidebar hints during play. Teacher sees value building in real time.</div></div>
-          </div>
-          <div style="display:flex;gap:0.75rem;align-items:flex-start;">
-            <div style="background:rgba(16,185,129,0.12);color:var(--green);border-radius:8px;padding:0.5rem;font-size:0.9rem;flex-shrink:0;">🎁</div>
-            <div><div style="font-size:0.84rem;font-weight:600;margin-bottom:0.15rem;">One free insight per session</div><div style="font-size:0.78rem;color:var(--text-muted);">Enough to intrigue. Not enough to satisfy. e.g. "Most common error: 6×8"</div></div>
-          </div>
-          <div style="display:flex;gap:0.75rem;align-items:flex-start;">
-            <div style="background:rgba(139,92,246,0.12);color:var(--purple);border-radius:8px;padding:0.5rem;font-size:0.9rem;flex-shrink:0;">🔒</div>
-            <div><div style="font-size:0.84rem;font-weight:600;margin-bottom:0.15rem;">Locked data feels withheld, not absent</div><div style="font-size:0.78rem;color:var(--text-muted);">Names visible. Data blurred. The gap between knowing and seeing creates desire.</div></div>
-          </div>
-          <div style="display:flex;gap:0.75rem;align-items:flex-start;">
-            <div style="background:rgba(59,130,246,0.12);color:var(--blue);border-radius:8px;padding:0.5rem;font-size:0.9rem;flex-shrink:0;">🎯</div>
-            <div><div style="font-size:0.84rem;font-weight:600;margin-bottom:0.15rem;">Insight → Action loop (paid)</div><div style="font-size:0.78rem;color:var(--text-muted);">Paid tier lets teachers assign specific skills — analytics with direct consequence.</div></div>
-          </div>
+          <div style="display:flex;gap:0.75rem;align-items:flex-start;"><div style="background:rgba(249,115,22,0.12);color:var(--orange);border-radius:8px;padding:0.5rem;font-size:0.9rem;flex-shrink:0;">👁</div><div><div style="font-size:0.84rem;font-weight:600;margin-bottom:0.15rem;">Data accumulates visibly</div><div style="font-size:0.78rem;color:var(--text-muted);">Blurred sidebar hints during play. Teacher sees value building.</div></div></div>
+          <div style="display:flex;gap:0.75rem;align-items:flex-start;"><div style="background:rgba(16,185,129,0.12);color:var(--green);border-radius:8px;padding:0.5rem;font-size:0.9rem;flex-shrink:0;">🎁</div><div><div style="font-size:0.84rem;font-weight:600;margin-bottom:0.15rem;">One free insight per session</div><div style="font-size:0.78rem;color:var(--text-muted);">Enough to intrigue. Not enough to satisfy.</div></div></div>
+          <div style="display:flex;gap:0.75rem;align-items:flex-start;"><div style="background:rgba(139,92,246,0.12);color:var(--purple);border-radius:8px;padding:0.5rem;font-size:0.9rem;flex-shrink:0;">🔒</div><div><div style="font-size:0.84rem;font-weight:600;margin-bottom:0.15rem;">Locked data feels withheld, not absent</div><div style="font-size:0.78rem;color:var(--text-muted);">Names visible. Data blurred. The gap creates desire.</div></div></div>
+          <div style="display:flex;gap:0.75rem;align-items:flex-start;"><div style="background:rgba(59,130,246,0.12);color:var(--blue);border-radius:8px;padding:0.5rem;font-size:0.9rem;flex-shrink:0;">🎯</div><div><div style="font-size:0.84rem;font-weight:600;margin-bottom:0.15rem;">Insight → Action loop (paid)</div><div style="font-size:0.78rem;color:var(--text-muted);">Assign specific skills to struggling students — analytics with consequence.</div></div></div>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════
-     3. FREE vs PAID
-═══════════════════════════════════════════════ -->
+<!-- PANEL 3 -->
 <div id="panel-compare" class="panel">
   <div class="section-title">Free vs Paid</div>
   <div class="section-sub">Student experience is identical regardless of whether their teacher pays. The paywall lives entirely on the teacher's side.</div>
-
   <div class="distinction">
     <div class="dist-card dc-ft"><div class="dl">Free Teacher</div><div class="dw">Activity</div><div class="ds">Full classroom tools. Data collected but not visible.</div></div>
-    <div class="dist-card dc-pt"><div class="dl">Paid Teacher</div><div class="dw">Insight</div><div class="ds">Everything free, plus the analytics revealing what gameplay generated.</div></div>
+    <div class="dist-card dc-pt"><div class="dl">Paid Teacher</div><div class="dw">Insight</div><div class="ds">Everything free, plus analytics revealing what gameplay generated.</div></div>
     <div class="dist-card dc-st"><div class="dl">Student (any hive)</div><div class="dw">Full Play</div><div class="ds">Identical experience regardless of teacher's plan.</div></div>
     <div class="dist-card dc-bc"><div class="dl">Free User (B2C)</div><div class="dw">Play</div><div class="ds">Hive Gym + Hive Clash. No school required.</div></div>
   </div>
-
   <div class="card" style="padding:1.25rem;">
     <div class="card-title" style="margin-bottom:0.75rem;">Feature Breakdown</div>
     <div class="compare-wrap">
@@ -499,22 +441,19 @@
           <tr class="data-row"><td class="feat-name">Create Hives</td><td class="cc">✅</td><td class="cc">✅</td><td class="na">—</td><td class="na">—</td></tr>
           <tr class="data-row"><td class="feat-name">Students can join</td><td class="cc">✅</td><td class="cc">✅</td><td class="na">—</td><td class="na">—</td></tr>
           <tr class="data-row"><td class="feat-name">Run competitions</td><td class="cc">✅</td><td class="cc">✅</td><td class="na">—</td><td class="na">—</td></tr>
-          <tr class="data-row"><td class="feat-name">Student profiles</td><td class="cc">✅</td><td class="cc">✅</td><td class="na">—</td><td class="na">—</td></tr>
-          <tr class="sub-feat data-row"><td class="feat-name">Manage passwords &amp; usernames</td><td class="cc" style="font-size:0.88rem;text-align:center;">✅</td><td class="cc" style="font-size:0.88rem;text-align:center;">✅</td><td class="na">—</td><td class="na">—</td></tr>
+          <tr class="data-row"><td class="feat-name">Student profiles (passwords &amp; usernames)</td><td class="cc">✅</td><td class="cc">✅</td><td class="na">—</td><td class="na">—</td></tr>
           <tr class="data-row"><td class="feat-name">Hive Clash toggle (on / off per hive)</td><td class="cc">✅</td><td class="cc">✅</td><td class="na">—</td><td class="na">—</td></tr>
-
           <tr class="section-row"><td colspan="5" class="sc-amber">Student Gameplay — identical in any hive</td></tr>
           <tr class="data-row"><td class="feat-name">Learning Journeys</td><td class="na">—</td><td class="na">—</td><td class="cc">✅</td><td class="na">—</td></tr>
-          <tr class="sub-feat data-row"><td class="feat-name">Buzz Assessments</td><td class="na">—</td><td class="na">—</td><td class="cc" style="font-size:0.88rem;text-align:center;">✅</td><td class="na">—</td></tr>
-          <tr class="sub-feat data-row"><td class="feat-name">Mindset Surveys</td><td class="na">—</td><td class="na">—</td><td class="cc" style="font-size:0.88rem;text-align:center;">✅</td><td class="na">—</td></tr>
+          <tr class="sub-feat data-row"><td class="feat-name">Buzz Assessments</td><td class="na">—</td><td class="na">—</td><td class="cc" style="text-align:center;">✅</td><td class="na">—</td></tr>
+          <tr class="sub-feat data-row"><td class="feat-name">Mindset Surveys</td><td class="na">—</td><td class="na">—</td><td class="cc" style="text-align:center;">✅</td><td class="na">—</td></tr>
           <tr class="data-row"><td class="feat-name">Hive Gym</td><td class="na">—</td><td class="na">—</td><td class="cc">✅</td><td class="cc">✅</td></tr>
-          <tr class="sub-feat data-row"><td class="feat-name">Play a Friend</td><td class="na">—</td><td class="na">—</td><td class="cc" style="font-size:0.88rem;text-align:center;">✅</td><td class="cc" style="font-size:0.88rem;text-align:center;">✅</td></tr>
-          <tr class="sub-feat data-row"><td class="feat-name">Practice vs Bot</td><td class="na">—</td><td class="na">—</td><td class="cc" style="font-size:0.88rem;text-align:center;">✅</td><td class="cc" style="font-size:0.88rem;text-align:center;">✅</td></tr>
-          <tr class="sub-feat data-row"><td class="feat-name">Buzz Practice</td><td class="na">—</td><td class="na">—</td><td class="cc" style="font-size:0.88rem;text-align:center;">✅</td><td class="cc" style="font-size:0.88rem;text-align:center;">✅</td></tr>
+          <tr class="sub-feat data-row"><td class="feat-name">Play a Friend</td><td class="na">—</td><td class="na">—</td><td class="cc" style="text-align:center;">✅</td><td class="cc" style="text-align:center;">✅</td></tr>
+          <tr class="sub-feat data-row"><td class="feat-name">Practice vs Bot</td><td class="na">—</td><td class="na">—</td><td class="cc" style="text-align:center;">✅</td><td class="cc" style="text-align:center;">✅</td></tr>
+          <tr class="sub-feat data-row"><td class="feat-name">Buzz Practice</td><td class="na">—</td><td class="na">—</td><td class="cc" style="text-align:center;">✅</td><td class="cc" style="text-align:center;">✅</td></tr>
           <tr class="data-row"><td class="feat-name">⚡ Hive Clash — Hive IQ</td><td class="na">—</td><td class="na">—</td><td class="cc">✅</td><td class="cc">✅</td></tr>
-
           <tr class="section-row"><td colspan="5" class="sc-blue">Analytics &amp; Insight — teacher only</td></tr>
-          <tr class="data-row"><td class="feat-name">Class reports <span style="font-size:0.75rem;color:rgba(148,163,184,0.5);">· fluency % · growth</span></td><td class="lk">🔒</td><td class="cc">✅</td><td class="na">—</td><td class="na">—</td></tr>
+          <tr class="data-row"><td class="feat-name">Class reports · fluency % · growth</td><td class="lk">🔒</td><td class="cc">✅</td><td class="na">—</td><td class="na">—</td></tr>
           <tr class="data-row"><td class="feat-name">Mindset survey results + growth</td><td class="lk">🔒</td><td class="cc">✅</td><td class="na">—</td><td class="na">—</td></tr>
           <tr class="data-row"><td class="feat-name">Heat maps</td><td class="lk">🔒</td><td class="cc">✅</td><td class="na">—</td><td class="na">—</td></tr>
           <tr class="data-row"><td class="feat-name">Hive Gym analytics</td><td class="lk">🔒</td><td class="cc">✅</td><td class="na">—</td><td class="na">—</td></tr>
@@ -523,60 +462,40 @@
         </tbody>
       </table>
     </div>
-    <div style="margin-top:1.1rem;display:flex;gap:1.5rem;flex-wrap:wrap;font-size:0.77rem;color:var(--text-muted);">
+    <div style="margin-top:1rem;display:flex;gap:1.5rem;flex-wrap:wrap;font-size:0.77rem;color:var(--text-muted);">
       <span>✅ Available</span><span>🔒 Requires paid plan</span><span style="color:rgba(255,255,255,0.18);">— Not applicable</span>
     </div>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════
-     4. NETWORK EFFECTS
-═══════════════════════════════════════════════ -->
+<!-- PANEL 4 -->
 <div id="panel-network" class="panel">
   <div class="section-title">Network Effect Architecture</div>
   <div class="section-sub">Growth occurs at every layer — classroom, school, district, and player-to-player.</div>
-
   <div class="three-col">
-    <div class="net-card school">
-      <h3>Teacher → School</h3>
-      <div class="net-node nn-t">Teacher creates Hive</div>
-      <div class="net-arrow">↓</div>
-      <div class="net-node nn-t">Teacher invites teacher</div>
-      <div class="net-arrow">↓</div>
-      <div class="net-node nn-t">Class challenges class</div>
-      <div class="net-arrow">↓</div>
-      <div class="net-node nn-t">School competition</div>
-      <div class="net-arrow">↓</div>
+    <div class="net-card school"><h3>Teacher → School</h3>
+      <div class="net-node nn-t">Teacher creates Hive</div><div class="net-arrow">↓</div>
+      <div class="net-node nn-t">Teacher invites teacher</div><div class="net-arrow">↓</div>
+      <div class="net-node nn-t">Class challenges class</div><div class="net-arrow">↓</div>
+      <div class="net-node nn-t">School competition</div><div class="net-arrow">↓</div>
       <div class="net-node nn-t nn-end">School adoption</div>
     </div>
-
-    <div class="net-card ext">
-      <h3>School → District</h3>
-      <div class="net-node nn-b">School competition</div>
-      <div class="net-arrow">↓</div>
-      <div class="net-node nn-b">Neighbouring school</div>
-      <div class="net-arrow">↓</div>
-      <div class="net-node nn-b">District competition</div>
-      <div class="net-arrow">↓</div>
+    <div class="net-card ext"><h3>School → District</h3>
+      <div class="net-node nn-b">School competition</div><div class="net-arrow">↓</div>
+      <div class="net-node nn-b">Neighbouring school</div><div class="net-arrow">↓</div>
+      <div class="net-node nn-b">District competition</div><div class="net-arrow">↓</div>
       <div class="net-node nn-b nn-end">District adoption</div>
       <div style="margin-top:1rem;padding:0.75rem;background:rgba(59,130,246,0.06);border:1px solid rgba(59,130,246,0.18);border-radius:8px;font-size:0.79rem;color:var(--text-muted);"><strong style="color:#93C5FD;display:block;margin-bottom:0.3rem;">US District Goal</strong>District adoption enables sub-$1/student pricing at scale.</div>
     </div>
-
-    <div class="net-card stu">
-      <h3>Student → Player</h3>
-      <div class="net-node nn-a">Student plays in hive</div>
-      <div class="net-arrow">↓</div>
-      <div class="net-node nn-p">⚡ Hive IQ — Global ranking</div>
-      <div class="net-arrow">↓</div>
-      <div class="net-node nn-a">Challenge friend (outside school)</div>
-      <div class="net-arrow">↓</div>
-      <div class="net-node nn-a">Friend joins as free B2C user</div>
-      <div class="net-arrow">↓</div>
+    <div class="net-card stu"><h3>Student → Player</h3>
+      <div class="net-node nn-a">Student plays in hive</div><div class="net-arrow">↓</div>
+      <div class="net-node nn-p">⚡ Hive IQ — Global ranking</div><div class="net-arrow">↓</div>
+      <div class="net-node nn-a">Challenge friend (outside school)</div><div class="net-arrow">↓</div>
+      <div class="net-node nn-a">Friend joins as free B2C user</div><div class="net-arrow">↓</div>
       <div class="net-node nn-a nn-end">Friend challenges friend</div>
       <div style="margin-top:1rem;padding:0.75rem;background:rgba(245,158,11,0.05);border:1px dashed rgba(245,158,11,0.2);border-radius:8px;font-size:0.79rem;color:var(--text-muted);"><strong style="color:var(--amber-light);display:block;margin-bottom:0.3rem;">Future</strong>Share challenge link · Rematch · Class challenge · Send to contacts</div>
     </div>
   </div>
-
   <div class="card">
     <div class="card-title">Why Each Layer Matters</div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1rem;">
@@ -588,24 +507,20 @@
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════
-     5. HIVE CLASH
-═══════════════════════════════════════════════ -->
+<!-- PANEL 5 -->
 <div id="panel-clash" class="panel">
   <div class="section-title">Hive Clash</div>
   <div class="section-sub">An integrated competitive layer with asymmetric upside — built into the ecosystem from day one.</div>
-
   <div class="two-col">
     <div class="hiq-box">
       <h3>⚡ Hive IQ</h3>
       <div class="hiq-sub">A global ranking system — one ladder, every player, everywhere.</div>
-      <div class="hiq-stat"><span class="hiq-icon">🌍</span><span class="hiq-text"><strong>Global, not local.</strong> Students compete against every Number Hive player — not just their class. The ranking means something because it has scale.</span></div>
-      <div class="hiq-stat"><span class="hiq-icon">📈</span><span class="hiq-text"><strong>Self-motivating.</strong> Hive IQ creates intrinsic drive to improve and climb. Students play outside school hours without being asked.</span></div>
-      <div class="hiq-stat"><span class="hiq-icon">🏷</span><span class="hiq-text"><strong>Shareable identity.</strong> "My Hive IQ is 1,340" is something students tell friends. Rankings become social currency — the viral hook.</span></div>
-      <div class="hiq-stat"><span class="hiq-icon">🎓</span><span class="hiq-text"><strong>Teacher controlled.</strong> Teachers can enable or disable Hive Clash per hive — full institutional control, no friction for adoption.</span></div>
-      <div class="hiq-stat"><span class="hiq-icon">🔓</span><span class="hiq-text"><strong>Open to all.</strong> Free B2C users access Hive Clash too — global Hive IQ ties school and non-school players together on one ladder.</span></div>
+      <div class="hiq-stat"><span class="hiq-icon">🌍</span><span class="hiq-text"><strong>Global, not local.</strong> Students compete against every Number Hive player. The ranking means something because it has scale.</span></div>
+      <div class="hiq-stat"><span class="hiq-icon">📈</span><span class="hiq-text"><strong>Self-motivating.</strong> Hive IQ creates intrinsic drive to improve and climb. Students play outside school without being asked.</span></div>
+      <div class="hiq-stat"><span class="hiq-icon">🏷</span><span class="hiq-text"><strong>Shareable identity.</strong> "My Hive IQ is 1,340" is something students tell friends. Rankings become social currency.</span></div>
+      <div class="hiq-stat"><span class="hiq-icon">🎓</span><span class="hiq-text"><strong>Teacher controlled.</strong> Enable or disable per hive — full institutional control, no friction for adoption.</span></div>
+      <div class="hiq-stat"><span class="hiq-icon">🔓</span><span class="hiq-text"><strong>Open to all.</strong> Free B2C users access Hive Clash too — tying school and non-school players on one global ladder.</span></div>
     </div>
-
     <div>
       <div class="card" style="margin-bottom:1rem;">
         <div class="card-title">Components</div>
@@ -620,13 +535,12 @@
           <div class="comp-item"><span class="ci-name">Tournaments</span><span class="ci-badge ci-planned">Planned</span></div>
         </div>
       </div>
-
       <div class="card">
-        <div class="card-title">The Bridge</div>
-        <div class="flow" style="gap:0;">
+        <div class="card-title">The Bridge — B2B to B2C</div>
+        <div class="flow">
           <div class="flow-node" style="background:rgba(16,185,129,0.08);border-color:rgba(16,185,129,0.3);color:#6EE7B7;min-width:200px;font-size:0.84rem;">Teacher introduces students to Hive Clash</div>
           <div class="flow-arrow"></div>
-          <div class="flow-node" style="min-width:200px;font-size:0.84rem;">Students build Hive IQ · want to play at home</div>
+          <div class="flow-node" style="min-width:200px;font-size:0.84rem;">Students build Hive IQ · play at home</div>
           <div class="flow-arrow"></div>
           <div class="flow-node clash" style="min-width:200px;font-size:0.84rem;">Students challenge friends outside school</div>
           <div class="flow-arrow"></div>
@@ -637,21 +551,11 @@
       </div>
     </div>
   </div>
-
-  <!-- Scenarios -->
   <div class="card">
     <div class="card-title">Two Scenarios — Both Work</div>
     <div class="scenario-grid">
-      <div class="scenario a">
-        <div class="sc-label">Scenario A</div>
-        <div class="sc-title">Engagement + Lead Engine</div>
-        <div class="sc-body">Hive Clash increases student engagement and retention, strengthens network effects, and drives word-of-mouth that feeds back into school acquisition. It supports and accelerates the core B2B model.</div>
-      </div>
-      <div class="scenario b">
-        <div class="sc-label">Scenario B</div>
-        <div class="sc-title">Meaningful Consumer Product</div>
-        <div class="sc-body">Hive IQ gains traction beyond the classroom. Hive Clash becomes a standalone consumer product — with its own audience, growth loop, and potentially its own revenue stream. The B2B model remains the foundation.</div>
-      </div>
+      <div class="scenario a"><div class="sc-label">Scenario A</div><div class="sc-title">Engagement + Lead Engine</div><div class="sc-body">Hive Clash increases student engagement and retention, strengthens network effects, and drives word-of-mouth that feeds back into school acquisition. It supports and accelerates the core B2B model.</div></div>
+      <div class="scenario b"><div class="sc-label">Scenario B</div><div class="sc-title">Meaningful Consumer Product</div><div class="sc-body">Hive IQ gains traction beyond the classroom. Hive Clash becomes a standalone consumer product — with its own audience, growth loop, and potentially its own revenue stream. The B2B model remains the foundation.</div></div>
     </div>
     <div style="margin-top:1rem;padding:1rem;background:linear-gradient(135deg,#0d0010,#1a0a2e);border-radius:10px;border:1px solid rgba(236,72,153,0.25);text-align:center;">
       <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--pink);margin-bottom:0.4rem;">The Key Point</div>
@@ -661,13 +565,10 @@
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════
-     6. VALIDATION & UPSIDE
-═══════════════════════════════════════════════ -->
+<!-- PANEL 6 -->
 <div id="panel-learn" class="panel">
   <div class="section-title">Validation &amp; Upside</div>
   <div class="section-sub">What we need to learn — and what becomes possible if the model works.</div>
-
   <div class="learn-grid">
     <div class="learn-card">
       <div class="learn-header lh-green"><h3>Freemium Engine</h3></div>
@@ -675,7 +576,7 @@
         <div class="learn-q">Does moving the gate improve activation rates?</div>
         <div class="learn-q">Do more teachers reach the magic moment?</div>
         <div class="learn-q">Does the Hive Vault drive subscription conversion?</div>
-        <div class="learn-q">Does "locked data" feel like treasure withheld, not a missing feature?</div>
+        <div class="learn-q">Does locked data feel like treasure withheld, not a missing feature?</div>
         <div class="learn-q">Does the free tier reduce time-to-first-value?</div>
       </div>
     </div>
@@ -700,43 +601,163 @@
       </div>
     </div>
   </div>
-
-  <!-- Future revenue -->
   <div class="card">
     <div class="card-title">Future Revenue Opportunities</div>
     <p style="font-size:0.86rem;color:var(--text-muted);margin-bottom:1.25rem;">The core business is school subscriptions. These are upside opportunities — they become relevant only if Hive Clash gains significant consumer traction. They are not assumptions.</p>
-
     <div class="revenue-grid">
-      <div class="rev-item">
-        <div class="ri-name">Advertising (B2C only)</div>
-        <div class="ri-desc">Non-intrusive ads for adult or parent-facing surfaces if consumer audience grows.</div>
-      </div>
-      <div class="rev-item">
-        <div class="ri-name">Cosmetics</div>
-        <div class="ri-desc">Hive avatars, skins, profile customisation — in-game identity purchases.</div>
-      </div>
-      <div class="rev-item">
-        <div class="ri-name">Premium Memberships</div>
-        <div class="ri-desc">Enhanced Hive IQ stats, history, detailed performance breakdowns for serious players.</div>
-      </div>
-      <div class="rev-item">
-        <div class="ri-name">Parent Subscriptions</div>
-        <div class="ri-desc">Parents of engaged students pay for home-use analytics and progress insight.</div>
-      </div>
-      <div class="rev-item">
-        <div class="ri-name">Sponsored Competitions</div>
-        <div class="ri-desc">Brand-sponsored seasons or tournaments at district or national level.</div>
-      </div>
-      <div class="rev-item">
-        <div class="ri-name">Partnerships</div>
-        <div class="ri-desc">Curriculum publishers, ed-tech platforms, or district-level enterprise deals.</div>
-      </div>
+      <div class="rev-item"><div class="ri-name">Advertising (B2C only)</div><div class="ri-desc">Non-intrusive ads for adult or parent-facing surfaces if consumer audience grows.</div></div>
+      <div class="rev-item"><div class="ri-name">Cosmetics</div><div class="ri-desc">Hive avatars, skins, profile customisation — in-game identity purchases.</div></div>
+      <div class="rev-item"><div class="ri-name">Premium Memberships</div><div class="ri-desc">Enhanced Hive IQ stats, history, detailed performance breakdowns for serious players.</div></div>
+      <div class="rev-item"><div class="ri-name">Parent Subscriptions</div><div class="ri-desc">Parents of engaged students pay for home-use analytics and progress insight.</div></div>
+      <div class="rev-item"><div class="ri-name">Sponsored Competitions</div><div class="ri-desc">Brand-sponsored seasons or tournaments at district or national level.</div></div>
+      <div class="rev-item"><div class="ri-name">Partnerships</div><div class="ri-desc">Curriculum publishers, ed-tech platforms, or district-level enterprise deals.</div></div>
     </div>
-
     <div style="margin-top:1.25rem;padding:1rem;background:var(--surface2);border-radius:10px;border-left:3px solid var(--amber);">
       <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--amber);margin-bottom:0.4rem;">Final Message</div>
       <div style="font-size:0.9rem;color:var(--text);line-height:1.6;">We are not pivoting away from schools. We are making Number Hive easier to experience, easier to share, and easier to spread. Hive Vault converts engagement into subscriptions. Network effects turn users into recruiters. Hive Clash increases engagement and creates a bridge between classrooms, homes, schools, and the wider world.</div>
     </div>
+  </div>
+</div>
+
+<!-- PANEL 7 — USER FLOWS -->
+<div id="panel-flows" class="panel">
+  <div class="section-title">All User Flows</div>
+  <div class="section-sub">Every entry point, every journey, every conversion path.</div>
+
+  <div class="flows-legend">
+    <div class="fl-item"><div class="fl-dot" style="background:var(--orange)"></div>Magic Moment</div>
+    <div class="fl-item"><div class="fl-dot" style="background:var(--purple)"></div>Hive Vault</div>
+    <div class="fl-item"><div class="fl-dot" style="background:var(--blue)"></div>Conversion</div>
+    <div class="fl-item"><div class="fl-dot" style="background:var(--green)"></div>Subscribed / Paid</div>
+    <div class="fl-item"><div class="fl-dot" style="background:var(--pink)"></div>Hive Clash</div>
+  </div>
+
+  <div class="flows-grid">
+
+    <!-- 1. New Teacher -->
+    <div class="lane">
+      <div class="lane-header lh-new-t">🆕 New Teacher</div>
+      <div class="lane-body">
+        <div class="ln ln-entry">Discovers Number Hive<span class="ln-sub">referral · search · Hive Clash link</span></div>
+        <div class="la">↓</div>
+        <div class="ln ln-action">Creates free account</div>
+        <div class="la">↓</div>
+        <div class="ln ln-action">Creates Hive</div>
+        <div class="la">↓</div>
+        <div class="ln ln-action">Students join (name + code)</div>
+        <div class="la la-o">↓</div>
+        <div class="ln ln-magic">🔥 Magic Moment<span class="ln-sub">Students engaged. Teacher sees it.</span></div>
+        <div class="la">↓</div>
+        <div class="ln ln-vault">🔒 Hive Vault fills silently</div>
+        <div class="la la-g">↓</div>
+        <div class="ln ln-convert">Teased with one free insight</div>
+        <div class="la la-g">↓</div>
+        <div class="ln ln-paid">Trial → Subscription</div>
+      </div>
+    </div>
+
+    <!-- 2. Returning Free Teacher -->
+    <div class="lane">
+      <div class="lane-header lh-ret-t">↩ Returning Free Teacher</div>
+      <div class="lane-body">
+        <div class="ln ln-entry">Returns · logs in</div>
+        <div class="la">↓</div>
+        <div class="ln ln-vault">🔒 Vault has grown since last visit<span class="ln-sub">More profiles · more trends · more data</span></div>
+        <div class="la">↓</div>
+        <div class="ln ln-action">Runs another session</div>
+        <div class="la la-o">↓</div>
+        <div class="ln ln-magic">🔥 Magic Moment again</div>
+        <div class="la">↓</div>
+        <div class="ln ln-convert">Conversion pressure increases<span class="ln-sub">3 students need intervention (blurred)</span></div>
+        <div class="la la-g">↓</div>
+        <div class="ln ln-paid">Unlocks → Paid</div>
+      </div>
+    </div>
+
+    <!-- 3. Paid Teacher -->
+    <div class="lane">
+      <div class="lane-header lh-paid-t">✅ Paid Teacher</div>
+      <div class="lane-body">
+        <div class="ln ln-entry">Logs in</div>
+        <div class="la">↓</div>
+        <div class="ln ln-paid">Full analytics unlocked</div>
+        <div class="la">↓</div>
+        <div class="ln ln-action">Reviews class report<span class="ln-sub">fluency % · heat maps · mindset</span></div>
+        <div class="la">↓</div>
+        <div class="ln ln-action">Assigns skills to students</div>
+        <div class="la">↓</div>
+        <div class="ln ln-action">Runs next session</div>
+        <div class="la la-o">↓</div>
+        <div class="ln ln-magic">🔥 Magic Moment</div>
+        <div class="la la-g">↓</div>
+        <div class="ln ln-action">Invites another teacher</div>
+        <div class="la la-g">↓</div>
+        <div class="ln ln-paid">Renews · Expands</div>
+      </div>
+    </div>
+
+    <!-- 4. Student -->
+    <div class="lane">
+      <div class="lane-header lh-student">🎒 Student (joining hive)</div>
+      <div class="lane-body">
+        <div class="ln ln-entry">Receives hive code from teacher</div>
+        <div class="la">↓</div>
+        <div class="ln ln-action">Joins hive (name + code)<span class="ln-sub">no account required</span></div>
+        <div class="la">↓</div>
+        <div class="ln ln-action">Plays Learning Journey<span class="ln-sub">Buzz · Mindset · Hive Gym</span></div>
+        <div class="la la-o">↓</div>
+        <div class="ln ln-magic">🔥 Gets hooked<span class="ln-sub">Competing · improving · asking for more</span></div>
+        <div class="la la-p">↓</div>
+        <div class="ln ln-clash">⚡ Enters Hive Clash<span class="ln-sub">Earns Hive IQ · climbs global ranking</span></div>
+        <div class="la la-p">↓</div>
+        <div class="ln ln-action">Plays at home voluntarily</div>
+        <div class="la la-p">↓</div>
+        <div class="ln ln-clash">Challenges a friend</div>
+      </div>
+    </div>
+
+    <!-- 5. Free B2C -->
+    <div class="lane">
+      <div class="lane-header lh-b2c">🌐 Free User (B2C)</div>
+      <div class="lane-body">
+        <div class="ln ln-entry">Receives challenge link<span class="ln-sub">from student · social · search</span></div>
+        <div class="la">↓</div>
+        <div class="ln ln-free">Joins free — no school needed</div>
+        <div class="la">↓</div>
+        <div class="ln ln-action">Plays Hive Gym<span class="ln-sub">Play a Friend · vs Bot · Buzz Practice</span></div>
+        <div class="la la-p">↓</div>
+        <div class="ln ln-clash">⚡ Hive Clash · earns Hive IQ</div>
+        <div class="la la-p">↓</div>
+        <div class="ln ln-action">Climbs global ladder · wants more</div>
+        <div class="la la-p">↓</div>
+        <div class="ln ln-clash">Challenges their own friends</div>
+        <div class="la la-g">↓</div>
+        <div class="ln ln-paid">If teacher → discovers B2B path</div>
+      </div>
+    </div>
+
+    <!-- 6. Viral Hive Clash -->
+    <div class="lane">
+      <div class="lane-header lh-viral">⚡ Hive Clash — Viral Entry</div>
+      <div class="lane-body">
+        <div class="ln ln-clash">Student earns high Hive IQ</div>
+        <div class="la la-p">↓</div>
+        <div class="ln ln-clash">Shares ranking · sends challenge</div>
+        <div class="la la-p">↓</div>
+        <div class="ln ln-entry">Friend opens link (no account)</div>
+        <div class="la">↓</div>
+        <div class="ln ln-free">Plays immediately<span class="ln-sub">zero friction entry</span></div>
+        <div class="la la-p">↓</div>
+        <div class="ln ln-clash">Gets own Hive IQ</div>
+        <div class="la la-p">↓</div>
+        <div class="ln ln-clash">Challenges more friends</div>
+        <div class="la la-g">↓</div>
+        <div class="ln ln-action">Some are teachers or parents</div>
+        <div class="la la-g">↓</div>
+        <div class="ln ln-paid">B2B acquisition via B2C</div>
+      </div>
+    </div>
+
   </div>
 </div>
 
