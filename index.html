@@ -243,6 +243,14 @@
   .la-g { color: rgba(16,185,129,0.5); }
   .la-p { color: rgba(236,72,153,0.5); }
   .ln-sub { font-size: 0.63rem; font-weight: 400; opacity: 0.65; display: block; margin-top: 0.1rem; }
+  .lane-bridge { grid-column: 1 / -1; }
+  .lh-bridge { background: linear-gradient(135deg,#1a1200 0%,#2d1f00 40%,#001a10 100%); color: #FCD34D; border-bottom: 1px solid rgba(245,158,11,0.3); }
+  .lane-body-bridge { flex-direction: row !important; gap: 1.5rem; align-items: flex-start; }
+  .bridge-col { flex: 1; display: flex; flex-direction: column; }
+  .bridge-arrow-col { display: flex; align-items: center; justify-content: center; padding: 2rem 0.5rem 0; font-size: 1.8rem; color: #334155; }
+  .bridge-phase-label { font-size: 0.63rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.5rem; padding: 0.25rem 0.5rem; border-radius: 4px; display: inline-block; }
+  .bpl-b2c { color: #FCD34D; background: rgba(245,158,11,0.1); }
+  .bpl-teacher { color: #6EE7B7; background: rgba(16,185,129,0.1); }
   .flows-legend { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
   .fl-item { display: flex; align-items: center; gap: 0.35rem; font-size: 0.7rem; color: var(--text-muted); }
   .fl-dot { width: 9px; height: 9px; border-radius: 2px; }
@@ -732,7 +740,7 @@
         <div class="la la-p">↓</div>
         <div class="ln ln-clash">Challenges their own friends</div>
         <div class="la la-g">↓</div>
-        <div class="ln ln-paid">If teacher → discovers B2B path</div>
+        <div class="ln ln-paid">Is a teacher? → see lane 7 below ↓<span class="ln-sub">full B2C→Teacher→Subscriber path</span></div>
       </div>
     </div>
 
@@ -755,6 +763,47 @@
         <div class="ln ln-action">Some are teachers or parents</div>
         <div class="la la-g">↓</div>
         <div class="ln ln-paid">B2B acquisition via B2C</div>
+      </div>
+    </div>
+
+    <!-- 7. B2C → Teacher Bridge (full width) -->
+    <div class="lane lane-bridge">
+      <div class="lane-header lh-bridge">🔄 B2C User → Teacher → Subscriber &nbsp;·&nbsp; <span style="opacity:0.65;font-weight:500;">All roads lead here</span></div>
+      <div class="lane-body lane-body-bridge">
+
+        <!-- LEFT: B2C phase -->
+        <div class="bridge-col">
+          <span class="bridge-phase-label bpl-b2c">① B2C Entry</span>
+          <div class="ln ln-entry">Finds Number Hive<span class="ln-sub">Hive Clash link · social share · friend challenge</span></div>
+          <div class="la la-p">↓</div>
+          <div class="ln ln-free">Plays Hive Gym · earns Hive IQ<span class="ln-sub">Play a Friend · vs Bot · Buzz Practice</span></div>
+          <div class="la la-p">↓</div>
+          <div class="ln ln-clash">⚡ Competes in Hive Clash · climbs global ladder</div>
+          <div class="la la-p">↓</div>
+          <div class="ln ln-clash">Post-session results screen<span class="ln-sub">"Bring this to your class →" CTA surfaces</span></div>
+        </div>
+
+        <!-- ARROW -->
+        <div class="bridge-arrow-col">→</div>
+
+        <!-- RIGHT: Teacher phase -->
+        <div class="bridge-col">
+          <span class="bridge-phase-label bpl-teacher">② Becomes Teacher</span>
+          <div class="ln ln-action">Creates free teacher account<span class="ln-sub">2 min · no card · already knows the game</span></div>
+          <div class="la la-g">↓</div>
+          <div class="ln ln-action">Sets up Hive · shares code with class</div>
+          <div class="la la-o">↓</div>
+          <div class="ln ln-magic">🔥 Magic Moment (faster than a new teacher)<span class="ln-sub">Already bought in — watching students play it</span></div>
+          <div class="la">↓</div>
+          <div class="ln ln-vault">🔒 Hive Vault begins filling<span class="ln-sub">Data locked · one free insight teased post-session</span></div>
+          <div class="la">↓</div>
+          <div class="ln ln-vault">Returns → Vault has grown<span class="ln-sub">"14 fluency profiles waiting"</span></div>
+          <div class="la la-g">↓</div>
+          <div class="ln ln-convert">Trial unlock — 30 days</div>
+          <div class="la la-g">↓</div>
+          <div class="ln ln-paid">✅ Subscribes<span class="ln-sub">Highest-intent convert: product-qualified before day one</span></div>
+        </div>
+
       </div>
     </div>
 
