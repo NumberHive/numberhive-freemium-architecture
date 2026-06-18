@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Number Hive — Feature / Product Matrix</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --amber:#F59E0B; --amber-light:#FCD34D; --amber-dark:#B45309;
+    --bg:#0B1120; --surface:#151D2E; --surface2:#1C2740; --surface3:#243050;
+    --border:#2A3A52; --border-light:#374968;
+    --text:#E8EDF5; --text-muted:#8896AE; --text-dim:#5A6B85;
+    --green:#10B981; --green-light:#6EE7B7;
+    --blue:#3B82F6; --blue-light:#93C5FD;
+    --purple:#8B5CF6; --purple-light:#C4B5FD;
+    --cyan:#22D3EE; --slate:#475569;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:'DM Sans',-apple-system,BlinkMacSystemFont,sans-serif; background:var(--bg); color:var(--text); min-height:100vh; -webkit-font-smoothing:antialiased; }
+
+  /* ── Header ── */
+  .header { position:relative; padding:2.75rem 2rem 2rem; text-align:center; overflow:hidden; border-bottom:1px solid var(--border); }
+  .header::before { content:''; position:absolute; inset:0; pointer-events:none;
+    background:
+      radial-gradient(ellipse 50% 50% at 18% 0%, rgba(34,211,238,0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 50% at 50% 0%, rgba(16,185,129,0.05) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 50% at 82% 0%, rgba(139,92,246,0.06) 0%, transparent 70%); }
+  .header-badge { display:inline-block; background:linear-gradient(135deg,var(--amber),#D97706); color:#0B1120; font-size:0.62rem; font-weight:800; letter-spacing:0.14em; text-transform:uppercase; padding:0.35rem 1rem; border-radius:99px; margin-bottom:1.1rem; }
+  .header h1 { font-size:2rem; font-weight:800; letter-spacing:-0.03em; margin-bottom:0.5rem; line-height:1.2; }
+  .header .tagline { font-size:0.98rem; color:var(--text-muted); max-width:600px; margin:0 auto; line-height:1.5; }
+  .header .tagline strong { color:var(--amber-light); font-weight:600; }
+
+  /* ── Controls ── */
+  .controls { max-width:1240px; margin:0 auto; padding:1.5rem 2rem 0; display:flex; flex-wrap:wrap; gap:1rem; align-items:center; justify-content:space-between; }
+  .control-group { display:flex; flex-wrap:wrap; gap:0.5rem; align-items:center; }
+  .ctrl-label { font-size:0.6rem; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-dim); margin-right:0.15rem; }
+  .chip { background:var(--surface); border:1px solid var(--border); color:var(--text-muted); font-family:inherit; font-size:0.74rem; font-weight:600; padding:0.4rem 0.85rem; border-radius:99px; cursor:pointer; transition:all 0.15s; white-space:nowrap; }
+  .chip:hover { color:var(--text); border-color:var(--border-light); }
+  .chip.active { background:rgba(245,158,11,0.12); border-color:var(--amber); color:var(--amber-light); }
+  .search-box { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:0.45rem 0.85rem; color:var(--text); font-family:inherit; font-size:0.78rem; outline:none; min-width:200px; }
+  .search-box::placeholder { color:var(--text-dim); }
+  .search-box:focus { border-color:var(--border-light); }
+  .toggle-wrap { display:flex; align-items:center; gap:0.5rem; font-size:0.74rem; color:var(--text-muted); cursor:pointer; user-select:none; }
+  .toggle { width:34px; height:19px; border-radius:99px; background:var(--surface3); border:1px solid var(--border); position:relative; transition:background 0.2s; flex-shrink:0; }
+  .toggle::after { content:''; position:absolute; top:1px; left:1px; width:15px; height:15px; border-radius:50%; background:var(--text-dim); transition:all 0.2s; }
+  .toggle-wrap.on .toggle { background:rgba(245,158,11,0.25); border-color:var(--amber); }
+  .toggle-wrap.on .toggle::after { left:16px; background:var(--amber); }
+  .toggle-wrap.on { color:var(--amber-light); }
+
+  /* ── Matrix ── */
+  .matrix-wrap { max-width:1240px; margin:1.5rem auto 0; padding:0 2rem; }
+  .matrix-card { background:var(--surface); border:1px solid var(--border); border-radius:16px; overflow:hidden; }
+  .matrix-scroll { overflow-x:auto; }
+  table.matrix { width:100%; min-width:880px; border-collapse:collapse; }
+
+  table.matrix thead th { position:sticky; top:0; z-index:3; padding:0; }
+  .th-inner { padding:0.85rem 0.9rem 0.95rem; text-align:center; border-bottom:1px solid var(--border); }
+  .th-feat .th-inner { text-align:left; }
+  table.matrix th:first-child { text-align:left; width:30%; }
+
+  .th-feat .th-inner { background:var(--surface2); }
+  .th-feat .th-eyebrow { font-size:0.64rem; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-muted); }
+
+  /* tier header cells */
+  .tier-th { cursor:pointer; transition:background 0.15s; }
+  .tier-th .th-world { font-size:0.55rem; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; opacity:0.8; }
+  .tier-th .th-name { font-size:0.86rem; font-weight:800; letter-spacing:-0.01em; margin-top:0.15rem; }
+  .tier-th .th-price { font-family:'DM Mono',monospace; font-size:0.62rem; margin-top:0.2rem; opacity:0.75; }
+  .tier-th .th-hint { font-size:0.54rem; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; margin-top:0.45rem; opacity:0; transition:opacity 0.15s; color:var(--text-dim); }
+  .tier-th:hover .th-hint { opacity:1; }
+
+  .t-anon   .th-inner { background:rgba(71,85,105,0.12); }
+  .t-anon   .th-world,.t-anon .th-name { color:#94A3B8; } .t-anon .th-price { color:var(--text-dim); }
+  .t-reg    .th-inner { background:rgba(34,211,238,0.07); }
+  .t-reg    .th-world { color:var(--cyan); } .t-reg .th-name { color:#A5F3FC; } .t-reg .th-price { color:rgba(34,211,238,0.7); }
+  .t-free   .th-inner { background:rgba(16,185,129,0.07); }
+  .t-free   .th-world { color:var(--green); } .t-free .th-name { color:var(--green-light); } .t-free .th-price { color:rgba(16,185,129,0.7); }
+  .t-class  .th-inner { background:rgba(59,130,246,0.08); }
+  .t-class  .th-world { color:var(--blue); } .t-class .th-name { color:var(--blue-light); } .t-class .th-price { color:rgba(59,130,246,0.8); }
+  .t-school .th-inner { background:rgba(139,92,246,0.08); }
+  .t-school .th-world { color:var(--purple); } .t-school .th-name { color:var(--purple-light); } .t-school .th-price { color:rgba(139,92,246,0.8); }
+
+  .world-divider { border-left:2px solid var(--border-light) !important; }
+
+  /* category section rows */
+  tr.cat-row td { background:rgba(255,255,255,0.025); padding:0.5rem 1rem; font-size:0.62rem; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; color:var(--amber); }
+
+  /* feature rows */
+  tr.feat-row td { padding:0; border-bottom:1px solid rgba(255,255,255,0.04); }
+  tr.feat-row:last-child td { border-bottom:none; }
+  tr.feat-row .cell { padding:0.6rem 0.9rem; text-align:center; font-size:0.82rem; transition:background 0.12s; }
+  tr.feat-row .cell.feat-name { text-align:left; color:var(--text); font-weight:500; }
+  tr.feat-row .cell.feat-name .fn-note { display:block; font-size:0.7rem; color:var(--text-dim); font-weight:400; margin-top:0.1rem; }
+  tr.feat-row:hover .cell { background:rgba(255,255,255,0.018); }
+
+  /* availability marks */
+  .mk-yes { color:var(--green); font-size:1rem; font-weight:700; }
+  .mk-yes .mk-q { display:block; font-size:0.6rem; color:var(--text-dim); font-weight:500; margin-top:0.05rem; }
+  .mk-lock { color:rgba(255,255,255,0.22); font-size:0.85rem; }
+  .mk-na { color:rgba(255,255,255,0.1); font-size:0.7rem; }
+
+  /* column focus dimming */
+  table.matrix.focusing .cell:not(.focus-col):not(.feat-name) { opacity:0.28; }
+  table.matrix.focusing .tier-th:not(.focus-col) { opacity:0.4; }
+
+  /* upgrade-highlight: first tier where feature unlocks */
+  table.matrix.show-unlocks .cell.first-unlock { background:rgba(245,158,11,0.1); box-shadow:inset 0 0 0 1px rgba(245,158,11,0.35); border-radius:4px; }
+
+  .legend { display:flex; gap:1.5rem; flex-wrap:wrap; padding:0.95rem 1.5rem; border-top:1px solid var(--border); font-size:0.73rem; color:var(--text-muted); align-items:center; }
+  .legend span { display:inline-flex; align-items:center; gap:0.4rem; }
+
+  .empty-note { padding:2.5rem; text-align:center; color:var(--text-dim); font-size:0.85rem; display:none; }
+
+  /* ── Insight strip ── */
+  .insight-strip { max-width:1240px; margin:1.5rem auto 0; padding:0 2rem; display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; }
+  @media (max-width:800px){ .insight-strip{ grid-template-columns:1fr; } }
+  .ins { background:var(--surface); border:1px solid var(--border); border-left:3px solid var(--amber); border-radius:10px; padding:1rem 1.15rem; }
+  .ins .ins-label { font-size:0.6rem; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; color:var(--amber); margin-bottom:0.35rem; }
+  .ins .ins-text { font-size:0.8rem; color:var(--text); line-height:1.5; }
+
+  .footer { text-align:center; padding:2rem; color:var(--text-dim); font-size:0.74rem; border-top:1px solid var(--border); margin-top:2rem; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-badge">Product Matrix v1</div>
+  <h1>Feature / Product Matrix</h1>
+  <div class="tagline">Every feature mapped across five tiers in two worlds — <strong>Public Game</strong> (Anonymous, Registered) and <strong>Educator Game</strong> (Free, Classroom, School). Gameplay is free; insight and administration are paid.</div>
+</div>
+
+<div class="controls">
+  <div class="control-group" id="cat-filters">
+    <span class="ctrl-label">Category</span>
+    <button class="chip active" data-cat="all">All</button>
+    <button class="chip" data-cat="Gameplay">Gameplay</button>
+    <button class="chip" data-cat="Account &amp; Persistence">Account</button>
+    <button class="chip" data-cat="Hive Management">Hives</button>
+    <button class="chip" data-cat="Competency &amp; Reporting">Reporting</button>
+    <button class="chip" data-cat="Administration">Admin</button>
+  </div>
+  <div class="control-group">
+    <input type="text" class="search-box" id="search" placeholder="Search features…">
+    <div class="toggle-wrap" id="unlock-toggle"><div class="toggle"></div>Highlight unlock points</div>
+  </div>
+</div>
+
+<div class="matrix-wrap">
+  <div class="matrix-card">
+    <div class="matrix-scroll">
+      <table class="matrix" id="matrix">
+        <thead>
+          <tr>
+            <th class="th-feat"><div class="th-inner"><span class="th-eyebrow">Feature</span></div></th>
+            <th class="tier-th t-anon"   data-col="0"><div class="th-inner"><div class="th-world">Public</div><div class="th-name">Anonymous</div><div class="th-price">Free · no sign-up</div><div class="th-hint">click to focus</div></div></th>
+            <th class="tier-th t-reg"    data-col="1"><div class="th-inner"><div class="th-world">Public</div><div class="th-name">Registered</div><div class="th-price">Free · account</div><div class="th-hint">click to focus</div></div></th>
+            <th class="tier-th t-free world-divider" data-col="2"><div class="th-inner"><div class="th-world">Educator</div><div class="th-name">Edu Free</div><div class="th-price">Free</div><div class="th-hint">click to focus</div></div></th>
+            <th class="tier-th t-class"  data-col="3"><div class="th-inner"><div class="th-world">Educator</div><div class="th-name">Classroom</div><div class="th-price">$ · per educator</div><div class="th-hint">click to focus</div></div></th>
+            <th class="tier-th t-school" data-col="4"><div class="th-inner"><div class="th-world">Educator</div><div class="th-name">School</div><div class="th-price">$$$ · site licence</div><div class="th-hint">click to focus</div></div></th>
+          </tr>
+        </thead>
+        <tbody id="matrix-body"><!-- generated --></tbody>
+      </table>
+    </div>
+    <div class="empty-note" id="empty-note">No features match your search.</div>
+    <div class="legend">
+      <span><span class="mk-yes">✓</span> Available</span>
+      <span><span class="mk-lock">🔒</span> Data exists, unlocks at higher tier</span>
+      <span><span class="mk-na">—</span> Not applicable to this tier</span>
+      <span style="margin-left:auto;color:var(--text-dim)">Tip: click a tier header to focus its column</span>
+    </div>
+  </div>
+</div>
+
+<div class="insight-strip">
+  <div class="ins"><div class="ins-label">The gate</div><div class="ins-text">Gameplay is identical for students at every educator tier. Subscriptions gate what the <em>educator</em> can see and manage — never what the student can play.</div></div>
+  <div class="ins"><div class="ins-label">Silent data</div><div class="ins-text">Free educators generate competency data from day one. The subscription unlocks the view (🔒), not the collection.</div></div>
+  <div class="ins"><div class="ins-label">Two worlds</div><div class="ins-text">Public multiplayer and hive management never overlap. The only link between worlds is the teacher-transfer bridge.</div></div>
+</div>
+
+<div class="footer">Number Hive · Feature / Product Matrix v1 · June 2026 · Source: Product Features &amp; Subscription Model</div>
+
+<script>
+// ── Data: features × five tiers ──────────────────────────────
+// mark codes: y = available, q = available with qualifier, lock = locked/needs higher tier, na = not applicable
+const COLS = ['anon','reg','free','class','school'];
+const DATA = [
+  { cat:'Gameplay', features:[
+    { name:'vs Basic AI', note:'Single-player against a standard-difficulty bot', marks:['y','y','y','y','y'] },
+    { name:'vs Local Player', note:'Play against someone on the same device', marks:['na','y','na','na','na'] },
+    { name:'vs Remote Player', note:'Online multiplayer against other registered players', marks:['na','y','na','na','na'] },
+    { name:'vs Advanced AI', note:'Harder AI opponents for experienced players', marks:['na','y','na','na','na'] },
+    { name:'vs Other Students (in hive)', note:'Students compete within their class hive', marks:['na','na','y','y','y'] },
+  ]},
+  { cat:'Account &amp; Persistence', features:[
+    { name:'Instant play (no sign-up)', note:'No account, email, or registration required', marks:['y','na','na','na','na'] },
+    { name:'Persistent progress record', note:'Stats, history and progress saved across sessions', marks:['na','y','na','na','na'] },
+    { name:'Anonymous student accounts', note:'Students join with name + hive code, no email', marks:['na','na','y','y','y'] },
+  ]},
+  { cat:'Hive Management', features:[
+    { name:'Create hives', note:'Set up and manage class hives', marks:['na','na',['q','1 hive'],['q','multiple'],['q','unlimited']] },
+    { name:'Students join via code', note:'Students enter the hive with a join code', marks:['na','na','y','y','y'] },
+    { name:'Sub-educators', note:'Add and manage multiple teachers under one account', marks:['na','na','na','na','y'] },
+  ]},
+  { cat:'Competency &amp; Reporting', features:[
+    { name:'Data collection (silent)', note:'Competency data accrues in the background', marks:['na','na',['q','locked'],'y','y'] },
+    { name:'Intra-hive competency reporting', note:'Fluency profiles, growth trends and skill gaps within a hive', marks:['na','na','lock','y','y'] },
+    { name:'Inter-hive competency reporting', note:'Compare performance across hives, classes and year groups', marks:['na','na','lock','lock','y'] },
+  ]},
+  { cat:'Administration', features:[
+    { name:'Classroom functionality', note:'Assign skills, run competitions, export reports, heat maps', marks:['na','na','na','y','y'] },
+    { name:'School functionality', note:'School-level admin, cross-class analytics, cohort tracking', marks:['na','na','na','na','y'] },
+  ]},
+];
+
+// ── Render ───────────────────────────────────────────────────
+function markHTML(m){
+  let code = m, qual = '';
+  if (Array.isArray(m)) { code = m[0]; qual = m[1]; }
+  if (code === 'y')    return '<span class="mk-yes">✓</span>';
+  if (code === 'q')    return '<span class="mk-yes">✓<span class="mk-q">'+qual+'</span></span>';
+  if (code === 'lock') return '<span class="mk-lock">🔒</span>';
+  return '<span class="mk-na">—</span>';
+}
+function isAvailable(m){ const c = Array.isArray(m)?m[0]:m; return c==='y'||c==='q'; }
+
+const body = document.getElementById('matrix-body');
+DATA.forEach(group => {
+  const catRow = document.createElement('tr');
+  catRow.className = 'cat-row';
+  catRow.dataset.cat = group.cat;
+  catRow.innerHTML = '<td colspan="6">'+group.cat+'</td>';
+  body.appendChild(catRow);
+
+  group.features.forEach(f => {
+    const tr = document.createElement('tr');
+    tr.className = 'feat-row';
+    tr.dataset.cat = group.cat;
+    tr.dataset.name = f.name.toLowerCase();
+    let firstUnlock = f.marks.findIndex(isAvailable);
+    let cells = '<td class="cell feat-name">'+f.name+'<span class="fn-note">'+f.note+'</span></td>';
+    f.marks.forEach((m,i) => {
+      const fu = (i === firstUnlock) ? ' first-unlock' : '';
+      cells += '<td class="cell col-'+i+(i===2?' world-divider':'')+fu+'" data-col="'+i+'">'+markHTML(m)+'</td>';
+    });
+    tr.innerHTML = cells;
+    body.appendChild(tr);
+  });
+});
+
+// ── Category filter ──────────────────────────────────────────
+const table = document.getElementById('matrix');
+const search = document.getElementById('search');
+let activeCat = 'all';
+
+function applyFilters(){
+  const q = search.value.trim().toLowerCase();
+  let anyVisible = false;
+  // feature rows
+  document.querySelectorAll('tr.feat-row').forEach(r => {
+    const catOk = activeCat==='all' || r.dataset.cat===activeCat;
+    const qOk = !q || r.dataset.name.includes(q);
+    const show = catOk && qOk;
+    r.style.display = show ? '' : 'none';
+    if (show) anyVisible = true;
+  });
+  // category header rows — hide if empty after filtering
+  document.querySelectorAll('tr.cat-row').forEach(cr => {
+    const catOk = activeCat==='all' || cr.dataset.cat===activeCat;
+    let hasVisibleChild = false;
+    let n = cr.nextElementSibling;
+    while (n && !n.classList.contains('cat-row')) {
+      if (n.classList.contains('feat-row') && n.style.display !== 'none') hasVisibleChild = true;
+      n = n.nextElementSibling;
+    }
+    cr.style.display = (catOk && hasVisibleChild) ? '' : 'none';
+  });
+  document.getElementById('empty-note').style.display = anyVisible ? 'none' : 'block';
+}
+
+document.querySelectorAll('#cat-filters .chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    document.querySelectorAll('#cat-filters .chip').forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    activeCat = chip.dataset.cat;
+    applyFilters();
+  });
+});
+search.addEventListener('input', applyFilters);
+
+// ── Column focus ─────────────────────────────────────────────
+let focusedCol = null;
+document.querySelectorAll('.tier-th').forEach(th => {
+  th.addEventListener('click', () => {
+    const col = th.dataset.col;
+    if (focusedCol === col) { clearFocus(); return; }
+    focusedCol = col;
+    table.classList.add('focusing');
+    document.querySelectorAll('.tier-th').forEach(h => h.classList.toggle('focus-col', h.dataset.col===col));
+    document.querySelectorAll('td.cell[data-col]').forEach(c => c.classList.toggle('focus-col', c.dataset.col===col));
+  });
+});
+function clearFocus(){
+  focusedCol = null;
+  table.classList.remove('focusing');
+  document.querySelectorAll('.focus-col').forEach(e => e.classList.remove('focus-col'));
+}
+
+// ── Unlock highlight toggle ──────────────────────────────────
+const unlockToggle = document.getElementById('unlock-toggle');
+unlockToggle.addEventListener('click', () => {
+  unlockToggle.classList.toggle('on');
+  table.classList.toggle('show-unlocks', unlockToggle.classList.contains('on'));
+});
+</script>
+</body>
+</html>
