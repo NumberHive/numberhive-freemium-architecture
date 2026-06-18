@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hive Clash — Concept Summary</title>
+<style>
+  :root{
+    --honey:#F5A623;
+    --honey-deep:#E8890B;
+    --ink:#1d1b16;
+    --ink-soft:#4a463c;
+    --paper:#fbf8f1;
+    --card:#ffffff;
+    --line:#ece4d3;
+    --hex:#fff3da;
+    --green:#2f9e44;
+    --blue:#1c7ed6;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:920px;margin:0 auto;padding:0 22px 80px}
+
+  /* Header */
+  header{
+    background:
+      radial-gradient(circle at 18% 120%, rgba(245,166,35,.35), transparent 55%),
+      linear-gradient(135deg,#23211b,#3a3328);
+    color:#fff;
+    padding:64px 22px 56px;
+    position:relative;
+    overflow:hidden;
+  }
+  header .inner{max-width:920px;margin:0 auto;position:relative;z-index:2}
+  .hexbg{position:absolute;inset:0;opacity:.08;z-index:1}
+  .badge{
+    display:inline-block;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--honey);border:1px solid rgba(245,166,35,.5);
+    padding:5px 12px;border-radius:999px;margin-bottom:20px;font-weight:600;
+  }
+  header h1{font-size:3rem;line-height:1.05;letter-spacing:-.02em;font-weight:800}
+  header h1 span{color:var(--honey)}
+  header .tag{font-size:1.18rem;color:#e9e2d2;margin-top:16px;max-width:660px;font-weight:400}
+  header .meta{margin-top:22px;font-size:.85rem;color:#b4ab97}
+
+  /* Sections */
+  section{margin-top:46px}
+  h2{
+    font-size:1.45rem;letter-spacing:-.01em;font-weight:750;margin-bottom:18px;
+    display:flex;align-items:center;gap:11px;
+  }
+  h2 .mk{
+    width:11px;height:12px;background:var(--honey);flex:none;
+    clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);
+  }
+  p.lead{font-size:1.05rem;color:var(--ink-soft)}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:16px;
+    padding:26px 28px;box-shadow:0 1px 0 rgba(0,0,0,.02);
+  }
+
+  /* Pull quote */
+  .quote{
+    border-left:4px solid var(--honey);background:var(--hex);
+    padding:18px 22px;border-radius:0 12px 12px 0;font-size:1.08rem;
+    color:var(--ink);font-style:italic;
+  }
+  .quote .who{display:block;margin-top:8px;font-style:normal;font-size:.85rem;color:var(--ink-soft);font-weight:600}
+
+  /* The hook stat */
+  .stat-row{display:flex;flex-wrap:wrap;gap:16px;margin-top:6px}
+  .stat{
+    flex:1;min-width:170px;background:var(--card);border:1px solid var(--line);
+    border-radius:14px;padding:20px;text-align:center;
+  }
+  .stat .n{font-size:2.1rem;font-weight:800;color:var(--honey-deep);line-height:1}
+  .stat .l{font-size:.85rem;color:var(--ink-soft);margin-top:8px}
+
+  /* How to play steps */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+  .step .num{
+    font-size:.72rem;font-weight:700;color:#fff;background:var(--honey-deep);
+    width:26px;height:26px;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;
+  }
+  .step h3{font-size:1rem;margin-bottom:5px}
+  .step p{font-size:.9rem;color:var(--ink-soft)}
+
+  /* Comparison table */
+  .compare{width:100%;border-collapse:separate;border-spacing:0;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .compare th,.compare td{text-align:left;padding:15px 18px;font-size:.93rem;vertical-align:top;border-bottom:1px solid var(--line)}
+  .compare thead th{background:#f6efe1;font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-soft);font-weight:700}
+  .compare thead th:first-child{background:#efe7d6}
+  .compare tbody tr:last-child td{border-bottom:none}
+  .compare td:first-child{font-weight:650;color:var(--ink);width:30%}
+  .compare .proto{color:var(--ink-soft)}
+  .compare .clash{color:var(--ink);background:#fffaf0}
+  .compare thead th.clash-h{background:var(--honey);color:#fff}
+
+  /* What it adds cards */
+  .adds{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  .add{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px}
+  .add .ic{width:34px;height:38px;background:var(--hex);border:1.5px solid var(--honey);
+    clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);
+    display:flex;align-items:center;justify-content:center;font-size:1.1rem;margin-bottom:12px;font-weight:800;color:var(--honey-deep)}
+  .add h3{font-size:1.02rem;margin-bottom:5px}
+  .add p{font-size:.9rem;color:var(--ink-soft)}
+
+  /* league ranks */
+  .ranks{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+  .rank{background:var(--hex);border:1px solid var(--honey);color:var(--honey-deep);
+    padding:7px 14px;border-radius:999px;font-size:.85rem;font-weight:650}
+  .rank.queen{background:var(--honey);color:#fff}
+
+  ul.clean{list-style:none;margin-top:6px}
+  ul.clean li{padding:8px 0 8px 26px;position:relative;color:var(--ink-soft)}
+  ul.clean li::before{content:"";position:absolute;left:4px;top:15px;width:8px;height:9px;background:var(--honey);
+    clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%)}
+
+  .chess{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+  .chess .col{flex:1;min-width:240px}
+
+  footer{margin-top:54px;padding-top:22px;border-top:1px solid var(--line);font-size:.82rem;color:var(--ink-soft)}
+
+  @media(max-width:640px){
+    header h1{font-size:2.2rem}
+    .steps{grid-template-columns:1fr}
+    .adds{grid-template-columns:1fr}
+    .compare td:first-child{width:auto}
+  }
+</style>
+</head>
+<body>
+<header>
+  <svg class="hexbg" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <defs><pattern id="h" width="40" height="46" patternUnits="userSpaceOnUse" patternTransform="scale(1.4)">
+      <polygon points="20,2 38,13 38,33 20,44 2,33 2,13" fill="none" stroke="#F5A623" stroke-width="1.4"/>
+    </pattern></defs>
+    <rect width="400" height="200" fill="url(#h)"/>
+  </svg>
+  <div class="inner">
+    <span class="badge">Internal concept · NumberHive</span>
+    <h1><span>Hive</span> Clash</h1>
+    <p class="tag">Chess.com, but for mental maths. A ranked, head-to-head arena where adults discover they were always a maths person — by climbing a ladder, not sitting a test.</p>
+    <p class="meta">Concept summary · NumberHive · June 2026</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section>
+    <h2><span class="mk"></span>In one line</h2>
+    <div class="card">
+      <p class="lead">Hive Clash is the <strong>competitive layer</strong> built on top of the Number Hive game. Where the prototype is a fun place to play, Hive Clash is a place to <strong>compete</strong> — real opponents, an ELO rating that travels with you, leaderboards, leagues and seasons. It turns a good game into an ongoing pursuit: maths as a skill you keep sharpening and a rank you earn, the same way chess.com turned chess into a daily habit for millions.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="mk"></span>The problem it attacks</h2>
+    <div class="stat-row">
+      <div class="stat"><div class="n">48%</div><div class="l">of adults describe themselves as "not a maths person"</div></div>
+      <div class="stat"><div class="n">Identity</div><div class="l">the barrier isn't ability — it's the belief maths is a fixed trait</div></div>
+      <div class="stat"><div class="n">A way out</div><div class="l">improve through competition, without it ever feeling like homework</div></div>
+    </div>
+    <p class="lead" style="margin-top:18px">Schools framed maths as something you either had or didn't, and that belief follows most adults their whole lives. Hive Clash reframes it as a <strong>rank you climb</strong> and a <strong>score you can brag about</strong> — improvement you can feel, not a pass/fail verdict.</p>
+  </section>
+
+  <section>
+    <h2><span class="mk"></span>The game underneath</h2>
+    <p class="lead" style="margin-bottom:16px">Both the prototype and Hive Clash share the same Number Hive mechanic — quick to learn, deep to master:</p>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <h3>The board</h3>
+        <p>59 cells — every product from 1×1 to 12×12. Both players share one board, so every cell is contested.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h3>Your move</h3>
+        <p>Two shared number pads, 1–12. Each turn you change one factor, shifting which cells your colour controls — attack or defend, but not both.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h3>The win</h3>
+        <p>First to claim four cells in a straight line wins. Simple rule, constant trade-offs — the strategy is in the tension.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="mk"></span>How it compares to the prototype we've built</h2>
+    <p class="lead" style="margin-bottom:16px">The prototype at <strong>play.puddicombe.com</strong> already proves the game is fun and that learning happens through play. Hive Clash keeps all of that and wraps a competitive world around it.</p>
+    <table class="compare">
+      <thead>
+        <tr><th></th><th>The prototype today</th><th class="clash-h">Hive Clash</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Who you play</td><td class="proto">AI opponents of escalating difficulty (e.g. unlocking tougher challengers like the "Hexecutioner")</td><td class="clash">Real people, matched to your level — plus friends via a challenge link</td></tr>
+        <tr><td>The point</td><td class="proto">Try it, enjoy it, learn while playing</td><td class="clash">Climb, rank up, defend your standing, come back tomorrow</td></tr>
+        <tr><td>Identity</td><td class="proto">Anonymous / casual — a single session</td><td class="clash">A persistent identity and rating that carries with you over time</td></tr>
+        <tr><td>Progression</td><td class="proto">Escalating AI levels and satisfying animations</td><td class="clash">ELO rating, leagues, leaderboards and competitive seasons</td></tr>
+        <tr><td>Feel</td><td class="proto">A great demo of the magic</td><td class="clash">An ongoing pursuit — a habit, not a one-off</td></tr>
+      </tbody>
+    </table>
+    <p class="lead" style="margin-top:16px">In short: the prototype shows the <em>magic</em>; Hive Clash gives people a <em>reason to keep coming back</em> and a reason to bring others in.</p>
+  </section>
+
+  <section>
+    <h2><span class="mk"></span>What Hive Clash adds</h2>
+    <div class="adds">
+      <div class="add">
+        <div class="ic">⚔</div>
+        <h3>Real opponents &amp; matchmaking</h3>
+        <p>You're matched against real players near your level. Ghost bots quietly fill the queue when no one's around, so a game is always instant.</p>
+      </div>
+      <div class="add">
+        <div class="ic">★</div>
+        <h3>A rating that means something</h3>
+        <p>An ELO-style "Hive IQ" / global Hive rating that rises and falls with every game — the chess.com engine that makes each match matter.</p>
+      </div>
+      <div class="add">
+        <div class="ic">⬢</div>
+        <h3>Leagues, leaderboards &amp; seasons</h3>
+        <p>Climb visible tiers and reset each season for a fresh chase. Status and bragging rights are the reward.</p>
+      </div>
+      <div class="add">
+        <div class="ic">↗</div>
+        <h3>Play-a-friend &amp; challenge links</h3>
+        <p>Send a link by any means — a number on a whiteboard, a text, social — and you're playing someone you chose. No pairing with randoms unless you want it.</p>
+      </div>
+    </div>
+    <div class="card" style="margin-top:18px">
+      <p style="font-weight:650;margin-bottom:8px">A possible league ladder</p>
+      <div class="ranks">
+        <span class="rank">Lava</span>
+        <span class="rank">Worker</span>
+        <span class="rank">Builder</span>
+        <span class="rank">Soldier</span>
+        <span class="rank">Drone</span>
+        <span class="rank queen">Queen</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="mk"></span>The chess.com parallel</h2>
+    <div class="card">
+      <div class="chess">
+        <div class="col">
+          <p style="font-weight:700;margin-bottom:6px;color:var(--ink-soft)">What chess.com did for chess</p>
+          <ul class="clean">
+            <li>Made a centuries-old game into a daily ranked habit</li>
+            <li>A rating you watch obsessively; opponents at your level</li>
+            <li>Practice that feels like competition, not study</li>
+            <li>Friends, leagues, seasons and endless one-more-game pull</li>
+          </ul>
+        </div>
+        <div class="col">
+          <p style="font-weight:700;margin-bottom:6px;color:var(--honey-deep)">What Hive Clash does for maths</p>
+          <ul class="clean">
+            <li>Turns times-tables fluency into a ranked, repeatable pursuit</li>
+            <li>A Hive rating that proves you're getting better</li>
+            <li>Practice disguised as a game you actually want to win</li>
+            <li>The same retention loop, pointed at numeracy</li>
+          </ul>
+        </div>
+      </div>
+      <p class="lead" style="margin-top:18px">The bet is the mechanic: it isn't about content or curriculum, it's about the <strong>fitness-and-strategy loop</strong>. People don't practise because they should — they practise because they want to climb.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="mk"></span>Why it matters to the wider business</h2>
+    <p class="lead">Building it is no longer the question — with AI, what used to be months of engineering is now days, so the work is design and product, not code. The real question is how big Hive Clash becomes. At minimum it's a powerful, viral top-of-funnel that pulls new players toward Number Hive (<em>free game → network → teacher</em>); at most, it's a significant consumer product in its own right. The competitive layer — rating, identity, leagues, challenge links — is what drives engagement, retention and student-led sharing that the casual prototype alone can't.</p>
+    <div class="quote" style="margin-top:18px">
+      "I believe the Hive Clash concept with ELO scoring mechanism has viral potential. I think we need to sit down for a solid session and thrash it all around."
+      <span class="who">— Chris, 17 June 2026</span>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="mk"></span>Open questions to settle</h2>
+    <div class="card">
+      <ul class="clean">
+        <li>How direct is entry? Leaning toward "hit play and you're straight into a ranked game" — minimal friction before the first match.</li>
+        <li>Anonymous local-device scoring to start, vs. registration for a persistent rating — and when to nudge people to "carry this with you".</li>
+        <li>How hard to lean on competition vs. casual play for the free, top-of-funnel audience.</li>
+        <li>How big the consumer / B2C ambition should ultimately be — deliberately left open for now.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    Summary synthesised from NumberHive team discussions and planning materials, May–June 2026. Reflects current concept thinking, not finalised commitments.
+  </footer>
+
+</div>
+</body>
+</html>
