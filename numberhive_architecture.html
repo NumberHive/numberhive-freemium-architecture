@@ -445,6 +445,55 @@ body.m-pathways #pathways-view{display:block;}
 .cor-foot{font-size:.74rem;color:var(--text-muted);margin-top:.8rem;line-height:1.5;}
 .cor-foot b{color:var(--green-light);}
 
+/* ── hub layer groups ── */
+.hub-group{margin-top:.55rem;}
+.hub-group-lbl{font-size:.54rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.32rem;}
+.hub-group.core .hub-group-lbl{color:var(--amber-light);}
+.hub-group.comp .hub-group-lbl{color:var(--pink-light);}
+.eco-map-cap{text-align:center;font-size:.72rem;color:var(--text-muted);margin-top:.5rem;line-height:1.5;}
+.eco-map-cap b{color:var(--text);}
+
+/* ── Growth Engine (circular) ── */
+.engine-wrap{display:flex;justify-content:center;padding:.4rem 0 .2rem;}
+.engine-ring{position:relative;width:470px;height:470px;max-width:100%;}
+.er-center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:158px;height:158px;border-radius:50%;background:radial-gradient(circle,rgba(34,211,238,.16),rgba(245,158,11,.05) 70%,transparent);border:1.5px solid rgba(34,211,238,.35);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:.5rem;}
+.er-center .erc-t{font-size:.82rem;font-weight:800;color:var(--cyan);line-height:1.15;}
+.er-center .erc-s{font-size:.6rem;color:var(--text-muted);margin-top:.3rem;line-height:1.3;}
+.er-node{position:absolute;width:120px;transform:translate(-50%,-50%);background:var(--surface2);border:1px solid var(--border-light);border-radius:9px;padding:.4rem .35rem;text-align:center;}
+.er-node .ern-n{font-size:.56rem;font-weight:800;font-family:'DM Mono',monospace;color:var(--amber);}
+.er-node .ern-t{font-size:.7rem;font-weight:800;line-height:1.15;margin-top:.1rem;}
+.engine-cap{text-align:center;font-size:.82rem;font-weight:700;color:var(--text);margin-top:.3rem;}
+.engine-cap b{color:var(--cyan);}
+
+/* ── Three Engines ── */
+.engines-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem;}
+.engine-card{border-radius:12px;padding:1rem;border:1.5px solid var(--border-light);background:var(--surface2);border-top:3px solid var(--slate);}
+.engine-card.money{border-top-color:var(--green);}
+.engine-card.net{border-top-color:var(--cyan);}
+.engine-card.clash{border-top-color:var(--pink);}
+.engine-card .eg-h{font-size:.88rem;font-weight:800;display:flex;align-items:center;gap:.4rem;}
+.engine-card.money .eg-h{color:var(--green-light);}
+.engine-card.net .eg-h{color:var(--cyan);}
+.engine-card.clash .eg-h{color:var(--pink-light);}
+.engine-card .eg-purpose{font-size:.6rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--text-dim);margin:.15rem 0 .6rem;}
+.eg-flow{display:flex;flex-wrap:wrap;align-items:center;gap:.28rem;}
+.eg-step{font-size:.66rem;font-weight:700;padding:.24rem .48rem;border-radius:6px;background:var(--surface3);border:1px solid var(--border-light);}
+.eg-arr{color:var(--text-dim);font-weight:800;font-size:.66rem;}
+
+/* ── Why Hive Clash Matters ── */
+.whyclash{border-radius:13px;border:1.5px solid rgba(236,72,153,.35);background:linear-gradient(150deg,rgba(236,72,153,.08),rgba(139,92,246,.04));padding:1.1rem 1.2rem;}
+.wc-h{font-size:.95rem;font-weight:800;color:var(--pink-light);margin-bottom:.7rem;display:flex;align-items:center;gap:.45rem;}
+.wc-chips{display:flex;flex-wrap:wrap;gap:.45rem;}
+.wc-chip{font-size:.74rem;font-weight:700;padding:.34rem .7rem;border-radius:99px;background:rgba(236,72,153,.1);border:1px solid rgba(236,72,153,.3);color:var(--pink-light);}
+.wc-stmt{margin-top:.9rem;font-size:.78rem;line-height:1.55;color:var(--text-muted);border-top:1px solid rgba(236,72,153,.2);padding-top:.7rem;}
+.wc-stmt b{color:var(--text);}
+
+/* ── Strategic Principles ── */
+.principles{display:grid;grid-template-columns:repeat(2,1fr);gap:.6rem;}
+.principle{display:flex;align-items:flex-start;gap:.6rem;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:.7rem .85rem;}
+.principle .pr-n{font-size:.72rem;font-weight:800;font-family:'DM Mono',monospace;color:#07111E;background:var(--amber);border-radius:7px;width:22px;height:22px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.principle .pr-t{font-size:.78rem;font-weight:700;line-height:1.35;}
+
 /* ════════ STRATEGY CANVAS ════════ */
 .strat-canvas{max-width:1080px;margin:0 auto;padding:1.6rem 1.6rem 5rem;}
 .strat-hero{text-align:center;padding:1.2rem 0 1.6rem;}
@@ -603,7 +652,8 @@ body.m-pathways #pathways-view{display:block;}
     <div class="strat-hero">
       <div class="strat-eyebrow">Number Hive · Architecture</div>
       <div class="strat-h1">The Growth Layer</div>
-      <div class="strat-lead">Get people to the magic fast. Use identity, competition and sharing to grow. Collect rich data in the background, store it in the Hive Vault, and convert teachers through insight — then expand from classroom to district.</div>
+      <div class="eco-frame"><span class="dot"></span>Teacher-first monetisation · Multi-channel discovery<span class="dot"></span></div>
+      <div class="strat-lead">Number Hive is not a funnel — it's an ecosystem. Get people to the magic fast, use identity, competition and sharing to grow, collect rich data in the background, convert teachers through insight in the Hive Vault, and expand from classroom to district. The system compounds because <b>players create players</b>.</div>
       <div class="flow-strip">
         <span class="fs-pill">Magic</span><span class="fs-arrow">→</span>
         <span class="fs-pill">Growth</span><span class="fs-arrow">→</span>
@@ -630,6 +680,8 @@ body.m-pathways #pathways-view{display:block;}
           <div class="entry-chip"><span class="ec-ico">👨‍👩‍👧</span>Parent</div>
           <div class="entry-chip"><span class="ec-ico">👵</span>Grandparent</div>
           <div class="entry-chip"><span class="ec-ico">🌐</span>General User</div>
+          <div class="entry-chip"><span class="ec-ico">🏛️</span>School Leader</div>
+          <div class="entry-chip"><span class="ec-ico">📚</span>Tutor / Homeschool</div>
           <div class="converge">→</div>
           <div class="magic-pill">⬡ Play Number Hive</div>
           <div class="converge">/</div>
@@ -797,18 +849,32 @@ body.m-pathways #pathways-view{display:block;}
         <span class="ssh-sub">Part of the ecosystem from day one</span>
       </div>
       <div class="clash-card">
-        <div class="layer-goal" style="margin-bottom:.2rem;">Hive Clash connects home and school usage — it increases engagement and retention, creates identity and sharing, and generates network effects.</div>
+        <div class="layer-goal" style="margin-bottom:.2rem;">The product splits into two strategic layers. They are not equal — one creates classroom value, the other creates identity, retention and reach.</div>
+        <div class="g2" style="margin:.7rem 0;">
+          <div class="wcard amb" style="margin-bottom:0;padding:.85rem;">
+            <div class="wlabel" style="color:var(--amber-light);">Core Learning Layer</div>
+            <div class="clash-comps"><span class="clash-comp">Hives</span><span class="clash-comp">Hive Gym</span><span class="clash-comp">Learning Journeys</span><span class="clash-comp">Buzz Assessments</span><span class="clash-comp">Hive Vault</span></div>
+            <div style="font-size:.66rem;color:var(--text-dim);margin-top:.5rem;">Learning · insight · classroom value</div>
+          </div>
+          <div class="wcard" style="margin-bottom:0;padding:.85rem;border-color:rgba(236,72,153,.3);background:rgba(236,72,153,.04);">
+            <div class="wlabel" style="color:var(--pink-light);">Competitive Layer</div>
+            <div class="clash-comps"><span class="clash-comp">Hive Clash</span><span class="clash-comp">Hive IQ</span><span class="clash-comp">Rankings</span><span class="clash-comp">Friend Challenges</span><span class="clash-comp">Seasons</span><span class="clash-comp">Tournaments</span></div>
+            <div style="font-size:.66rem;color:var(--text-dim);margin-top:.5rem;">Identity · retention · competition · sharing</div>
+          </div>
+        </div>
         <div class="clash-reframe">
           <span class="clash-old">Optional Accelerator</span>
           <span class="harr">→</span>
           <span class="clash-new">Integrated Competitive Layer</span>
         </div>
-        <div class="gm-col-sub" style="margin-bottom:.4rem;">Core components</div>
-        <div class="clash-comps">
-          <span class="clash-comp">Hive IQ</span><span class="clash-comp">Challenge Friend</span><span class="clash-comp">Ranked Play</span>
-          <span class="clash-comp">Seasonal Rankings</span><span class="clash-comp">School Rankings</span><span class="clash-comp">Global Rankings</span><span class="clash-comp">Tournaments</span>
+        <div class="whyclash" style="margin-top:.4rem;">
+          <div class="wc-h">⚔ Why Hive Clash matters</div>
+          <div class="wc-chips">
+            <span class="wc-chip">Identity</span><span class="wc-chip">Competition</span><span class="wc-chip">Retention</span>
+            <span class="wc-chip">Sharing</span><span class="wc-chip">Student-led growth</span><span class="wc-chip">B2C discovery</span>
+          </div>
+          <div class="wc-stmt"><b>Hive Clash is integrated into the ecosystem from day one.</b> The uncertainty is not whether it belongs. The uncertainty is how large it becomes.</div>
         </div>
-        <div class="strat-note"><b>Strategic note:</b> Hive Clash is part of the ecosystem from day one. The uncertainty is not <i>whether</i> it belongs — it's <i>how large</i> it becomes.</div>
       </div>
     </div>
 
@@ -829,20 +895,99 @@ body.m-pathways #pathways-view{display:block;}
       </div>
     </div>
 
-    <!-- FLYWHEEL -->
+    <!-- GROWTH ENGINE -->
     <div class="strat-sec">
       <div class="strat-sec-hd">
-        <span class="ssh-kicker">Diagram</span>
-        <span class="ssh-title">Network Effect Flywheel</span>
-        <span class="ssh-sub">Each turn makes the next turn easier</span>
+        <span class="ssh-kicker">Why it compounds</span>
+        <span class="ssh-title">Growth Engine</span>
+        <span class="ssh-sub">A loop, not a line</span>
       </div>
       <div class="layer" style="padding:1.3rem;">
-        <div class="flywheel-wrap">
-          <div class="flywheel" id="flywheel">
-            <div class="fw-center"><div class="fwc-ico">⬡</div><div class="fwc-t">Network<br>Flywheel</div></div>
+        <div class="engine-wrap">
+          <div class="engine-ring">
+            <div class="er-center"><div class="erc-t">Growth Engine</div><div class="erc-s">Players create players</div></div>
           </div>
         </div>
-        <div class="flywheel-note">Experience Magic → Challenge Others → Invite Others → More Players → More Data → More Teachers → More Hives → More Competitions → (spins back to Magic)</div>
+        <div class="engine-cap">Play → Challenge → Invite → More Players → More Data → More Insights → More Competitions → <b>Play</b></div>
+      </div>
+    </div>
+
+    <!-- THREE ENGINES -->
+    <div class="strat-sec">
+      <div class="strat-sec-hd">
+        <span class="ssh-kicker">The system runs on</span>
+        <span class="ssh-title">Three Engines</span>
+        <span class="ssh-sub">Revenue · Growth · Engagement</span>
+      </div>
+      <div class="engines-grid">
+        <div class="engine-card money">
+          <div class="eg-h">💰 Monetisation Engine</div>
+          <div class="eg-purpose">Purpose · Revenue</div>
+          <div class="eg-flow"><span class="eg-step">Teacher</span><span class="eg-arr">→</span><span class="eg-step">Hive Vault</span><span class="eg-arr">→</span><span class="eg-step">Subscription</span></div>
+        </div>
+        <div class="engine-card net">
+          <div class="eg-h">🔗 Network Effect Engine</div>
+          <div class="eg-purpose">Purpose · Growth</div>
+          <div class="eg-flow"><span class="eg-step">Teacher → Teacher</span><span class="eg-arr">·</span><span class="eg-step">Student → Student</span><span class="eg-arr">·</span><span class="eg-step">School → School</span></div>
+        </div>
+        <div class="engine-card clash">
+          <div class="eg-h">⚔ Hive Clash Engine</div>
+          <div class="eg-purpose">Purpose · Engagement</div>
+          <div class="eg-flow"><span class="eg-step">Hive IQ</span><span class="eg-arr">→</span><span class="eg-step">Competition</span><span class="eg-arr">→</span><span class="eg-step">Retention</span><span class="eg-arr">→</span><span class="eg-step">Sharing</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GROWTH LOOPS -->
+    <div class="strat-sec">
+      <div class="strat-sec-hd">
+        <span class="ssh-kicker">The engine in detail</span>
+        <span class="ssh-title">Growth Loops</span>
+        <span class="ssh-sub">Several loops, running in parallel</span>
+      </div>
+      <div class="loop-grid">
+        <div class="loop-card c-teach">
+          <div class="lc-hd"><span class="lc-num">1</span><span class="lc-t">Teacher Loop</span></div>
+          <div class="lflow"><span class="lstep">Teacher</span><span class="larr"><b>→</b><i>creates</i></span><span class="lstep">Hive</span><span class="larr"><b>→</b></span><span class="lstep">Students engage</span><span class="larr"><b>→</b><i>invites</i></span><span class="lstep">Teacher</span><span class="larr"><b>→</b></span><span class="lstep">More hives</span></div>
+          <div class="lc-purpose"><span class="pp">Institutional growth</span></div>
+        </div>
+        <div class="loop-card">
+          <div class="lc-hd"><span class="lc-num">2</span><span class="lc-t">Student Loop</span></div>
+          <div class="lflow"><span class="lstep">Student</span><span class="larr"><b>→</b><i>challenge</i></span><span class="lstep">Friend joins</span><span class="larr"><b>→</b><i>challenge</i></span><span class="lstep">Friend challenges friend</span></div>
+          <div class="lc-purpose"><span class="pp">Network effects</span></div>
+        </div>
+        <div class="loop-card c-teach">
+          <div class="lc-hd"><span class="lc-num">3</span><span class="lc-t">Family Loop</span></div>
+          <div class="lflow"><span class="lstep">Parent / grandparent</span><span class="larr"><b>→</b></span><span class="lstep">Plays with child</span><span class="larr"><b>→</b><i>shares</i></span><span class="lstep">Child shares at school</span><span class="larr"><b>→</b></span><span class="lstep">Teacher discovers</span></div>
+          <div class="lc-purpose"><span class="pp">Household discovery</span></div>
+        </div>
+        <div class="loop-card c-school">
+          <div class="lc-hd"><span class="lc-num">4</span><span class="lc-t">School Loop</span></div>
+          <div class="lflow"><span class="lstep">Teacher</span><span class="larr"><b>→</b></span><span class="lstep">Class competition</span><span class="larr"><b>→</b></span><span class="lstep">School competition</span><span class="larr"><b>→</b></span><span class="lstep">District competition</span></div>
+          <div class="lc-purpose"><span class="pp">Expansion</span></div>
+        </div>
+        <div class="loop-card c-clash">
+          <div class="lc-hd"><span class="lc-num">5</span><span class="lc-t">Hive Clash Loop</span></div>
+          <div class="lflow"><span class="lstep">Ranked play</span><span class="larr"><b>→</b></span><span class="lstep">Hive IQ changes</span><span class="larr"><b>→</b></span><span class="lstep">Desire to improve</span><span class="larr"><b>→</b></span><span class="lstep">Play again</span><span class="larr"><b>↻</b></span><span class="lstep">Challenge friend</span></div>
+          <div class="lc-purpose"><span class="pp">Retention</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STRATEGIC PRINCIPLES -->
+    <div class="strat-sec">
+      <div class="strat-sec-hd">
+        <span class="ssh-kicker">What we believe</span>
+        <span class="ssh-title">Strategic Principles</span>
+        <span class="ssh-sub">Six rules behind the architecture</span>
+      </div>
+      <div class="principles">
+        <div class="principle"><span class="pr-n">1</span><span class="pr-t">Experience the magic before friction.</span></div>
+        <div class="principle"><span class="pr-n">2</span><span class="pr-t">Every player can become a recruiter.</span></div>
+        <div class="principle"><span class="pr-n">3</span><span class="pr-t">Every share can surface a teacher.</span></div>
+        <div class="principle"><span class="pr-n">4</span><span class="pr-t">Teachers buy insight, not gameplay.</span></div>
+        <div class="principle"><span class="pr-n">5</span><span class="pr-t">Hive Clash drives identity and retention.</span></div>
+        <div class="principle"><span class="pr-n">6</span><span class="pr-t">Network effects amplify the ecosystem.</span></div>
       </div>
     </div>
 
@@ -931,35 +1076,79 @@ body.m-pathways #pathways-view{display:block;}
         <!-- HUB -->
         <div>
           <div class="eco-col-lbl">The hub · where paths converge</div>
-          <div class="eco-hub" id="eco-hub" style="margin-top:158px;">
+          <div class="eco-hub" id="eco-hub" style="margin-top:96px;">
             <div class="eh-ico">⬡</div>
             <div class="eh-t">Number Hive Ecosystem</div>
             <div class="eh-s">Play · Share · Invite · Compete</div>
-            <div class="hub-layers">
-              <span class="hub-chip hot">Free Gameplay</span>
-              <span class="hub-chip">Hives</span>
-              <span class="hub-chip">Hive Gym</span>
-              <span class="hub-chip">Learning Journeys</span>
-              <span class="hub-chip">Buzz Assessments</span>
-              <span class="hub-chip">Play a Friend</span>
-              <span class="hub-chip clash">Hive Clash</span>
-              <span class="hub-chip">Hive IQ</span>
-              <span class="hub-chip vault">Hive Vault</span>
+            <div class="hub-group core">
+              <div class="hub-group-lbl">Core Learning Layer · learning insight, classroom value</div>
+              <div class="hub-layers">
+                <span class="hub-chip hot">Hives</span>
+                <span class="hub-chip hot">Hive Gym</span>
+                <span class="hub-chip hot">Learning Journeys</span>
+                <span class="hub-chip hot">Buzz Assessments</span>
+                <span class="hub-chip vault">Hive Vault</span>
+              </div>
             </div>
-            <div class="hub-note">Every user can play · every player can share · every share can surface a teacher.</div>
+            <div class="hub-group comp">
+              <div class="hub-group-lbl">Competitive Layer · identity, retention, sharing</div>
+              <div class="hub-layers">
+                <span class="hub-chip clash">Hive Clash</span>
+                <span class="hub-chip clash">Hive IQ</span>
+                <span class="hub-chip clash">Rankings</span>
+                <span class="hub-chip clash">Friend Challenges</span>
+                <span class="hub-chip clash">Seasons</span>
+                <span class="hub-chip clash">Tournaments</span>
+              </div>
+            </div>
+            <div class="hub-note">Free gameplay sits over both — every user can play · every player can share · every share can surface a teacher.</div>
           </div>
         </div>
 
         <!-- OUTCOMES -->
         <div>
           <div class="eco-col-lbl" style="color:var(--text-muted);">Outcome zones · many valid ends</div>
-          <div class="eco-out green" id="eco-o-sub" style="margin-top:54px;"><div class="eo-t">✅ School Subscription<span class="eo-tag">Primary</span></div><div class="eo-d">Class Hive · School Hive · District Hive — the core business outcome.</div></div>
-          <div class="eco-out purple" id="eco-o-vault"><div class="eo-t">💎 Hive Vault Conversion<span class="eo-tag">Convert</span></div><div class="eo-d">Profiles & data ready → unlock analytics → trial → subscription.</div></div>
-          <div class="eco-out cyan" id="eco-o-free"><div class="eo-t">🎮 Ongoing Free User<span class="eo-tag">Valid</span></div><div class="eo-d">Keeps playing, shares links, adds network effects — may convert later.</div></div>
-          <div class="eco-out pink" id="eco-o-clash"><div class="eo-t">⚔ Hive Clash Player<span class="eo-tag">Valid</span></div><div class="eo-d">Hive IQ · rankings · seasons — possible future consumer monetisation.</div></div>
-          <div class="eco-out amber" id="eco-o-ref"><div class="eo-t">🔗 Referrer<span class="eo-tag">Valid</span></div><div class="eo-d">Sends challenge links, tells a teacher, invites family — brings the school in.</div></div>
+          <div class="eco-out green" id="eco-o-sub" style="margin-top:54px;"><div class="eo-t">✅ School Subscription<span class="eo-tag">Primary</span></div><div class="eo-d">The primary business outcome. Class Hive → School Hive → District Hive.</div></div>
+          <div class="eco-out purple" id="eco-o-vault"><div class="eo-t">💎 Hive Vault Conversion<span class="eo-tag">Convert</span></div><div class="eo-d">The data exists; insight is locked. Unlock analytics → trial → subscription.</div></div>
+          <div class="eco-out cyan" id="eco-o-free"><div class="eo-t">🎮 Ongoing Free User<span class="eo-tag">Valid</span></div><div class="eo-d">Still valuable — creates engagement, sharing, referrals and network effects.</div></div>
+          <div class="eco-out pink" id="eco-o-clash"><div class="eo-t">⚔ Hive Clash Player<span class="eo-tag">Valid</span></div><div class="eo-d">Creates retention, rankings, sharing — and future monetisation opportunities.</div></div>
+          <div class="eco-out amber" id="eco-o-ref"><div class="eo-t">🔗 Referrer<span class="eo-tag">High leverage</span></div><div class="eo-d">Potentially the highest-leverage user. May never subscribe — may introduce a whole school.</div></div>
         </div>
 
+      </div>
+    </div>
+    <div class="eco-map-cap">Discovery flows <b>in</b> from anywhere; value flows <b>out</b> to many valid outcomes — and the dashed loops feed straight back in. <b>Referrers create discovery · Hive Clash creates players · free users create reach.</b></div>
+
+    <!-- GROWTH ENGINE (circular) -->
+    <div class="eco-sec">
+      <div class="eco-sec-hd"><span class="eco-sec-k">Why it compounds</span><span class="eco-sec-t">Growth Engine</span><span class="eco-sec-s">A loop, not a line</span></div>
+      <div class="engine-wrap">
+        <div class="engine-ring" id="engine-ring">
+          <div class="er-center"><div class="erc-t">Growth Engine</div><div class="erc-s">Players create players</div></div>
+        </div>
+      </div>
+      <div class="engine-cap">Play → Challenge → Invite → More Players → More Data → More Insights → More Competitions → <b>Play</b></div>
+    </div>
+
+    <!-- THREE ENGINES -->
+    <div class="eco-sec">
+      <div class="eco-sec-hd"><span class="eco-sec-k">The system runs on</span><span class="eco-sec-t">Three engines</span><span class="eco-sec-s">Revenue · Growth · Engagement</span></div>
+      <div class="engines-grid">
+        <div class="engine-card money">
+          <div class="eg-h">💰 Monetisation Engine</div>
+          <div class="eg-purpose">Purpose · Revenue</div>
+          <div class="eg-flow"><span class="eg-step">Teacher</span><span class="eg-arr">→</span><span class="eg-step">Hive Vault</span><span class="eg-arr">→</span><span class="eg-step">Subscription</span></div>
+        </div>
+        <div class="engine-card net">
+          <div class="eg-h">🔗 Network Effect Engine</div>
+          <div class="eg-purpose">Purpose · Growth</div>
+          <div class="eg-flow"><span class="eg-step">Teacher → Teacher</span><span class="eg-arr">·</span><span class="eg-step">Student → Student</span><span class="eg-arr">·</span><span class="eg-step">School → School</span></div>
+        </div>
+        <div class="engine-card clash">
+          <div class="eg-h">⚔ Hive Clash Engine</div>
+          <div class="eg-purpose">Purpose · Engagement</div>
+          <div class="eg-flow"><span class="eg-step">Hive IQ</span><span class="eg-arr">→</span><span class="eg-step">Competition</span><span class="eg-arr">→</span><span class="eg-step">Retention</span><span class="eg-arr">→</span><span class="eg-step">Sharing</span></div>
+        </div>
       </div>
     </div>
 
@@ -981,40 +1170,34 @@ body.m-pathways #pathways-view{display:block;}
       <div class="eco-sec-hd"><span class="eco-sec-k">The engine</span><span class="eco-sec-t">Growth loops</span><span class="eco-sec-s">Not one loop — several, running in parallel</span></div>
       <div class="loop-grid">
 
-        <div class="loop-card">
-          <div class="lc-hd"><span class="lc-num">1</span><span class="lc-t">Student-to-Student</span></div>
-          <div class="lflow"><span class="lstep">Student plays</span><span class="larr"><b>→</b><i>challenge</i></span><span class="lstep">Friend joins</span><span class="larr"><b>→</b><i>challenge</i></span><span class="lstep">Another friend</span><span class="larr"><b>→</b></span><span class="lstep">More players</span></div>
-          <div class="lc-purpose"><span class="pp">B2C discovery</span><span class="pp">Viral potential</span><span class="pp">Hive Clash growth</span></div>
+        <div class="loop-card c-teach">
+          <div class="lc-hd"><span class="lc-num">1</span><span class="lc-t">Teacher Loop</span></div>
+          <div class="lflow"><span class="lstep">Teacher</span><span class="larr"><b>→</b><i>creates</i></span><span class="lstep">Hive</span><span class="larr"><b>→</b></span><span class="lstep">Students engage</span><span class="larr"><b>→</b><i>invites</i></span><span class="lstep">Teacher</span><span class="larr"><b>→</b></span><span class="lstep">More hives</span></div>
+          <div class="lc-purpose"><span class="pp">Institutional growth</span></div>
         </div>
 
         <div class="loop-card">
-          <div class="lc-hd"><span class="lc-num">2</span><span class="lc-t">Student-to-Teacher</span></div>
-          <div class="lflow"><span class="lstep">Student plays</span><span class="larr"><b>→</b><i>asks</i></span><span class="lstep">Play in class</span><span class="larr"><b>→</b></span><span class="lstep">Teacher discovers</span><span class="larr"><b>→</b><i>creates</i></span><span class="lstep">Hive</span></div>
-          <div class="lc-purpose"><span class="pp">Student-led school acquisition</span></div>
+          <div class="lc-hd"><span class="lc-num">2</span><span class="lc-t">Student Loop</span></div>
+          <div class="lflow"><span class="lstep">Student</span><span class="larr"><b>→</b><i>challenge</i></span><span class="lstep">Friend joins</span><span class="larr"><b>→</b><i>challenge</i></span><span class="lstep">Friend challenges friend</span></div>
+          <div class="lc-purpose"><span class="pp">Network effects</span></div>
         </div>
 
         <div class="loop-card c-teach">
-          <div class="lc-hd"><span class="lc-num">3</span><span class="lc-t">Teacher-to-Teacher</span></div>
-          <div class="lflow"><span class="lstep">Creates hive</span><span class="larr"><b>→</b></span><span class="lstep">Students engage</span><span class="larr"><b>→</b><i>invites</i></span><span class="lstep">Another teacher</span><span class="larr"><b>→</b><i>class vs class</i></span><span class="lstep">School adoption</span></div>
-          <div class="lc-purpose"><span class="pp">In-school network effect</span></div>
+          <div class="lc-hd"><span class="lc-num">3</span><span class="lc-t">Family Loop</span></div>
+          <div class="lflow"><span class="lstep">Parent / grandparent</span><span class="larr"><b>→</b></span><span class="lstep">Plays with child</span><span class="larr"><b>→</b><i>shares</i></span><span class="lstep">Child shares at school</span><span class="larr"><b>→</b></span><span class="lstep">Teacher discovers</span></div>
+          <div class="lc-purpose"><span class="pp">Household discovery</span></div>
         </div>
 
         <div class="loop-card c-school">
-          <div class="lc-hd"><span class="lc-num">4</span><span class="lc-t">School-to-School</span></div>
-          <div class="lflow"><span class="lstep">School competition</span><span class="larr"><b>→</b></span><span class="lstep">Neighbour joins</span><span class="larr"><b>→</b></span><span class="lstep">District competition</span><span class="larr"><b>→</b></span><span class="lstep">District adoption</span></div>
-          <div class="lc-purpose"><span class="pp">Institutional expansion</span></div>
-        </div>
-
-        <div class="loop-card c-teach">
-          <div class="lc-hd"><span class="lc-num">5</span><span class="lc-t">Family</span></div>
-          <div class="lflow"><span class="lstep">Parent / grandparent plays</span><span class="larr"><b>→</b></span><span class="lstep">Child joins</span><span class="larr"><b>→</b><i>shares</i></span><span class="lstep">At school</span><span class="larr"><b>→</b></span><span class="lstep">Teacher discovers</span></div>
-          <div class="lc-purpose"><span class="pp">Family-led discovery</span></div>
+          <div class="lc-hd"><span class="lc-num">4</span><span class="lc-t">School Loop</span></div>
+          <div class="lflow"><span class="lstep">Teacher</span><span class="larr"><b>→</b></span><span class="lstep">Class competition</span><span class="larr"><b>→</b></span><span class="lstep">School competition</span><span class="larr"><b>→</b></span><span class="lstep">District competition</span></div>
+          <div class="lc-purpose"><span class="pp">Expansion</span></div>
         </div>
 
         <div class="loop-card c-clash">
-          <div class="lc-hd"><span class="lc-num">6</span><span class="lc-t">General Consumer</span></div>
-          <div class="lflow"><span class="lstep">Plays Hive Clash</span><span class="larr"><b>→</b><i>likes</i></span><span class="lstep">Shares challenge</span><span class="larr"><b>→</b></span><span class="lstep">More general users</span><span class="larr"><b>→</b></span><span class="lstep">Some connect to schools</span></div>
-          <div class="lc-purpose"><span class="pp">Optional B2C upside</span><span class="pp">Future consumer revenue</span></div>
+          <div class="lc-hd"><span class="lc-num">5</span><span class="lc-t">Hive Clash Loop</span></div>
+          <div class="lflow"><span class="lstep">Ranked play</span><span class="larr"><b>→</b></span><span class="lstep">Hive IQ changes</span><span class="larr"><b>→</b></span><span class="lstep">Desire to improve</span><span class="larr"><b>→</b></span><span class="lstep">Play again</span><span class="larr"><b>↻</b></span><span class="lstep">Challenge friend</span></div>
+          <div class="lc-purpose"><span class="pp">Retention</span></div>
         </div>
 
       </div>
@@ -1037,6 +1220,18 @@ body.m-pathways #pathways-view{display:block;}
     <div class="eco-sec">
       <div class="eco-sec-hd"><span class="eco-sec-k">Integrated, not detached</span><span class="eco-sec-t">Hive Clash</span><span class="eco-sec-s">Bridges B2B and B2C</span></div>
       <div class="eco-statement" style="text-align:left;font-size:.92rem;margin:0 0 .9rem;max-width:none;color:var(--text-muted);">Hive Clash bridges B2B and B2C. It may become a lead generator, a retention layer, or something much larger.</div>
+      <div class="whyclash" style="margin-bottom:.9rem;">
+        <div class="wc-h">⚔ Why Hive Clash matters</div>
+        <div class="wc-chips">
+          <span class="wc-chip">Identity</span>
+          <span class="wc-chip">Competition</span>
+          <span class="wc-chip">Retention</span>
+          <span class="wc-chip">Sharing</span>
+          <span class="wc-chip">Student-led growth</span>
+          <span class="wc-chip">B2C discovery</span>
+        </div>
+        <div class="wc-stmt"><b>Hive Clash is integrated into the ecosystem from day one.</b> The uncertainty is not whether it belongs. The uncertainty is how large it becomes.</div>
+      </div>
       <div class="clash-roles">
         <div class="role-card">
           <div class="rc-h">Role A · Lead generator / engagement layer</div>
@@ -1048,6 +1243,19 @@ body.m-pathways #pathways-view{display:block;}
         </div>
       </div>
       <div class="clash-caution"><b>Integrated from day one.</b> The uncertainty is not whether Hive Clash belongs, but how large it becomes. Treat B2C as <b>upside</b> — not the core business assumption.</div>
+    </div>
+
+    <!-- STRATEGIC PRINCIPLES -->
+    <div class="eco-sec">
+      <div class="eco-sec-hd"><span class="eco-sec-k">What we believe</span><span class="eco-sec-t">Strategic principles</span></div>
+      <div class="principles">
+        <div class="principle"><span class="pr-n">1</span><span class="pr-t">Experience the magic before friction.</span></div>
+        <div class="principle"><span class="pr-n">2</span><span class="pr-t">Every player can become a recruiter.</span></div>
+        <div class="principle"><span class="pr-n">3</span><span class="pr-t">Every share can surface a teacher.</span></div>
+        <div class="principle"><span class="pr-n">4</span><span class="pr-t">Teachers buy insight, not gameplay.</span></div>
+        <div class="principle"><span class="pr-n">5</span><span class="pr-t">Hive Clash drives identity and retention.</span></div>
+        <div class="principle"><span class="pr-n">6</span><span class="pr-t">Network effects amplify the ecosystem.</span></div>
+      </div>
     </div>
 
     <!-- STRATEGIC SUMMARY -->
@@ -2241,8 +2449,28 @@ function buildFlywheel() {
   });
 }
 
+/* ── Build circular Growth Engine (every .engine-ring) ── */
+function buildGrowthEngine() {
+  const nodes = ['Play','Challenge','Invite','More Players','More Data','More Insights','More Competitions'];
+  const cx = 50, cy = 50, r = 42;
+  document.querySelectorAll('.engine-ring').forEach(ring => {
+    if (ring.dataset.built) return;
+    ring.dataset.built = '1';
+    nodes.forEach((label, i) => {
+      const ang = (-90 + i * (360 / nodes.length)) * Math.PI / 180;
+      const x = cx + r * Math.cos(ang), y = cy + r * Math.sin(ang);
+      const el = document.createElement('div');
+      el.className = 'er-node';
+      el.style.left = x + '%'; el.style.top = y + '%';
+      el.innerHTML = `<div class="ern-n">${i + 1}</div><div class="ern-t">${label}</div>`;
+      ring.appendChild(el);
+    });
+  });
+}
+
 document.body.classList.add('m-strategy');
 buildFlywheel();
+buildGrowthEngine();
 render();
 </script>
 </body>
