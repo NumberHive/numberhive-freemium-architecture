@@ -48,7 +48,7 @@ body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(-
 .sb-group-label{font-size:.57rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--text-dim);padding:0 .85rem;margin-bottom:.3rem;}
 .sb-item{display:flex;align-items:center;gap:.45rem;padding:.38rem .85rem;font-size:.76rem;font-weight:500;color:var(--text-muted);cursor:pointer;transition:all .15s;border-left:2px solid transparent;}
 .sb-item:hover{color:var(--text);background:rgba(255,255,255,.03);}
-.sb-item.active{color:var(--text);font-weight:700;border-left-color:var(--amber);background:rgba(245,158,11,.05);}
+.sb-item.active{color:var(--text);font-weight:700;border-left-color:var(--amber-light);background:rgba(245,158,11,.05);}
 .sb-item.visited{color:var(--text-dim);}
 .sb-item.visited .sb-check{display:block;}
 .sb-check{display:none;font-size:.6rem;color:var(--green);opacity:.5;margin-left:auto;}
@@ -85,7 +85,7 @@ body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(-
 .nav-links{display:flex;gap:.05rem;margin-left:auto;}
 .nl{font-size:.72rem;font-weight:600;color:var(--text-muted);padding:.28rem .6rem;border-radius:6px;cursor:pointer;}
 .nl:hover{color:var(--text);background:rgba(255,255,255,.04);}
-.nl.act{color:var(--amber);}
+.nl.act{color:var(--amber-light);}
 .nav-avatar{width:27px;height:27px;border-radius:50%;background:var(--surface3);border:1.5px solid var(--border-light);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;color:var(--text-muted);cursor:pointer;flex-shrink:0;}
 
 /* ── Screen body ── */
@@ -98,7 +98,7 @@ body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(-
 .ex-label{font-size:.58rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--text-dim);margin-right:.2rem;flex-shrink:0;}
 .ex-btn{font-size:.7rem;font-weight:600;padding:.3rem .75rem;border-radius:7px;cursor:pointer;transition:all .15s;border:1px solid var(--border);background:var(--surface2);color:var(--text-muted);display:inline-flex;align-items:center;gap:.3rem;font-family:inherit;}
 .ex-btn:hover{color:var(--text);border-color:var(--border-light);background:var(--surface3);}
-.ex-btn.pri{background:var(--amber);color:#07111E;border-color:var(--amber);font-weight:700;}
+.ex-btn.pri{background:var(--amber);color:#07111E;border-color:var(--amber-light);font-weight:700;}
 .ex-btn.pri:hover{background:var(--amber-light);}
 .ex-btn.grn{background:rgba(16,185,129,.1);color:var(--green-light);border-color:rgba(16,185,129,.3);}
 .ex-btn.grn:hover{background:rgba(16,185,129,.18);}
@@ -154,8 +154,8 @@ body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(-
 /* ── Landing ── */
 .world-card{border-radius:13px;padding:1.35rem;cursor:pointer;transition:transform .15s,box-shadow .15s;display:flex;flex-direction:column;}
 .world-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.3);}
-.world-card.pub{background:linear-gradient(160deg,#0C1825,#111E30);border:1.5px solid rgba(34,211,238,.2);}
-.world-card.edu{background:linear-gradient(160deg,#0C1A10,#0F2018);border:1.5px solid rgba(16,185,129,.2);}
+.world-card.pub{background:linear-gradient(160deg,#E6F7FB,#F1FBFD);border:1.5px solid rgba(34,211,238,.2);}
+.world-card.edu{background:linear-gradient(160deg,#EAF7F0,#F3FBF7);border:1.5px solid rgba(16,185,129,.2);}
 .wc-icon{font-size:1.7rem;margin-bottom:.65rem;}
 .wc-name{font-size:.86rem;font-weight:800;margin-bottom:.28rem;}
 .world-card.pub .wc-name{color:#A5F3FC;}
@@ -174,7 +174,7 @@ body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(-
 .p-opp{color:#94A3B8;}
 .game-mid{display:flex;flex-direction:column;align-items:center;gap:.18rem;}
 .g-rnd{font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-dim);}
-.g-time{font-family:'DM Mono',monospace;font-size:.95rem;font-weight:500;color:var(--amber);}
+.g-time{font-family:'DM Mono',monospace;font-size:.95rem;font-weight:500;color:var(--amber-light);}
 .vs-badge{font-size:.62rem;font-weight:700;color:var(--text-dim);padding:.15rem .4rem;border:1px solid var(--border);border-radius:4px;}
 .hex-board{display:flex;flex-direction:column;align-items:center;gap:3px;padding:1rem .5rem;}
 .hex-row{display:flex;gap:3px;}
@@ -185,7 +185,7 @@ body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(-
 .hex.p2{background:rgba(71,85,105,.35);color:#94A3B8;}
 .hex.q{background:linear-gradient(135deg,#182818,#1e3420);color:var(--green-light);font-size:.68rem;}
 .qbar{margin:.35rem 1.1rem .2rem;padding:.65rem .9rem;background:var(--surface2);border:1.5px solid rgba(245,158,11,.3);border-radius:9px;text-align:center;flex-shrink:0;}
-.qbar-lbl{font-size:.6rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-bottom:.22rem;}
+.qbar-lbl{font-size:.6rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--amber-light);margin-bottom:.22rem;}
 .qbar-q{font-size:1.05rem;font-weight:800;margin-bottom:.4rem;}
 .qbar-opts{display:flex;gap:.45rem;justify-content:center;}
 .qbar-opt{padding:.3rem .7rem;border-radius:7px;font-size:.8rem;font-weight:700;background:var(--surface3);border:1px solid var(--border);cursor:pointer;}
@@ -263,20 +263,20 @@ body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(-
 .hm-fill{height:100%;border-radius:99px;position:absolute;left:0;top:0;}
 
 /* ── Upgrade hero ── */
-.upg-hero{text-align:center;padding:1.4rem 1rem;background:linear-gradient(160deg,#0C1A10,#0F2018);border:1.5px solid rgba(16,185,129,.18);border-radius:13px;margin-bottom:.85rem;}
+.upg-hero{text-align:center;padding:1.4rem 1rem;background:linear-gradient(160deg,#EAF7F0,#F3FBF7);border:1.5px solid rgba(16,185,129,.18);border-radius:13px;margin-bottom:.85rem;}
 .upg-icon{font-size:2rem;margin-bottom:.5rem;}
 .upg-price{font-family:'DM Mono',monospace;font-size:.78rem;color:var(--text-muted);margin-top:.5rem;}
 
 /* ── Bridge hero ── */
-.bridge-hero{text-align:center;padding:1.75rem 1.5rem 1.4rem;background:linear-gradient(160deg,#1a1500,#2a1f00);border:1.5px solid rgba(245,158,11,.2);border-radius:13px;margin-bottom:1rem;}
+.bridge-hero{text-align:center;padding:1.75rem 1.5rem 1.4rem;background:linear-gradient(160deg,#FFF3D6,#FFF8E8);border:1.5px solid rgba(245,158,11,.2);border-radius:13px;margin-bottom:1rem;}
 .bh-icon{font-size:2.2rem;margin-bottom:.6rem;}
 
 /* ── School header ── */
-.school-hdr{background:linear-gradient(160deg,#120820,#1a0e30);border:1.5px solid rgba(139,92,246,.2);border-radius:13px;padding:1.2rem;margin-bottom:.85rem;}
+.school-hdr{background:linear-gradient(160deg,#F1ECFB,#F7F3FE);border:1.5px solid rgba(139,92,246,.2);border-radius:13px;padding:1.2rem;margin-bottom:.85rem;}
 
 /* ── Insight card ── */
 .insight-card{background:linear-gradient(135deg,rgba(245,158,11,.06),rgba(180,83,9,.04));border:1.5px solid rgba(245,158,11,.3);border-radius:10px;padding:1rem;margin-bottom:.75rem;}
-.ic-label{font-size:.58rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-bottom:.35rem;}
+.ic-label{font-size:.58rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--amber-light);margin-bottom:.35rem;}
 .ic-val{font-size:.88rem;font-weight:700;color:var(--amber-light);}
 .ic-sub{font-size:.72rem;color:var(--text-muted);margin-top:.18rem;}
 
@@ -300,11 +300,11 @@ body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(-
 .tut-step{flex:1;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:.45rem .5rem;text-align:center;}
 .tut-step .ts-n{font-family:'DM Mono',monospace;font-weight:800;font-size:.66rem;color:var(--text-dim);}
 .tut-step .ts-t{font-size:.64rem;color:var(--text-muted);margin-top:.12rem;line-height:1.25;display:block;}
-.tut-step.on{border-color:var(--amber);background:rgba(245,158,11,.07);}
-.tut-step.on .ts-n{color:var(--amber);} .tut-step.on .ts-t{color:var(--amber-light);font-weight:700;}
+.tut-step.on{border-color:var(--amber-light);background:rgba(245,158,11,.07);}
+.tut-step.on .ts-n{color:var(--amber-light);} .tut-step.on .ts-t{color:var(--amber-light);font-weight:700;}
 .hex.target{background:rgba(245,158,11,.28)!important;color:var(--amber-light)!important;animation:pulse 1.4s ease-in-out infinite;}
 .qbar-opt.right{border-color:var(--green)!important;color:var(--green-light)!important;background:rgba(16,185,129,.1)!important;}
-.coach-tip{font-size:.66rem;color:var(--amber);font-weight:700;text-align:center;margin:.2rem 1.1rem;}
+.coach-tip{font-size:.66rem;color:var(--amber-light);font-weight:700;text-align:center;margin:.2rem 1.1rem;}
 
 /* ════════ MODE SWITCHER ════════ */
 .mode-switch{display:flex;gap:.2rem;background:var(--surface3);border:1px solid var(--border);border-radius:8px;padding:.18rem;}
@@ -324,7 +324,7 @@ body.m-flows #flows-view{display:block;}
 .flow-canvas{max-width:1240px;margin:0 auto;padding:1.5rem 1.6rem 4rem;}
 .flow-lane{background:var(--surface);border:1px solid var(--border);border-left-width:4px;border-radius:13px;padding:.95rem 1.05rem;margin-bottom:1rem;}
 .flow-lane.player{border-left-color:var(--cyan);}
-.flow-lane.fteacher{border-left-color:var(--amber);}
+.flow-lane.fteacher{border-left-color:var(--amber-light);}
 .flow-lane.fstudent{border-left-color:var(--green);}
 .flow-lane.pteacher{border-left-color:var(--purple);}
 .flow-lane.pstudent{border-left-color:var(--pink);}
@@ -336,9 +336,9 @@ body.m-flows #flows-view{display:block;}
 .fl-note{font-size:.72rem;color:var(--text-muted);margin-bottom:.7rem;line-height:1.4;}
 .flow-row{display:flex;align-items:center;gap:.35rem;flex-wrap:wrap;}
 .fstep{font-size:.72rem;font-weight:700;padding:.42rem .7rem;border-radius:9px;background:var(--surface2);border:1px solid var(--border-light);cursor:pointer;transition:all .12s;white-space:nowrap;color:var(--text);}
-.fstep:hover{border-color:var(--amber);color:var(--amber-light);transform:translateY(-1px);box-shadow:0 3px 10px rgba(0,0,0,.25);}
+.fstep:hover{border-color:var(--amber-light);color:var(--amber-light);transform:translateY(-1px);box-shadow:0 3px 10px rgba(0,0,0,.25);}
 .fstep.start{border-color:rgba(34,211,238,.45);color:var(--cyan);}
-.fstep.gate{background:rgba(245,158,11,.14);border-color:var(--amber);color:var(--amber-light);}
+.fstep.gate{background:rgba(245,158,11,.14);border-color:var(--amber-light);color:var(--amber-light);}
 .fstep.paid{background:rgba(16,185,129,.12);border-color:rgba(16,185,129,.4);color:var(--green-light);}
 .farr{color:var(--text-dim);font-weight:800;font-size:.72rem;}
 .fbranch{display:inline-flex;flex-direction:column;gap:.28rem;border:1px dashed var(--border-light);border-radius:10px;padding:.4rem .45rem;}
@@ -364,7 +364,7 @@ body.m-flows #flows-view{display:block;}
 .fnode .fn-t{font-size:.74rem;font-weight:700;line-height:1.2;margin-top:.12rem;}
 .fnode .fn-d{font-size:.6rem;color:var(--text-muted);margin-top:.18rem;line-height:1.3;}
 .fnode.entry{border-color:rgba(34,211,238,.35);}
-.fnode.magic{border-color:var(--amber);background:linear-gradient(135deg,rgba(245,158,11,.12),rgba(245,158,11,.03));}
+.fnode.magic{border-color:var(--amber-light);background:linear-gradient(135deg,rgba(245,158,11,.12),rgba(245,158,11,.03));}
 .fnode.growth{border-color:rgba(245,158,11,.35);}
 .fnode.teach{border-color:rgba(245,158,11,.45);background:rgba(245,158,11,.05);}
 .fnode.data{border-color:rgba(139,92,246,.35);}
@@ -444,18 +444,18 @@ body.m-flows #flows-view{display:block;}
 .lflow{display:flex;align-items:center;gap:.3rem;flex-wrap:wrap;}
 .lstep{font-size:.66rem;font-weight:700;padding:.26rem .5rem;border-radius:7px;background:var(--surface3);border:1px solid var(--border-light);}
 .larr{display:inline-flex;flex-direction:column;align-items:center;color:var(--text-dim);}
-.larr b{font-size:.7rem;color:var(--amber);line-height:1;}
+.larr b{font-size:.7rem;color:var(--amber-light);line-height:1;}
 .larr i{font-size:.54rem;font-style:normal;color:var(--text-dim);margin-top:1px;}
 .lc-purpose{font-size:.64rem;color:var(--text-muted);margin-top:.6rem;display:flex;flex-wrap:wrap;gap:.3rem;align-items:center;}
 .lc-purpose .pp{font-weight:700;padding:.12rem .4rem;border-radius:5px;background:rgba(34,211,238,.08);border:1px solid rgba(34,211,238,.25);color:var(--cyan);}
 .loop-card.c-clash{border-left-color:var(--pink);} .loop-card.c-clash .lc-num{background:var(--pink);} .loop-card.c-clash .lc-purpose .pp{background:rgba(236,72,153,.08);border-color:rgba(236,72,153,.25);color:var(--pink-light);}
-.loop-card.c-teach{border-left-color:var(--amber);} .loop-card.c-teach .lc-num{background:var(--amber);} .loop-card.c-teach .lc-purpose .pp{background:rgba(245,158,11,.08);border-color:rgba(245,158,11,.25);color:var(--amber-light);}
+.loop-card.c-teach{border-left-color:var(--amber-light);} .loop-card.c-teach .lc-num{background:var(--amber);} .loop-card.c-teach .lc-purpose .pp{background:rgba(245,158,11,.08);border-color:rgba(245,158,11,.25);color:var(--amber-light);}
 .loop-card.c-school{border-left-color:var(--purple);} .loop-card.c-school .lc-num{background:var(--purple);} .loop-card.c-school .lc-purpose .pp{background:rgba(139,92,246,.08);border-color:rgba(139,92,246,.25);color:var(--purple-light);}
 
 /* pathways (metro chains) */
 .pway{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;background:var(--surface);border:1px solid var(--border);border-radius:9px;padding:.5rem .7rem;margin-bottom:.5rem;border-left:3px solid var(--slate);}
 .pway .pw-tag{font-size:.58rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:.16rem .45rem;border-radius:5px;flex-shrink:0;width:118px;text-align:center;}
-.pway.amber{border-left-color:var(--amber);} .pway.amber .pw-tag{background:rgba(245,158,11,.15);color:var(--amber-light);}
+.pway.amber{border-left-color:var(--amber-light);} .pway.amber .pw-tag{background:rgba(245,158,11,.15);color:var(--amber-light);}
 .pway.cyan{border-left-color:var(--cyan);} .pway.cyan .pw-tag{background:rgba(34,211,238,.15);color:var(--cyan);}
 .pway.green{border-left-color:var(--green);} .pway.green .pw-tag{background:rgba(16,185,129,.15);color:var(--green-light);}
 .pway.purple{border-left-color:var(--purple);} .pway.purple .pw-tag{background:rgba(139,92,246,.15);color:var(--purple-light);}
@@ -504,7 +504,7 @@ body.m-flows #flows-view{display:block;}
 .er-center .erc-t{font-size:.82rem;font-weight:800;color:var(--cyan);line-height:1.15;}
 .er-center .erc-s{font-size:.6rem;color:var(--text-muted);margin-top:.3rem;line-height:1.3;}
 .er-node{position:absolute;width:120px;transform:translate(-50%,-50%);background:var(--surface2);border:1px solid var(--border-light);border-radius:9px;padding:.4rem .35rem;text-align:center;}
-.er-node .ern-n{font-size:.56rem;font-weight:800;font-family:'DM Mono',monospace;color:var(--amber);}
+.er-node .ern-n{font-size:.56rem;font-weight:800;font-family:'DM Mono',monospace;color:var(--amber-light);}
 .er-node .ern-t{font-size:.7rem;font-weight:800;line-height:1.15;margin-top:.1rem;}
 .engine-cap{text-align:center;font-size:.82rem;font-weight:700;color:var(--text);margin-top:.3rem;}
 .engine-cap b{color:var(--cyan);}
@@ -541,12 +541,12 @@ body.m-flows #flows-view{display:block;}
 /* ════════ STRATEGY CANVAS ════════ */
 .strat-canvas{max-width:1080px;margin:0 auto;padding:1.6rem 1.6rem 5rem;}
 .strat-hero{text-align:center;padding:1.2rem 0 1.6rem;}
-.strat-eyebrow{font-size:.62rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);margin-bottom:.55rem;}
+.strat-eyebrow{font-size:.62rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--amber-light);margin-bottom:.55rem;}
 .strat-h1{font-size:1.9rem;font-weight:800;letter-spacing:-.025em;line-height:1.1;margin-bottom:.55rem;}
 .strat-lead{font-size:.92rem;color:var(--text-muted);max-width:600px;margin:0 auto;line-height:1.55;}
 .flow-strip{display:flex;align-items:center;justify-content:center;gap:.4rem;flex-wrap:wrap;margin-top:1.1rem;}
 .fs-pill{font-size:.72rem;font-weight:800;padding:.34rem .8rem;border-radius:99px;background:var(--surface2);border:1px solid var(--border-light);}
-.fs-arrow{color:var(--amber);font-weight:800;}
+.fs-arrow{color:var(--amber-light);font-weight:800;}
 
 .strat-sec{margin-top:2.4rem;}
 .strat-sec-hd{display:flex;align-items:baseline;gap:.7rem;margin-bottom:1rem;border-bottom:1px solid var(--border);padding-bottom:.6rem;}
@@ -596,14 +596,14 @@ body.m-flows #flows-view{display:block;}
 /* ── Mini flow (vertical) ── */
 .vflow{display:flex;flex-direction:column;gap:.2rem;margin-top:.4rem;}
 .vflow-step{font-size:.64rem;font-weight:700;color:var(--text-muted);background:var(--surface3);border:1px solid var(--border);border-radius:5px;padding:.22rem .45rem;}
-.vflow-arr{font-size:.6rem;color:var(--amber);text-align:center;line-height:.7;}
+.vflow-arr{font-size:.6rem;color:var(--amber-light);text-align:center;line-height:.7;}
 
 /* ── Horizontal flow chain ── */
 .hflow{display:flex;align-items:center;gap:.45rem;flex-wrap:wrap;margin-top:.5rem;}
 .hstep{font-size:.72rem;font-weight:700;padding:.36rem .7rem;border-radius:8px;background:var(--surface2);border:1px solid var(--border-light);white-space:nowrap;}
 .hstep.start{border-color:rgba(34,211,238,.4);color:var(--cyan);}
-.hstep.end{background:var(--amber);color:#07111E;border-color:var(--amber);}
-.harr{color:var(--amber);font-weight:800;}
+.hstep.end{background:var(--amber);color:#07111E;border-color:var(--amber-light);}
+.harr{color:var(--amber-light);font-weight:800;}
 
 /* ── Vault treasure ── */
 .vault-treasure{border-radius:13px;border:1.5px solid rgba(245,158,11,.3);background:linear-gradient(150deg,rgba(245,158,11,.07),rgba(139,92,246,.05));padding:1.2rem;}
@@ -641,7 +641,7 @@ body.m-flows #flows-view{display:block;}
 .val-card{background:var(--surface);border:1px solid var(--border);border-radius:11px;padding:1rem;}
 .val-card-hd{font-size:.84rem;font-weight:800;margin-bottom:.6rem;display:flex;align-items:center;gap:.45rem;padding-bottom:.5rem;border-bottom:1px solid var(--border);}
 .val-q{display:flex;gap:.5rem;font-size:.74rem;color:var(--text-muted);line-height:1.4;padding:.3rem 0;}
-.val-q::before{content:'?';flex-shrink:0;width:16px;height:16px;border-radius:50%;background:rgba(245,158,11,.12);color:var(--amber);font-size:.6rem;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:.1rem;}
+.val-q::before{content:'?';flex-shrink:0;width:16px;height:16px;border-radius:50%;background:rgba(245,158,11,.12);color:var(--amber-light);font-size:.6rem;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:.1rem;}
 
 /* ── Hive Clash card ── */
 .clash-card{border-radius:13px;border:1.5px solid rgba(34,211,238,.28);background:linear-gradient(150deg,rgba(34,211,238,.06),rgba(139,92,246,.05));padding:1.2rem;}
@@ -1263,7 +1263,7 @@ body.m-flows #flows-view{display:block;}
       <div class="eco-sec-hd"><span class="eco-sec-k">How it monetises</span><span class="eco-sec-t">Paid by Hive size</span><span class="eco-sec-s">One product — a subscription unlocks the data (no trial)</span></div>
       <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:.7rem;margin-bottom:2.3rem;">
         <div class="engine-card net"><div class="eg-h" style="color:var(--cyan);">Single · $0.99/mo</div><div class="eg-purpose">Consumer · +1 seat</div><div style="font-size:.72rem;color:var(--text-muted);line-height:1.4;">Play online or invite a friend.</div></div>
-        <div class="engine-card" style="border-top-color:var(--amber);"><div class="eg-h" style="color:var(--amber-light);">Group · $4.99/mo</div><div class="eg-purpose">Family · +7 seats</div><div style="font-size:.72rem;color:var(--text-muted);line-height:1.4;">Families, homeschool, tutors, small groups.</div></div>
+        <div class="engine-card" style="border-top-color:var(--amber-light);"><div class="eg-h" style="color:var(--amber-light);">Group · $4.99/mo</div><div class="eg-purpose">Family · +7 seats</div><div style="font-size:.72rem;color:var(--text-muted);line-height:1.4;">Families, homeschool, tutors, small groups.</div></div>
         <div class="engine-card money"><div class="eg-h">Class · $7.99/mo</div><div class="eg-purpose">Teacher · +40 seats</div><div style="font-size:.72rem;color:var(--text-muted);line-height:1.4;">The core teacher tier — primary buyer.</div></div>
         <div class="engine-card" style="border-top-color:var(--purple);"><div class="eg-h" style="color:var(--purple-light);">School · $299/yr</div><div class="eg-purpose">Institution · contact us</div><div style="font-size:.72rem;color:var(--text-muted);line-height:1.4;">Unlimited class hives across a school.</div></div>
       </div>
@@ -1683,7 +1683,7 @@ body.m-flows #flows-view{display:block;}
       <div class="play-opt" style="border-color:rgba(34,211,238,.35);background:rgba(34,211,238,.05);" onclick="regThen('invite-friend')"><div class="po-icon">🤜</div><div class="po-name" style="color:var(--cyan);">Play a friend</div><div class="po-desc">Quick account to invite</div></div>
     </div>
     <div class="wcard amb">
-      <div class="wlabel" style="color:var(--amber);">Save your progress</div>
+      <div class="wlabel" style="color:var(--amber-light);">Save your progress</div>
       <div style="font-size:.82rem;margin-bottom:.75rem;">You're playing as <b>Bob</b>. Create a free account to keep your name, scores and streak — and unlock Hive Clash.</div>
       <button class="wbtn pri full" onclick="regThen('user-dashboard')">Save my progress →</button>
     </div>
@@ -2006,7 +2006,7 @@ body.m-flows #flows-view{display:block;}
       <div class="play-opt" onclick="goTo('game-board','registered')"><div class="po-icon">🔗</div><div class="po-name">Share Link</div><div class="po-desc">Spread the hive</div></div>
     </div>
     <div class="wdiv"></div>
-    <div class="wcard" style="background:linear-gradient(135deg,#1a1500,#2a1f00);border-color:rgba(245,158,11,.3);">
+    <div class="wcard" style="background:linear-gradient(135deg,#FFF3D6,#FFF8E8);border-color:rgba(245,158,11,.3);">
       <div style="display:flex;align-items:center;gap:.9rem;">
         <span style="font-size:1.5rem;">🏫</span>
         <div>
@@ -2046,7 +2046,7 @@ body.m-flows #flows-view{display:block;}
       <div style="display:flex;gap:.75rem;text-align:center;">
         <div style="flex:1;"><div style="font-size:1rem;font-weight:800;color:var(--cyan);">23</div><div style="font-size:.65rem;color:var(--text-muted);">Games played</div></div>
         <div style="flex:1;"><div style="font-size:1rem;font-weight:800;color:var(--green);">67%</div><div style="font-size:.65rem;color:var(--text-muted);">Win rate</div></div>
-        <div style="flex:1;"><div style="font-size:1rem;font-weight:800;color:var(--amber);">78%</div><div style="font-size:.65rem;color:var(--text-muted);">Accuracy</div></div>
+        <div style="flex:1;"><div style="font-size:1rem;font-weight:800;color:var(--amber-light);">78%</div><div style="font-size:.65rem;color:var(--text-muted);">Accuracy</div></div>
       </div>
     </div>
     <div class="feat-list" style="margin-bottom:1rem;">
@@ -2085,7 +2085,7 @@ body.m-flows #flows-view{display:block;}
     <input class="winput filled" value="Bob">
     <div class="wlabel">Email <span style="color:var(--text-dim);font-weight:400;">(autofilled)</span></div>
     <input class="winput filled" value="bob@example.com">
-    <div class="wlabel">School / Organisation <span style="color:var(--amber);font-weight:700;">— new</span></div>
+    <div class="wlabel">School / Organisation <span style="color:var(--amber-light);font-weight:700;">— new</span></div>
     <input class="winput" placeholder="e.g. Westfield Primary School" value="Westfield Primary School">
     <button class="wbtn grn full" onclick="goTo('my-hives','edu-free')" style="margin-bottom:.65rem;">Add teacher role →</button>
     <div style="text-align:center;font-size:.72rem;color:var(--text-muted);">No card required · free to start</div>
@@ -2245,7 +2245,7 @@ body.m-flows #flows-view{display:block;}
       <div class="ls"><b>18</b> <s2>students active</s2></div>
       <div class="ls"><b>234</b> <s2>questions answered</s2></div>
       <div class="ls"><b>3</b> <s2>students struggling</s2></div>
-      <div class="ls" style="margin-left:auto;"><b style="color:var(--amber);">14:32</b></div>
+      <div class="ls" style="margin-left:auto;"><b style="color:var(--amber-light);">14:32</b></div>
     </div>
   </div>
   <div class="sc">
@@ -2284,7 +2284,7 @@ body.m-flows #flows-view{display:block;}
       <div style="display:flex;gap:.5rem;align-items:center;padding:.3rem 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.76rem;"><span>🎉</span><span><b>Jamie</b> just beat the bot on Extreme</span><span style="margin-left:auto;font-size:.62rem;color:var(--text-dim);">now</span></div>
       <div style="display:flex;gap:.5rem;align-items:center;padding:.3rem 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.76rem;color:var(--green-light);"><span>📈</span><span>Your students have a strong grasp of their <b>5× facts</b></span><span style="margin-left:auto;font-size:.62rem;color:var(--text-dim);">1m</span></div>
       <div style="display:flex;gap:.5rem;align-items:center;padding:.3rem 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.76rem;"><span>🔥</span><span><b>Zara</b> is on a 12-answer streak</span><span style="margin-left:auto;font-size:.62rem;color:var(--text-dim);">2m</span></div>
-      <div style="display:flex;gap:.5rem;align-items:center;padding:.3rem 0;font-size:.76rem;color:var(--text-muted);"><span>🔒</span><span style="filter:blur(3px);">3 students slipping on ×8 — see who</span><button class="wlink" style="margin-left:auto;font-size:.66rem;color:var(--amber);" onclick="goTo('select-hive-size','edu-free')">Unlock</button></div>
+      <div style="display:flex;gap:.5rem;align-items:center;padding:.3rem 0;font-size:.76rem;color:var(--text-muted);"><span>🔒</span><span style="filter:blur(3px);">3 students slipping on ×8 — see who</span><button class="wlink" style="margin-left:auto;font-size:.66rem;color:var(--amber-light);" onclick="goTo('select-hive-size','edu-free')">Unlock</button></div>
     </div>
   </div>
   <div class="exits">
@@ -2447,7 +2447,7 @@ body.m-flows #flows-view{display:block;}
         <div style="font-size:.64rem;color:var(--text-muted);margin-top:.15rem;">School-wide leaderboard</div>
       </div>
     </div>
-    <div class="wcard" style="background:linear-gradient(135deg,#120820,#1a0e30);border-color:rgba(139,92,246,.2);">
+    <div class="wcard" style="background:linear-gradient(135deg,#F1ECFB,#F7F3FE);border-color:rgba(139,92,246,.2);">
       <div style="display:flex;align-items:center;gap:.75rem;">
         <span style="font-size:1.1rem;">🏫</span>
         <div style="flex:1;"><div style="font-size:.82rem;font-weight:700;color:var(--purple-light);margin-bottom:.15rem;">3 teachers at Westfield using Number Hive?</div><div style="font-size:.72rem;color:var(--text-muted);">A School licence gives cross-class analytics and saves per-seat.</div></div>
@@ -2478,7 +2478,7 @@ body.m-flows #flows-view{display:block;}
     </div>
     <div class="stats-row">
       <div class="stat"><div class="stat-v" style="color:var(--green);">74%</div><div class="stat-k">Class Avg</div></div>
-      <div class="stat"><div class="stat-v" style="color:var(--amber);">×8</div><div class="stat-k">Biggest Gap</div></div>
+      <div class="stat"><div class="stat-v" style="color:var(--amber-light);">×8</div><div class="stat-k">Biggest Gap</div></div>
       <div class="stat"><div class="stat-v" style="color:var(--cyan);">Lucas</div><div class="stat-k">Most Improved</div></div>
       <div class="stat"><div class="stat-v" style="color:var(--green);">3</div><div class="stat-k">Mastered</div></div>
     </div>
@@ -2515,7 +2515,7 @@ body.m-flows #flows-view{display:block;}
     <span class="wlink" style="margin-left:auto;font-size:.72rem;" onclick="goBack()">← Back</span>
   </div>
   <div class="sc" style="max-width:480px;margin:0 auto;width:100%;">
-    <div class="upg-hero" style="background:linear-gradient(160deg,#120820,#1a0e30);border-color:rgba(139,92,246,.18);">
+    <div class="upg-hero" style="background:linear-gradient(160deg,#F1ECFB,#F7F3FE);border-color:rgba(139,92,246,.18);">
       <div class="upg-icon">🏫</div>
       <div class="wh2">Upgrade to School Plan</div>
       <div style="font-size:.8rem;color:var(--text-muted);margin-top:.35rem;">When 3+ teachers are using Number Hive, a school licence consolidates and saves.</div>
@@ -2608,7 +2608,7 @@ body.m-flows #flows-view{display:block;}
       </div>
       <div class="wcard" style="padding:.85rem;margin-bottom:0;">
         <div style="font-size:.7rem;color:var(--text-muted);">Needs attention</div>
-        <div style="font-size:1rem;font-weight:800;color:var(--amber);margin:.15rem 0;">Year 3A</div>
+        <div style="font-size:1rem;font-weight:800;color:var(--amber-light);margin:.15rem 0;">Year 3A</div>
         <div style="font-size:.68rem;color:var(--text-muted);">54% accuracy avg</div>
       </div>
       <div class="wcard" style="padding:.85rem;margin-bottom:0;">
@@ -2645,7 +2645,7 @@ body.m-flows #flows-view{display:block;}
       <div class="hive-mini" onclick="goTo('hive-dashboard','edu-free')">
         <div style="display:flex;justify-content:space-between;align-items:start;"><div class="hm-name">Year 6 Maths</div><span class="wbadge wb-lock">Inactive</span></div>
         <div class="hm-meta"><span>Size: Class</span><span>Key: ZIUK74</span></div>
-        <div style="font-size:.66rem;color:var(--amber);margin-top:.4rem;">⚠ Data accruing — unlock to view</div>
+        <div style="font-size:.66rem;color:var(--amber-light);margin-top:.4rem;">⚠ Data accruing — unlock to view</div>
       </div>
       <div class="hive-mini" onclick="goTo('hive-dashboard','classroom')">
         <div style="display:flex;justify-content:space-between;align-items:start;"><div class="hm-name">My Family</div><span class="wbadge wb-blu">Active</span></div>
@@ -2655,12 +2655,12 @@ body.m-flows #flows-view{display:block;}
       <div class="hive-mini" onclick="goTo('hive-dashboard','edu-free')">
         <div style="display:flex;justify-content:space-between;align-items:start;"><div class="hm-name">Tutoring</div><span class="wbadge wb-lock">Inactive</span></div>
         <div class="hm-meta"><span>Size: Group</span><span>Key: BBX115</span></div>
-        <div style="font-size:.66rem;color:var(--amber);margin-top:.4rem;">⚠ Data accruing — unlock to view</div>
+        <div style="font-size:.66rem;color:var(--amber-light);margin-top:.4rem;">⚠ Data accruing — unlock to view</div>
       </div>
       <div class="hive-mini" onclick="goTo('hive-dashboard','edu-free')">
         <div style="display:flex;justify-content:space-between;align-items:start;"><div class="hm-name">Just me</div><span class="wbadge wb-lock">Inactive</span></div>
         <div class="hm-meta"><span>Size: Single</span><span>Key: QOIOM3</span></div>
-        <div style="font-size:.66rem;color:var(--amber);margin-top:.4rem;">⚠ Data accruing — unlock to view</div>
+        <div style="font-size:.66rem;color:var(--amber-light);margin-top:.4rem;">⚠ Data accruing — unlock to view</div>
       </div>
     </div>
   </div>
@@ -2725,7 +2725,7 @@ body.m-flows #flows-view{display:block;}
         </div>
       </div>
       <div class="wcard amb" style="text-align:left;margin-top:.85rem;">
-        <div class="wlabel" style="color:var(--amber);">Tip — name format</div>
+        <div class="wlabel" style="color:var(--amber-light);">Tip — name format</div>
         <div style="font-size:.74rem;color:var(--text-muted);line-height:1.45;">Ask students to use initials, not full names (e.g. <b style="color:var(--amber-light);">26_6_DH</b>). You can rename or merge anyone later from the roster.</div>
       </div>
     </div>
@@ -2986,7 +2986,7 @@ body.m-flows #flows-view{display:block;}
       </div>
       <div>
         <div class="wlabel">✖ Multiplication</div>
-        <div class="wcard" style="padding:.6rem .8rem;margin-bottom:.5rem;display:flex;justify-content:space-between;border-color:rgba(245,158,11,.4);"><span style="font-size:.78rem;">×6 &amp; ×7 <span style="font-size:.6rem;color:var(--amber);">· set by teacher</span></span><span style="font-weight:800;color:var(--amber);">23%</span></div>
+        <div class="wcard" style="padding:.6rem .8rem;margin-bottom:.5rem;display:flex;justify-content:space-between;border-color:rgba(245,158,11,.4);"><span style="font-size:.78rem;">×6 &amp; ×7 <span style="font-size:.6rem;color:var(--amber-light);">· set by teacher</span></span><span style="font-weight:800;color:var(--amber-light);">23%</span></div>
         <div class="wcard" style="padding:.6rem .8rem;margin-bottom:.5rem;display:flex;justify-content:space-between;"><span style="font-size:.78rem;">1–10</span><span style="font-weight:800;color:var(--green);">100%</span></div>
         <div class="wcard" style="padding:.6rem .8rem;margin-bottom:.5rem;display:flex;justify-content:space-between;"><span style="font-size:.78rem;">1–12</span><span style="font-weight:800;color:var(--text-dim);">0%</span></div>
         <div class="wcard" style="padding:.6rem .8rem;margin-bottom:.5rem;display:flex;justify-content:space-between;"><span style="font-size:.78rem;">Algebra (1 variable)</span><span style="font-weight:800;color:var(--text-dim);">0%</span></div>
