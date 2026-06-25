@@ -834,6 +834,25 @@ body.m-matrix #matrix-view{display:block;}
 #matrix-view .mx-ins-label{font-size:.6rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-bottom:.35rem;}
 #matrix-view .mx-ins-text{font-size:.8rem;color:var(--text);line-height:1.5;}
 @media(max-width:800px){#matrix-view .mx-ins-strip{grid-template-columns:1fr;}}
+
+/* matrix rebuilt as CSS grid (alignment-proof) */
+#matrix-view .mx-grid{display:grid;grid-template-columns:1.7fr repeat(5,1fr);min-width:740px;}
+#matrix-view .mx-gh{position:sticky;top:0;z-index:3;padding:.8rem .7rem .9rem;border-bottom:1px solid var(--border);text-align:center;background:var(--surface2);}
+#matrix-view .mx-gh-feat{display:flex;align-items:flex-end;text-align:left;font-size:.62rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);}
+#matrix-view .mx-gh.tier-th{cursor:pointer;}
+#matrix-view .mx-gh.t-anon{background:rgba(71,85,105,.16);}
+#matrix-view .mx-gh.t-reg{background:rgba(34,211,238,.08);}
+#matrix-view .mx-gh.t-free{background:rgba(16,185,129,.08);}
+#matrix-view .mx-gh.t-class{background:rgba(59,130,246,.09);}
+#matrix-view .mx-gh.t-school{background:rgba(139,92,246,.09);}
+#matrix-view .gcat{grid-column:1/-1;background:rgba(255,255,255,.03);padding:.5rem 1rem;font-size:.6rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);}
+#matrix-view .gcell{padding:.55rem .7rem;font-size:.82rem;display:flex;align-items:center;justify-content:center;text-align:center;border-bottom:1px solid rgba(255,255,255,.05);}
+#matrix-view .gcell.fname{flex-direction:column;align-items:flex-start;justify-content:center;text-align:left;color:var(--text);font-weight:500;}
+#matrix-view .gcell.fname .fn-note{font-size:.68rem;color:var(--text-dim);font-weight:400;margin-top:.12rem;}
+#matrix-view .mx-gh.wdiv,#matrix-view .gcell.wdiv{border-left:2px solid var(--border-light);}
+#matrix-view .mx-grid.focusing .gcell[data-col]:not(.focus-col),#matrix-view .mx-grid.focusing .mx-gh.tier-th:not(.focus-col){opacity:.3;}
+#matrix-view .mx-grid.show-unlocks .gcell.first-unlock{background:rgba(245,158,11,.1);box-shadow:inset 0 0 0 1px rgba(245,158,11,.35);}
+#matrix-view .gcell:hover{background:rgba(255,255,255,.02);}
 </style>
 </head>
 <body>
@@ -1412,20 +1431,14 @@ body.m-matrix #matrix-view{display:block;}
   <div class="mx-wrap">
     <div class="mx-card">
       <div class="mx-scroll">
-        <table class="mx-table" id="mx-table">
-          <colgroup><col style="width:26%"><col style="width:14.8%"><col style="width:14.8%"><col style="width:14.8%"><col style="width:14.8%"><col style="width:14.8%"></colgroup>
-          <thead>
-            <tr>
-              <th class="th-feat"><div class="th-inner"><span class="th-eyebrow">Feature</span></div></th>
-              <th class="tier-th t-anon" data-col="0"><div class="th-inner"><div class="th-world">Player</div><div class="th-name">Anonymous</div><div class="th-price">no account</div></div></th>
-              <th class="tier-th t-reg" data-col="1"><div class="th-inner"><div class="th-world">Player</div><div class="th-name">Registered</div><div class="th-price">free · account</div></div></th>
-              <th class="tier-th t-free world-divider" data-col="2"><div class="th-inner"><div class="th-world">Admin</div><div class="th-name">Free Admin</div><div class="th-price">free · data hidden</div></div></th>
-              <th class="tier-th t-class" data-col="3"><div class="th-inner"><div class="th-world">Admin</div><div class="th-name">Paid Admin</div><div class="th-price">Single→Class · data shown</div></div></th>
-              <th class="tier-th t-school" data-col="4"><div class="th-inner"><div class="th-world">Admin</div><div class="th-name">School</div><div class="th-price">super-admin</div></div></th>
-            </tr>
-          </thead>
-          <tbody id="mx-body"></tbody>
-        </table>
+        <div class="mx-grid" id="mx-grid">
+          <div class="mx-gh mx-gh-feat">Feature</div>
+          <div class="mx-gh tier-th t-anon" data-col="0"><div class="th-world">Player</div><div class="th-name">Anonymous</div><div class="th-price">no account</div></div>
+          <div class="mx-gh tier-th t-reg" data-col="1"><div class="th-world">Player</div><div class="th-name">Registered</div><div class="th-price">free · account</div></div>
+          <div class="mx-gh tier-th t-free wdiv" data-col="2"><div class="th-world">Admin</div><div class="th-name">Free Admin</div><div class="th-price">free · data hidden</div></div>
+          <div class="mx-gh tier-th t-class" data-col="3"><div class="th-world">Admin</div><div class="th-name">Paid Admin</div><div class="th-price">Single→Class · data shown</div></div>
+          <div class="mx-gh tier-th t-school" data-col="4"><div class="th-world">Admin</div><div class="th-name">School</div><div class="th-price">super-admin</div></div>
+        </div>
       </div>
       <div class="mx-empty" id="mx-empty">No features match your search.</div>
       <div class="mx-legend">
@@ -3743,30 +3756,30 @@ const MX_DATA=[
   ]},
 ];
 function buildMatrix(){
-  const body=document.getElementById('mx-body'); if(!body||body.dataset.built) return; body.dataset.built='1';
+  const grid=document.getElementById('mx-grid'); if(!grid||grid.dataset.built) return; grid.dataset.built='1';
   const mk=m=>{let c=m,q='';if(Array.isArray(m)){c=m[0];q=m[1];} if(c==='y')return '<span class="mk-yes">✓</span>'; if(c==='q')return '<span class="mk-yes">✓<span class="mk-q">'+q+'</span></span>'; if(c==='lock')return '<span class="mk-lock">🔒</span>'; return '<span class="mk-na">—</span>';};
   const av=m=>{const c=Array.isArray(m)?m[0]:m;return c==='y'||c==='q';};
+  let ri=0;
   MX_DATA.forEach(g=>{
-    const cr=document.createElement('tr');cr.className='cat-row';cr.dataset.cat=g.cat;cr.innerHTML='<td colspan="6">'+g.cat+'</td>';body.appendChild(cr);
+    const cat=document.createElement('div'); cat.className='gcat'; cat.dataset.cat=g.cat; cat.textContent=g.cat; grid.appendChild(cat);
     g.features.forEach(f=>{
-      const tr=document.createElement('tr');tr.className='feat-row';tr.dataset.cat=g.cat;tr.dataset.name=f.name.toLowerCase();
-      const fu=f.marks.findIndex(av);
-      let cells='<td class="cell feat-name">'+f.name+'<span class="fn-note">'+f.note+'</span></td>';
-      f.marks.forEach((m,i)=>{cells+='<td class="cell'+(i===2?' world-divider':'')+(i===fu?' first-unlock':'')+'" data-col="'+i+'">'+mk(m)+'</td>';});
-      tr.innerHTML=cells;body.appendChild(tr);
+      const fu=f.marks.findIndex(av), nm=f.name.toLowerCase();
+      const nameEl=document.createElement('div'); nameEl.className='gcell fname'; nameEl.dataset.row=ri; nameEl.dataset.cat=g.cat; nameEl.dataset.name=nm; nameEl.innerHTML=f.name+'<span class="fn-note">'+f.note+'</span>'; grid.appendChild(nameEl);
+      f.marks.forEach((m,i)=>{const c=document.createElement('div'); c.className='gcell'+(i===2?' wdiv':'')+(i===fu?' first-unlock':''); c.dataset.row=ri; c.dataset.col=i; c.dataset.cat=g.cat; c.dataset.name=nm; c.innerHTML=mk(m); grid.appendChild(c);});
+      ri++;
     });
   });
-  const table=document.getElementById('mx-table'), search=document.getElementById('mx-search');
-  let activeCat='all';
-  function applyF(){const q=search.value.trim().toLowerCase();let any=false;
-    document.querySelectorAll('#matrix-view tr.feat-row').forEach(r=>{const ok=(activeCat==='all'||r.dataset.cat===activeCat)&&(!q||r.dataset.name.includes(q));r.style.display=ok?'':'none';if(ok)any=true;});
-    document.querySelectorAll('#matrix-view tr.cat-row').forEach(cr=>{const catOk=activeCat==='all'||cr.dataset.cat===activeCat;let has=false,n=cr.nextElementSibling;while(n&&!n.classList.contains('cat-row')){if(n.classList.contains('feat-row')&&n.style.display!=='none')has=true;n=n.nextElementSibling;}cr.style.display=(catOk&&has)?'':'none';});
-    document.getElementById('mx-empty').style.display=any?'none':'block';}
+  const search=document.getElementById('mx-search'); let activeCat='all';
+  function applyF(){const q=search.value.trim().toLowerCase(); let any=false; const seen={};
+    grid.querySelectorAll('.gcell').forEach(c=>{const ok=(activeCat==='all'||c.dataset.cat===activeCat)&&(!q||c.dataset.name.includes(q)); c.style.display=ok?'':'none'; if(ok){any=true; seen[c.dataset.cat]=true;}});
+    grid.querySelectorAll('.gcat').forEach(cat=>{const catOk=activeCat==='all'||cat.dataset.cat===activeCat; cat.style.display=(catOk&&seen[cat.dataset.cat])?'':'none';});
+    document.getElementById('mx-empty').style.display=any?'none':'block';
+  }
   document.querySelectorAll('#mx-cats .mx-chip').forEach(ch=>ch.addEventListener('click',()=>{document.querySelectorAll('#mx-cats .mx-chip').forEach(c=>c.classList.remove('active'));ch.classList.add('active');activeCat=ch.dataset.cat;applyF();}));
   search.addEventListener('input',applyF);
   let fc=null;
-  document.querySelectorAll('#matrix-view .tier-th').forEach(th=>th.addEventListener('click',()=>{const col=th.dataset.col;if(fc===col){table.classList.remove('focusing');document.querySelectorAll('#matrix-view .focus-col').forEach(e=>e.classList.remove('focus-col'));fc=null;return;}fc=col;table.classList.add('focusing');document.querySelectorAll('#matrix-view .tier-th').forEach(x=>x.classList.toggle('focus-col',x.dataset.col===col));document.querySelectorAll('#matrix-view td.cell[data-col]').forEach(c=>c.classList.toggle('focus-col',c.dataset.col===col));}));
-  const ut=document.getElementById('mx-unlock');ut.addEventListener('click',()=>{ut.classList.toggle('on');table.classList.toggle('show-unlocks',ut.classList.contains('on'));});
+  grid.querySelectorAll('.mx-gh.tier-th').forEach(th=>th.addEventListener('click',()=>{const col=th.dataset.col; if(fc===col){grid.classList.remove('focusing'); grid.querySelectorAll('.focus-col').forEach(e=>e.classList.remove('focus-col')); fc=null; return;} fc=col; grid.classList.add('focusing'); grid.querySelectorAll('.mx-gh.tier-th,.gcell[data-col]').forEach(e=>e.classList.toggle('focus-col', e.dataset.col===col));}));
+  const ut=document.getElementById('mx-unlock'); ut.addEventListener('click',()=>{ut.classList.toggle('on'); grid.classList.toggle('show-unlocks', ut.classList.contains('on'));});
 }
 
 document.body.classList.add('m-strategy');
