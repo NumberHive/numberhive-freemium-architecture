@@ -313,12 +313,13 @@ body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(-
 .ms-btn.act{background:var(--amber);color:#07111E;}
 
 /* views — four modes */
-#wireframes-view,#strategy-view,#pathways-view,#flows-view{display:none;}
-#strategy-view,#pathways-view,#flows-view{height:calc(100vh - 46px);overflow:auto;background:radial-gradient(1200px 600px at 50% -10%,rgba(245,158,11,.05),transparent 60%),var(--bg);}
+#wireframes-view,#strategy-view,#pathways-view,#flows-view,#model-view{display:none;}
+#strategy-view,#pathways-view,#flows-view,#model-view{height:calc(100vh - 46px);overflow:auto;background:radial-gradient(1200px 600px at 50% -10%,rgba(245,158,11,.05),transparent 60%),var(--bg);}
 body.m-wireframes #wireframes-view{display:flex;}
 body.m-strategy #strategy-view{display:block;}
 body.m-pathways #pathways-view{display:block;}
 body.m-flows #flows-view{display:block;}
+body.m-model #model-view{display:block;}
 
 /* ════════ USER FLOWS (swimlanes) ════════ */
 .flow-canvas{max-width:1240px;margin:0 auto;padding:1.5rem 1.6rem 4rem;}
@@ -726,6 +727,51 @@ body.m-flows #flows-view{display:block;}
 .nh-logo{font-family:'Fredoka','DM Sans',sans-serif;font-weight:700;line-height:.84;text-align:center;display:inline-block;}
 .nh-logo .nh-l{display:block;font-size:3.1rem;letter-spacing:.01em;background:linear-gradient(180deg,#FBBF24 0%,#F59E0B 55%,#F97316 100%);-webkit-background-clip:text;background-clip:text;color:transparent;}
 .nh-logo .nh-l.two{font-size:3.1rem;}
+
+/* ════════ MONETISATION MODEL TAB ════════ */
+.model-flow{display:grid;grid-template-columns:1.1fr .7fr 1.4fr;gap:1rem;align-items:stretch;}
+.mf-zone{background:var(--surface);border:1px solid var(--border);border-radius:13px;padding:1rem;}
+.mf-zone.free{border-color:rgba(34,211,238,.3);}
+.mf-zone.consumer{border-color:rgba(236,72,153,.32);}
+.mf-zone.teacher{border-color:rgba(16,185,129,.35);}
+.mf-h{font-size:.92rem;font-weight:800;}
+.mf-sub{font-size:.64rem;color:var(--text-dim);margin:.15rem 0 .65rem;line-height:1.3;}
+.mf-zone ul{list-style:none;display:flex;flex-direction:column;gap:.32rem;}
+.mf-zone li{font-size:.72rem;color:var(--text-muted);padding-left:.8rem;position:relative;line-height:1.35;}
+.mf-zone li::before{content:'';position:absolute;left:0;top:.45rem;width:4px;height:4px;border-radius:50%;background:var(--amber);opacity:.55;}
+.mf-gate{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:linear-gradient(160deg,rgba(245,158,11,.1),rgba(245,158,11,.03));border:1.5px dashed rgba(245,158,11,.4);border-radius:13px;padding:1rem;}
+.mf-gate-ico{font-size:1.6rem;}
+.mf-gate-t{font-size:.62rem;font-weight:800;letter-spacing:.12em;color:var(--amber);margin:.35rem 0;}
+.mf-gate-d{font-size:.68rem;color:var(--text-muted);line-height:1.45;}
+.mf-ladders{display:flex;flex-direction:column;gap:1rem;}
+.alloc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem;}
+.alloc-col{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:.9rem;border-top:3px solid var(--slate);}
+.alloc-col.free{border-top-color:var(--cyan);}
+.alloc-col.consumer{border-top-color:var(--pink);}
+.alloc-col.teacher{border-top-color:var(--green);}
+.alloc-h{font-size:.84rem;font-weight:800;margin-bottom:.5rem;display:flex;justify-content:space-between;align-items:baseline;gap:.4rem;}
+.alloc-h span{font-size:.56rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-dim);}
+.alloc-item{font-size:.72rem;color:var(--text-muted);padding:.4rem 0;border-bottom:1px solid rgba(255,255,255,.04);line-height:1.35;}
+.alloc-item:last-child{border-bottom:none;}
+.alloc-item b{color:var(--text);font-weight:700;}
+@media(max-width:880px){.model-flow{grid-template-columns:1fr;}.alloc-grid{grid-template-columns:1fr;}}
+
+/* role2 + MVP flags */
+.role2-grid{display:grid;grid-template-columns:1fr 1fr;gap:.85rem;}
+.role2{background:var(--surface);border:1px solid var(--border);border-radius:13px;padding:1rem;border-top:3px solid var(--slate);}
+.role2.player{border-top-color:var(--cyan);}
+.role2.admin{border-top-color:var(--amber);}
+.r2-h{font-size:.95rem;font-weight:800;}
+.r2-sub{font-size:.66rem;color:var(--text-dim);margin:.15rem 0 .6rem;}
+.role2 ul{list-style:none;display:flex;flex-direction:column;gap:.32rem;}
+.role2 li{font-size:.73rem;color:var(--text-muted);padding-left:.8rem;position:relative;line-height:1.4;}
+.role2 li::before{content:'';position:absolute;left:0;top:.5rem;width:4px;height:4px;border-radius:50%;background:var(--amber);opacity:.6;}
+.role2 li b{color:var(--text);}
+.mvp-tag,.later-tag{display:inline-block;font-size:.5rem;font-weight:800;letter-spacing:.06em;padding:.1rem .32rem;border-radius:4px;text-transform:uppercase;vertical-align:middle;}
+.mvp-tag{background:rgba(16,185,129,.16);color:var(--green-light);}
+.later-tag{background:rgba(122,144,168,.16);color:var(--text-muted);}
+@media(max-width:880px){.role2-grid{grid-template-columns:1fr;}}
+.flow-lane.family{border-left-color:var(--orange);}
 </style>
 </head>
 <body>
@@ -736,6 +782,7 @@ body.m-flows #flows-view{display:block;}
   <div class="tb-sep"></div>
   <div class="mode-switch">
     <button class="ms-btn act" id="ms-strategy" onclick="setMode('strategy')">◆ Strategy</button>
+    <button class="ms-btn" id="ms-model" onclick="setMode('model')">$ Model</button>
     <button class="ms-btn" id="ms-pathways" onclick="setMode('pathways')">⌥ Pathways</button>
     <button class="ms-btn" id="ms-flows" onclick="setMode('flows')">⇄ User Flows</button>
     <button class="ms-btn" id="ms-wireframes" onclick="setMode('wireframes')">▣ Wireframes</button>
@@ -818,7 +865,7 @@ body.m-flows #flows-view{display:block;}
             <div class="gm-item">
               <div class="gm-item-t">Hive IQ</div>
               <div class="gm-item-d">ELO-style rating — identity, progress, matching, retention.</div>
-              <div class="gchips"><span class="gchip cyn">Hive IQ 1247</span><span class="gchip grn">+27</span><span class="gchip amb">Worker Bee</span><span class="gchip">School #4</span></div>
+              <div class="gchips"><span class="gchip cyn">Hive IQ 742</span><span class="gchip grn">+27</span><span class="gchip amb">Worker Bee</span><span class="gchip">School #4</span></div>
             </div>
             <div class="gm-item">
               <div class="gm-item-t">Challenge a Friend</div>
@@ -1143,6 +1190,137 @@ body.m-flows #flows-view{display:block;}
 <!-- ════════════════════════════════════════════
      PATHWAYS VIEW — Full user-pathway flowchart
 ════════════════════════════════════════════ -->
+<!-- ════════════════════════════════════════════
+     MONETISATION MODEL VIEW
+════════════════════════════════════════════ -->
+<div id="model-view">
+  <div class="strat-canvas">
+    <div class="strat-hero">
+      <div class="strat-eyebrow">Number Hive · Business Model</div>
+      <div class="strat-h1">Everyone plays. Admins pay to see.</div>
+      <div class="strat-lead">Two roles, one gate. <b>Players</b> play free; <b>Admins</b> run hives and pay to reveal their hive's data. Teachers are the business; Hive Clash is the lean viral front door.</div>
+      <div class="flow-strip">
+        <span class="fs-pill">Play free</span><span class="fs-arrow">→</span>
+        <span class="fs-pill">Run a hive free</span><span class="fs-arrow">→</span>
+        <span class="fs-pill">Data accrues blurred</span><span class="fs-arrow">→</span>
+        <span class="fs-pill">Pay → reveal</span>
+      </div>
+    </div>
+
+    <div class="eco-sec">
+      <div class="eco-sec-hd"><span class="eco-sec-k">The whole model</span><span class="eco-sec-t">Two roles</span><span class="eco-sec-s">everything else is a flavour of these</span></div>
+      <div class="role2-grid">
+        <div class="role2 player">
+          <div class="r2-h">🎮 Player</div>
+          <div class="r2-sub">The universal account</div>
+          <ul>
+            <li>Adults roam free — game, Hive Clash, account-level Hive IQ</li>
+            <li>Minors are <b>contained under an Admin umbrella</b> — provisioned, not roaming</li>
+            <li>Anonymous instant-play needs no account — the magic hook</li>
+          </ul>
+        </div>
+        <div class="role2 admin">
+          <div class="r2-h">🗝️ Admin</div>
+          <div class="r2-sub">Anyone who runs a hive — teacher · parent · tutor · school</div>
+          <ul>
+            <li>Provisions members, controls features (e.g. Hive Clash toggle)</li>
+            <li><b>Free Admin</b> = full product, data hidden</li>
+            <li><b>Paid Admin</b> = data revealed (one switch per hive)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="eco-sec">
+      <div class="eco-sec-hd"><span class="eco-sec-k">How it converts</span><span class="eco-sec-t">One gate</span><span class="eco-sec-s">a single switch per hive</span></div>
+      <div class="model-flow">
+        <div class="mf-zone free">
+          <div class="mf-h">🎮 Free — everyone plays</div>
+          <div class="mf-sub">Acquisition engine · no account needed to start</div>
+          <ul>
+            <li>The game · Play a Friend · Hive Clash (free-to-play)</li>
+            <li>Representations + number-fact delight</li>
+            <li>Basic personal stats (comfort heat map is paid)</li>
+          </ul>
+        </div>
+        <div class="mf-gate">
+          <div class="mf-gate-ico">🔒</div>
+          <div class="mf-gate-t">THE GATE</div>
+          <div class="mf-gate-d">An Admin runs a hive free; members play; data accrues <i>blurred</i>. Pay → the blur lifts. One boolean per hive — never gates play.</div>
+        </div>
+        <div class="mf-zone teacher">
+          <div class="mf-h">🗝️ Paid Admin — data revealed</div>
+          <div class="mf-sub">Single $0.99 · Group $4.99 · Class $7.99 · School (umbrella)</div>
+          <ul>
+            <li>The Hive Vault — Buzz efficacy + mindset reports</li>
+            <li>Per-member &amp; cohort fluency, heat maps, growth</li>
+            <li>Assign skills · competitions · export · (School: sub-admins)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="strat-note"><b>Billing (PWA · Stripe — no app-store cut):</b> per-hive, monthly or annual; lapse re-blurs but <i>retains</i> the data (hive goes Inactive, play stays free). Seat count is a <b>price bracket</b>, not a play cap — 41 students = two Class hives. <b>Single</b> = one admin + one learner (incl. an adult studying themselves) — the individual-analytics rung. <b>School</b> = a <b>super-admin dashboard</b> over all the school's teachers (replaces the promo-code).</div>
+    </div>
+
+    <div class="eco-sec">
+      <div class="eco-sec-hd"><span class="eco-sec-k">Decision sheet</span><span class="eco-sec-t">What's free, what's paid — and what ships first</span><span class="eco-sec-s"><span class="mvp-tag">MVP</span> first · <span class="later-tag">Later</span> tripwire</span></div>
+      <div class="alloc-grid">
+        <div class="alloc-col free">
+          <div class="alloc-h">Free — acquisition <span>everyone</span></div>
+          <div class="alloc-item"><span class="mvp-tag">MVP</span> <b>Core game</b> — vs Computer, Play Locally</div>
+          <div class="alloc-item"><span class="mvp-tag">MVP</span> <b>Play a Friend</b> — the viral loop</div>
+          <div class="alloc-item"><span class="mvp-tag">MVP</span> <b>Representations</b> + number-fact delight</div>
+          <div class="alloc-item"><span class="mvp-tag">MVP</span> <b>Basic stats</b> (heat map is paid)</div>
+          <div class="alloc-item"><span class="mvp-tag">MVP</span> <b>Run a hive free</b> · members play · data generation</div>
+          <div class="alloc-item"><span class="mvp-tag">MVP</span> <b>Hive Clash ranked</b> — free-to-play (ELO, no chat)</div>
+        </div>
+        <div class="alloc-col teacher">
+          <div class="alloc-h">Admin-paid — the data gate <span>the business</span></div>
+          <div class="alloc-item"><span class="mvp-tag">MVP</span> <b>The Hive Vault</b> — lift the blur</div>
+          <div class="alloc-item"><span class="mvp-tag">MVP</span> <b>Buzz efficacy reports</b> (per member)</div>
+          <div class="alloc-item"><span class="mvp-tag">MVP</span> <b>Mindset surveys</b> — confidence, attitude, growth</div>
+          <div class="alloc-item"><span class="mvp-tag">MVP</span> <b>Cohort heat maps + growth over time</b></div>
+          <div class="alloc-item"><span class="mvp-tag">MVP</span> <b>Assign skills · competitions · export</b></div>
+          <div class="alloc-item"><span class="mvp-tag">MVP</span> <b>School super-admin</b> — dashboard across teachers (promo-code interim)</div>
+        </div>
+        <div class="alloc-col consumer">
+          <div class="alloc-h">Consumer-paid — optionality <span>tripwire</span></div>
+          <div class="alloc-item"><span class="later-tag">Later</span> <b>Cosmetics / skins</b></div>
+          <div class="alloc-item"><span class="later-tag">Later</span> <b>Season pass</b></div>
+          <div class="alloc-item"><span class="later-tag">Later</span> <b>Full rival ladder</b></div>
+          
+          <div class="alloc-item"><span class="later-tag">Later</span> <b>Pro post-game analysis</b></div>
+          <div class="alloc-item"><span class="later-tag">Later</span> <b>Ranked seasons</b></div>
+        </div>
+      </div>
+      <div class="strat-note"><b>MVP in one line:</b> the free funnel (incl. free ranked Hive Clash) + the <b>Admin data gate</b> (cheapest build, clearest pitch, strongest conversion). Everything <span class="later-tag">Later</span> waits behind the tripwire. <b>Litmus:</b> wins/spreads a user → free; depth/cosmetics for the same person → consumer; insight into a cohort → admin.</div>
+    </div>
+
+    <div class="eco-sec">
+      <div class="eco-sec-hd"><span class="eco-sec-k">The wildcard, handled</span><span class="eco-sec-t">Hive Clash — lean viral front door</span></div>
+      <div class="clash-card">
+        <div class="layer-goal" style="margin-bottom:.6rem;">Free-to-play ranked (ELO = account-level Hive IQ, no chat, safe handles), monetised by <b>cosmetics &amp; seasons — never pay-to-win</b>. One shared pool; admins toggle <i>access</i>, never the rating. Seeded by single-player so it's never a ghost town.</div>
+        <div class="clash-comps">
+          <span class="clash-comp">Free to enter</span><span class="clash-comp">One shared pool</span><span class="clash-comp">No chat · safe handles</span><span class="clash-comp">Cosmetic monetisation</span><span class="clash-comp">Admin toggles access</span><span class="clash-comp">Start 500 · floor 500</span><span class="clash-comp">±25–35 zero-sum by gap</span>
+        </div>
+        <div class="strat-note" style="margin-top:1rem;"><b>Run it lean</b> — the viral front door of a teacher-first business, not a second company. <b>Tripwire to scale B2C:</b> invest in seasons/live-ops only once organic ranked retention + viral coefficient cross a pre-agreed bar.</div>
+      </div>
+    </div>
+
+    <div class="eco-sec">
+      <div class="eco-sec-hd"><span class="eco-sec-k">The frame</span><span class="eco-sec-t">Three principles</span></div>
+      <div class="stmt-grid">
+        <div class="stmt amber"><b>Two roles, one gate.</b> Players play; Admins pay to <b>see</b>. Schools are the business; everyone else is the funnel.</div>
+        <div class="stmt green"><b>Free to play, pay to see.</b> Gameplay &amp; data generation are always free — you pay to reveal and to manage, never to play.</div>
+        <div class="stmt cyan"><b>One world, umbrella-contained.</b> A single shared pool feeds the ladder; every minor sits under a teacher or parent umbrella that owns consent &amp; control.</div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:2.4rem;">
+      <button class="wbtn pri" onclick="setMode('pathways')">⌥ See the ecosystem map →</button>
+    </div>
+  </div>
+</div>
+
 <div id="pathways-view">
   <div class="eco-wrap">
 
@@ -1214,7 +1392,7 @@ body.m-flows #flows-view{display:block;}
         <!-- OUTCOMES -->
         <div>
           <div class="eco-col-lbl" style="color:var(--text-muted);">Outcome zones · many valid ends</div>
-          <div class="eco-out green" id="eco-o-sub" style="margin-top:54px;"><div class="eo-t">✅ Paid Hive<span class="eo-tag">Primary</span></div><div class="eo-d">By Hive size: Class &amp; School (teachers) — plus Single &amp; Group (consumer/family).</div></div>
+          <div class="eco-out green" id="eco-o-sub" style="margin-top:54px;"><div class="eo-t">✅ Paid Admin<span class="eo-tag">Primary</span></div><div class="eo-d">By Hive size: Class &amp; School (teachers) — plus Single &amp; Group (consumer/family).</div></div>
           <div class="eco-out purple" id="eco-o-vault"><div class="eo-t">💎 Hive Vault Conversion<span class="eo-tag">Convert</span></div><div class="eo-d">Data already exists, just blurred. Reveal per-student fluency → unlock (no trial).</div></div>
           <div class="eco-out cyan" id="eco-o-free"><div class="eo-t">🎮 Ongoing Free User<span class="eo-tag">Valid</span></div><div class="eo-d">Still valuable — creates engagement, sharing, referrals and network effects.</div></div>
           <div class="eco-out pink" id="eco-o-clash"><div class="eo-t">⚔ Hive Clash Player<span class="eo-tag">Valid</span></div><div class="eo-d">Creates retention, rankings, sharing — and future monetisation opportunities.</div></div>
@@ -1377,7 +1555,7 @@ body.m-flows #flows-view{display:block;}
       <div class="stmt-grid">
         <div class="stmt cyan">Every user can play. Every player can share. Every share can surface a teacher. Every teacher can unlock <b>insight</b>.</div>
         <div class="stmt green"><b>Free play</b> creates reach. <b>Network effects</b> create growth. <b>Hive Vault</b> creates conversion.</div>
-        <div class="stmt amber"><b>Teacher-first monetisation.</b> <b>Multi-channel discovery.</b></div>
+        <div class="stmt amber"><b>Two roles, one gate.</b> Players play; Admins pay to see. Teacher-first monetisation, multi-channel discovery.</div>
       </div>
       <div class="correction">
         <div class="cor-h">Not every user must convert — and that's the point.</div>
@@ -1408,20 +1586,20 @@ body.m-flows #flows-view{display:block;}
     <div class="strat-hero" style="padding-bottom:.6rem;">
       <div class="strat-eyebrow">Number Hive · Walkthroughs</div>
       <div class="strat-h1" style="font-size:1.7rem;">Common user flows</div>
-      <div class="strat-lead">Each lane follows one user type, screen by screen, from first touch to their day-to-day. <b>Tap any step</b> to jump straight to that wireframe.</div>
+      <div class="strat-lead">Each lane follows one user type, screen by screen. <b>Tap any step</b> to jump to that wireframe. Adults roam; <b>minors are contained under a teacher or parent umbrella</b>. Hive IQ is account-level and never appears in an Admin's reports.</div>
       <div class="flow-legend">
         <span><i style="background:var(--cyan);"></i>Free Player</span>
-        <span><i style="background:var(--amber);"></i>Free Teacher</span>
+        <span><i style="background:var(--amber);"></i>Free Teacher (Admin)</span>
         <span><i style="background:var(--green);"></i>Free Student</span>
-        <span><i style="background:var(--purple);"></i>Paid Teacher</span>
+        <span><i style="background:var(--orange);"></i>Family Admin</span>
+        <span><i style="background:var(--purple);"></i>Paid Admin</span>
         <span><i style="background:var(--pink);"></i>Paid Student</span>
       </div>
     </div>
 
-    <!-- FREE PLAYER -->
     <div class="flow-lane player">
       <div class="flow-lane-hd"><span class="fl-name">🎮 Free Player</span><span class="fl-tag free">Free</span></div>
-      <div class="fl-note">Lands, plays instantly as "Bob", gets hooked, signs up to keep progress & invite friends. Hive IQ moves only in Hive Clash.</div>
+      <div class="fl-note">An adult roams free; a minor reaches this only under an umbrella. Plays instantly as "Bob", gets hooked, signs up to keep progress &amp; invite friends. Hive IQ moves only in Hive Clash and stays on the account. A win generates a <b>shareable result card</b> (the viral loop).</div>
       <div class="flow-row">
         <span class="fstep start" onclick="flowGo('landing')">Landing · Play Now</span><span class="farr">→</span>
         <span class="fstep" onclick="flowGo('first-game')">First Game (vs Dottie)</span><span class="farr">→</span>
@@ -1432,60 +1610,69 @@ body.m-flows #flows-view{display:block;}
           <span class="fstep" onclick="flowGo('clash-matchmaking')">⚔ Hive Clash</span>
           <span class="fstep" onclick="flowGo('bot-difficulty')">🤖 Play vs Bot</span>
           <span class="fstep" onclick="flowGo('play-friend-menu')">🤜 Play a Friend</span>
+          <span class="fstep" onclick="flowGo('profile')">📊 Profile</span>
         </span>
       </div>
     </div>
 
-    <!-- FREE TEACHER -->
     <div class="flow-lane fteacher">
-      <div class="flow-lane-hd"><span class="fl-name">🍎 Free Teacher</span><span class="fl-tag free">Free</span></div>
-      <div class="fl-note">A player upgrades to a teacher (same account), spins up a free hive, runs it, sees value building — then hits the Vault gate.</div>
+      <div class="flow-lane-hd"><span class="fl-name">🍎 Free Teacher = Free Admin</span><span class="fl-tag free">Free</span></div>
+      <div class="fl-note">An adult Player <b>adds an Admin role</b> to the same account. Creates a free hive, provisions students, runs real classes — data accrues <i>blurred</i> — then hits the gate.</div>
       <div class="flow-row">
         <span class="fstep" onclick="flowGo('user-dashboard')">User Dashboard</span><span class="farr">→</span>
-        <span class="fstep" onclick="flowGo('teacher-offer')">Teacher Offer</span><span class="farr">→</span>
-        <span class="fstep" onclick="flowGo('edu-register')">Add Teacher Role</span><span class="farr">→</span>
+        <span class="fstep" onclick="flowGo('teacher-offer')">Admin Offer</span><span class="farr">→</span>
+        <span class="fstep" onclick="flowGo('edu-register')">Add Admin Role</span><span class="farr">→</span>
         <span class="fstep" onclick="flowGo('my-hives')">My Hives</span><span class="farr">→</span>
-        <span class="fstep" onclick="flowGo('create-hive')">Create Hive (name)</span><span class="farr">→</span>
-        <span class="fstep" onclick="flowGo('project-class')">Add Students</span><span class="farr">→</span>
+        <span class="fstep" onclick="flowGo('create-hive')">Create Class Hive</span><span class="farr">→</span>
+        <span class="fstep" onclick="flowGo('project-class')">Provision Students</span><span class="farr">→</span>
         <span class="fstep" onclick="flowGo('hive-dashboard')">Hive Dashboard (blurred)</span><span class="farr">→</span>
-        <span class="fstep" onclick="flowGo('live-session')">Live Session</span><span class="farr">→</span>
-        <span class="fstep gate" onclick="flowGo('reports-blurred')">🔒 Vault gate</span>
+        <span class="fstep gate" onclick="flowGo('reports-blurred')">🔒 Data gate</span>
       </div>
     </div>
 
-    <!-- FREE STUDENT -->
     <div class="flow-lane fstudent">
-      <div class="flow-lane-hd"><span class="fl-name">🎒 Free Student</span><span class="fl-tag free">Free</span></div>
-      <div class="fl-note">Joins via the class code (initials identity), plays the same guided first game, then lives in Journeys + Gym. Gym Stats locked.</div>
+      <div class="flow-lane-hd"><span class="fl-name">🎒 Free Student (contained)</span><span class="fl-tag free">Free</span></div>
+      <div class="fl-note"><b>Provisioned via class code, under the teacher umbrella</b> — no public roaming, teacher controls features (incl. Hive Clash toggle). Only in-class instrument data is recorded for the teacher; free/personal play stays private. Shares wins/badges <b>to the teacher only</b> — no public sharing.</div>
       <div class="flow-row">
-        <span class="fstep start" onclick="flowGo('project-class')">Join via code</span><span class="farr">→</span>
+        <span class="fstep start" onclick="flowGo('join-hive')">Join via class code</span><span class="farr">→</span>
         <span class="fstep" onclick="flowGo('first-game')">First Game (tutorial)</span><span class="farr">→</span>
         <span class="fstep" onclick="flowGo('student-dashboard')">Student Dashboard</span><span class="farr">→</span>
         <span class="fbranch"><span class="fb-lbl">day to day</span>
           <span class="fstep" onclick="flowGo('learning-journeys')">🗺️ Learning Journeys</span>
-          <span class="fstep" onclick="flowGo('hive-gym')">🏋️ Hive Gym (stats 🔒)</span>
+          <span class="fstep" onclick="flowGo('hive-gym')">🏋️ Hive Gym (Clash if teacher-on)</span>
         </span>
       </div>
     </div>
 
-    <!-- PAID TEACHER -->
+    <div class="flow-lane family">
+      <div class="flow-lane-hd"><span class="fl-name">👨‍👩‍👧 Family Admin</span><span class="fl-tag free">Free → Group</span></div>
+      <div class="fl-note">A parent is just an <b>Admin with a Group hive</b> — same engine as a teacher. Kids are contained under the <b>parent</b> umbrella (parent owns consent &amp; the Clash toggle). Unlocks data via Group ($4.99).</div>
+      <div class="flow-row">
+        <span class="fstep" onclick="flowGo('user-dashboard')">Parent's account</span><span class="farr">→</span>
+        <span class="fstep" onclick="flowGo('teacher-offer')">Admin Offer</span><span class="farr">→</span>
+        <span class="fstep" onclick="flowGo('edu-register')">Add Admin Role</span><span class="farr">→</span>
+        <span class="fstep" onclick="flowGo('create-hive')">Create Group Hive</span><span class="farr">→</span>
+        <span class="fstep" onclick="flowGo('project-class')">Add the kids</span><span class="farr">→</span>
+        <span class="fstep gate" onclick="flowGo('select-hive-size')">🔒 Unlock (Group)</span>
+      </div>
+    </div>
+
     <div class="flow-lane pteacher">
-      <div class="flow-lane-hd"><span class="fl-name">🍎 Paid Teacher</span><span class="fl-tag paid">Paid</span></div>
-      <div class="fl-note">Converts at the gate — picks a Hive size (no trial), the blur lifts, per-student fluency &amp; the full Vault appear, then expands to School.</div>
+      <div class="flow-lane-hd"><span class="fl-name">🗝️ Paid Admin</span><span class="fl-tag paid">Paid</span></div>
+      <div class="fl-note">Converts at the gate — <b>one switch per hive, no trial</b>. The blur lifts: full Vault + admin. School is an umbrella that covers its teachers' hives.</div>
       <div class="flow-row">
         <span class="fstep gate" onclick="flowGo('hive-dashboard')">🔒 Hive Dashboard</span><span class="farr">→</span>
         <span class="fstep gate" onclick="flowGo('select-hive-size')">Select Hive Size</span><span class="farr">→</span>
         <span class="fstep paid" onclick="flowGo('edu-dashboard-classroom')">✅ Unlocked Dashboard</span><span class="farr">→</span>
         <span class="fstep paid" onclick="flowGo('hive-vault')">💎 Hive Vault</span><span class="farr">→</span>
-        <span class="fstep" onclick="flowGo('upgrade-school')">Upgrade: School</span><span class="farr">→</span>
+        <span class="fstep" onclick="flowGo('upgrade-school')">School umbrella</span><span class="farr">→</span>
         <span class="fstep paid" onclick="flowGo('edu-dashboard-school')">🏛️ School Dashboard</span>
       </div>
     </div>
 
-    <!-- PAID STUDENT -->
     <div class="flow-lane pstudent">
       <div class="flow-lane-hd"><span class="fl-name">🎒 Paid Student</span><span class="fl-tag paid">Paid</span></div>
-      <div class="fl-note">Same student experience — but in a paid hive: all game boards open and <b>Gym Stats unlock</b>, so they see their own analytics.</div>
+      <div class="fl-note">Same contained student — but in a paid hive: all boards open and <b>Gym Stats unlock</b> (their own self-insight). Hive IQ still personal; teacher sees the educational instruments, not the ladder.</div>
       <div class="flow-row">
         <span class="fstep start" onclick="flowGo('student-dashboard')">Student Dashboard</span><span class="farr">→</span>
         <span class="fstep" onclick="flowGo('learning-journeys')">🗺️ Learning Journeys</span><span class="farr">→</span>
@@ -1494,7 +1681,7 @@ body.m-flows #flows-view{display:block;}
       </div>
     </div>
 
-    <div class="strat-note" style="max-width:none;margin-top:1.4rem;"><b>Reading the lanes:</b> cyan steps are entry points, the amber <b>🔒 gate</b> is the single free→paid conversion moment, and green <b>✅ paid</b> steps are what unlocking reveals. Every player can become a teacher; every teacher converts through insight, not access.</div>
+    <div class="strat-note" style="max-width:none;margin-top:1.4rem;"><b>Reading the lanes:</b> cyan = entry; the amber <b>🔒 gate</b> is the single free→paid moment (one switch per hive); green <b>✅</b> = what unlocking reveals. Minors never roam — they're provisioned under a teacher or parent umbrella; the Admin role is identical whether it's a school or a family.</div>
 
     <div style="text-align:center;margin-top:1.8rem;">
       <button class="wbtn pri" onclick="setMode('wireframes')">▣ Open the wireframes →</button>
@@ -1516,6 +1703,7 @@ body.m-flows #flows-view{display:block;}
     <div class="sb-item" data-id="user-dashboard" onclick="jump('user-dashboard')"><div class="sb-dot" style="background:#22D3EE"></div>Free User Dashboard<span class="sb-check">✓</span></div>
     <div class="sb-item" data-id="clash-matchmaking" onclick="jump('clash-matchmaking')"><div class="sb-dot" style="background:#EC4899"></div>Hive Clash<span class="sb-check">✓</span></div>
     <div class="sb-item" data-id="clash-hub" onclick="jump('clash-hub')"><div class="sb-dot" style="background:#EC4899"></div>Clash Hub<span class="sb-check">✓</span></div>
+    <div class="sb-item" data-id="profile" onclick="jump('profile')"><div class="sb-dot" style="background:#22D3EE"></div>Profile<span class="sb-check">✓</span></div>
     <div class="sb-item" data-id="bot-difficulty" onclick="jump('bot-difficulty')"><div class="sb-dot" style="background:#10B981"></div>Play vs Bot<span class="sb-check">✓</span></div>
     <div class="sb-item" data-id="play-friend-menu" onclick="jump('play-friend-menu')"><div class="sb-dot" style="background:#22D3EE"></div>Play a Friend<span class="sb-check">✓</span></div>
     <div class="sb-item" data-id="join-game" onclick="jump('join-game')"><div class="sb-dot" style="background:#22D3EE"></div>Join a Game<span class="sb-check">✓</span></div>
@@ -1541,6 +1729,7 @@ body.m-flows #flows-view{display:block;}
   </div>
   <div class="sb-group">
     <div class="sb-group-label">Student Journey</div>
+    <div class="sb-item" data-id="join-hive" onclick="jump('join-hive')"><div class="sb-dot" style="background:#22D3EE"></div>Join a Hive<span class="sb-check">✓</span></div>
     <div class="sb-item" data-id="student-dashboard" onclick="jump('student-dashboard')"><div class="sb-dot" style="background:#22D3EE"></div>Student Home<span class="sb-check">✓</span></div>
     <div class="sb-item" data-id="learning-journeys" onclick="jump('learning-journeys')"><div class="sb-dot" style="background:#22D3EE"></div>Learning Journeys<span class="sb-check">✓</span></div>
     <div class="sb-item" data-id="hive-gym" onclick="jump('hive-gym')"><div class="sb-dot" style="background:#F59E0B"></div>Hive Gym<span class="sb-check">✓</span></div>
@@ -1677,6 +1866,19 @@ body.m-flows #flows-view{display:block;}
       <div class="rs-vs">Bob 340 · Dottie 290</div>
     </div>
     <div style="text-align:center;font-size:.82rem;color:var(--text-muted);margin-bottom:.95rem;">Claimed <b>14 hexes</b> · longest line <b>4</b> · won <b>3 of 5 rounds</b></div>
+    <div class="wcard amb">
+      <div class="wlabel" style="color:var(--amber);">🏆 Share your win</div>
+      <div style="background:var(--surface3);border:1px solid var(--border-light);border-radius:10px;padding:.6rem;text-align:center;margin-bottom:.6rem;">
+        <div style="font-size:.66rem;color:var(--text-muted);">Number Hive · result card</div>
+        <div style="font-weight:800;color:var(--amber-light);">Bob beat Dottie 340–290 🐝</div>
+      </div>
+      <div class="g4">
+        <div class="play-opt" style="padding:.55rem;"><div class="po-icon">💬</div><div class="po-name" style="font-size:.62rem;">Messages</div></div>
+        <div class="play-opt" style="padding:.55rem;"><div class="po-icon">🟢</div><div class="po-name" style="font-size:.62rem;">WhatsApp</div></div>
+        <div class="play-opt" style="padding:.55rem;"><div class="po-icon">🔗</div><div class="po-name" style="font-size:.62rem;">Copy link</div></div>
+        <div class="play-opt" style="padding:.55rem;"><div class="po-icon">⬛</div><div class="po-name" style="font-size:.62rem;">QR</div></div>
+      </div>
+    </div>
     <div class="wlabel">Keep playing</div>
     <div class="g2" style="margin-bottom:.85rem;">
       <div class="play-opt" onclick="goTo('first-game','anon')"><div class="po-icon">🔄</div><div class="po-name">Play Dottie again</div><div class="po-desc">Beat your score</div></div>
@@ -1791,10 +1993,10 @@ body.m-flows #flows-view{display:block;}
       <span class="wbadge wb-free" style="margin-left:auto;">Free</span>
     </div>
     <div class="hiveiq-bar">
-      <span class="hiq-badge">Hive IQ 1000</span>
+      <span class="hiq-badge">Hive IQ 742</span>
       <span class="hiq-rank">🐝 Worker Bee</span>
       <span class="hiq-meta">Moves only in Hive Clash</span>
-      <button class="ex-btn" style="margin-left:auto;font-size:.68rem;padding:.25rem .6rem;" onclick="goTo('clash-hub','registered')">📊 Stats</button>
+      <button class="ex-btn" style="margin-left:auto;font-size:.68rem;padding:.25rem .6rem;" onclick="goTo('profile','registered')">📊 Profile</button>
     </div>
     <div class="wcard" style="border-color:rgba(236,72,153,.4);background:linear-gradient(135deg,rgba(236,72,153,.1),rgba(139,92,246,.05));cursor:pointer;" onclick="goTo('clash-matchmaking','registered')">
       <div style="display:flex;align-items:center;gap:.9rem;">
@@ -1918,7 +2120,7 @@ body.m-flows #flows-view{display:block;}
     <div style="max-width:380px;width:100%;text-align:center;">
       <div style="font-size:2.2rem;margin-bottom:.4rem;">⚔</div>
       <div class="wh2">Finding an opponent…</div>
-      <div class="wsub">Matching you with a player near <b style="color:var(--pink-light);">Hive IQ 1000</b>.</div>
+      <div class="wsub">Matching you with a player near <b style="color:var(--pink-light);">Hive IQ 742</b>.</div>
       <div style="margin:1.1rem 0;display:flex;align-items:center;justify-content:center;gap:.5rem;">
         <div class="live-dot" style="background:var(--pink);"></div>
         <span style="font-size:.8rem;color:var(--text-muted);font-family:'DM Mono',monospace;">searching… 0:06</span>
@@ -1950,20 +2152,20 @@ body.m-flows #flows-view{display:block;}
       <button class="wbtn" style="background:var(--pink);color:#fff;" onclick="goTo('clash-matchmaking','registered')">Play ranked →</button>
     </div>
     <div class="hiveiq-bar" style="border-color:rgba(236,72,153,.3);">
-      <span class="hiq-badge" style="color:var(--pink-light);">Hive IQ 1000</span>
+      <span class="hiq-badge" style="color:var(--pink-light);">Hive IQ 742</span>
       <span class="hiq-rank">🐝 Worker Bee</span>
-      <span class="hiq-meta" style="margin-left:auto;">Peak 1042 · 27 ranked games</span>
+      <span class="hiq-meta" style="margin-left:auto;">Peak 781 · 27 ranked games</span>
     </div>
     <div class="wlabel">Recent ranked matches</div>
     <div class="wcard" style="padding:.75rem;">
       <div style="display:flex;justify-content:space-between;align-items:center;padding:.35rem 0;border-bottom:1px solid rgba(255,255,255,.04);">
-        <span style="font-size:.78rem;">vs maya_b (1012)</span><span style="font-size:.72rem;color:var(--green);font-weight:700;">Won</span><span style="font-size:.72rem;color:var(--green-light);font-family:'DM Mono',monospace;">+14</span>
+        <span style="font-size:.78rem;">vs maya_b (728)</span><span style="font-size:.72rem;color:var(--green);font-weight:700;">Won</span><span style="font-size:.72rem;color:var(--green-light);font-family:'DM Mono',monospace;">+31</span>
       </div>
       <div style="display:flex;justify-content:space-between;align-items:center;padding:.35rem 0;border-bottom:1px solid rgba(255,255,255,.04);">
-        <span style="font-size:.78rem;">vs Bee Bot (998)</span><span style="font-size:.72rem;color:var(--red);font-weight:700;">Lost</span><span style="font-size:.72rem;color:#FCA5A5;font-family:'DM Mono',monospace;">−11</span>
+        <span style="font-size:.78rem;">vs Bee Bot (760)</span><span style="font-size:.72rem;color:var(--red);font-weight:700;">Lost</span><span style="font-size:.72rem;color:#FCA5A5;font-family:'DM Mono',monospace;">−28</span>
       </div>
       <div style="display:flex;justify-content:space-between;align-items:center;padding:.35rem 0;">
-        <span style="font-size:.78rem;">vs leo99 (1005)</span><span style="font-size:.72rem;color:var(--green);font-weight:700;">Won</span><span style="font-size:.72rem;color:var(--green-light);font-family:'DM Mono',monospace;">+13</span>
+        <span style="font-size:.78rem;">vs leo99 (735)</span><span style="font-size:.72rem;color:var(--green);font-weight:700;">Won</span><span style="font-size:.72rem;color:var(--green-light);font-family:'DM Mono',monospace;">+30</span>
       </div>
     </div>
     <div class="g2">
@@ -1993,8 +2195,8 @@ body.m-flows #flows-view{display:block;}
       <div class="rs-vs">Alex 410 · Advanced AI 315</div>
     </div>
     <div class="hiveiq-bar">
-      <span class="hiq-badge">Hive IQ 1247</span>
-      <span class="hiq-delta">▲ +27</span>
+      <span class="hiq-badge">Hive IQ 742</span>
+      <span class="hiq-delta">▲ +30</span>
       <span class="hiq-rank">🐝 Worker Bee</span>
       <span class="hiq-meta" style="margin-left:auto;">School Rank #4 · ▲ 2</span>
     </div>
@@ -2556,7 +2758,7 @@ body.m-flows #flows-view{display:block;}
   <div class="sc">
     <div class="school-hdr">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem;">
-        <div><div class="wlabel" style="color:var(--purple-light);">School Admin</div><div class="wh2" style="margin-bottom:.1rem;">Westfield Primary School</div></div>
+        <div><div class="wlabel" style="color:var(--purple-light);">School · Super-Admin</div><div class="wh2" style="margin-bottom:.1rem;">Westfield Primary School</div></div>
         <span class="wbadge wb-pur">School Plan</span>
       </div>
       <div class="stats-row" style="margin-bottom:0;">
@@ -2567,7 +2769,8 @@ body.m-flows #flows-view{display:block;}
       </div>
     </div>
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.55rem;">
-      <div class="wlabel">Teachers</div>
+      <div class="wcard pur" style="display:flex;align-items:center;gap:.7rem;"><span style="font-size:1.1rem;">🏛️</span><div style="flex:1;font-size:.74rem;color:var(--text-muted);"><b style="color:var(--purple-light);">Super-Admin</b> — one school payment covers every teacher's hive; drill into any teacher's reports below.</div></div>
+    <div class="wlabel">Teachers</div>
       <button class="ex-btn" style="font-size:.68rem;padding:.25rem .65rem;">+ Add Teacher</button>
     </div>
     <div class="wcard" style="padding:.8rem;">
@@ -2759,7 +2962,7 @@ body.m-flows #flows-view{display:block;}
       <div class="stat"><div class="stat-v">10</div><div class="stat-k">Seats taken</div></div>
       <div class="stat"><div class="stat-v">2,674</div><div class="stat-k">Hive mins</div></div>
       <div class="stat"><div class="stat-v">429</div><div class="stat-k">Hive games</div></div>
-      <div class="stat"><div class="stat-v" style="color:var(--cyan);">1014</div><div class="stat-k">Class Hive IQ</div></div>
+      <div class="stat"><div class="stat-v">8</div><div class="stat-k">Active today</div></div>
     </div>
     <div class="wcard amb" style="display:flex;align-items:center;gap:.75rem;">
       <span style="font-size:1.3rem;">🔒</span>
@@ -2770,14 +2973,14 @@ body.m-flows #flows-view{display:block;}
     <div class="wcard" style="padding:.75rem;overflow-x:auto;">
       <table class="stbl">
         <thead>
-          <tr><th>Student</th><th>Username</th><th>Password</th><th>Fluency 🔒</th><th>Hive IQ</th><th>Points</th><th style="text-align:center;">Learning Journeys</th></tr>
+          <tr><th>Student</th><th>Username</th><th>Password</th><th>Fluency 🔒</th><th>Points</th><th style="text-align:center;">Learning Journeys</th></tr>
         </thead>
         <tbody>
-          <tr><td>Jesse Bear</td><td>jbb</td><td style="font-family:'DM Mono',monospace;">JH1064</td><td style="font-family:'DM Mono',monospace;color:var(--amber-light);font-weight:700;filter:blur(4px);">78</td><td style="font-family:'DM Mono',monospace;color:var(--cyan);">1012</td><td>206</td><td style="text-align:center;cursor:pointer;" onclick="goTo('learning-journeys','edu-free')">👁</td></tr>
-          <tr><td>Benjamin Choong</td><td>benchoong</td><td style="font-family:'DM Mono',monospace;">BC8275</td><td style="font-family:'DM Mono',monospace;color:var(--amber-light);font-weight:700;filter:blur(4px);">91</td><td style="font-family:'DM Mono',monospace;color:var(--cyan);">1044</td><td>476</td><td style="text-align:center;cursor:pointer;" onclick="goTo('learning-journeys','edu-free')">👁</td></tr>
-          <tr><td>Annika Harvey</td><td>bella12</td><td style="font-family:'DM Mono',monospace;">AH5858</td><td style="font-family:'DM Mono',monospace;color:var(--amber-light);font-weight:700;filter:blur(4px);">64</td><td style="font-family:'DM Mono',monospace;color:var(--cyan);">998</td><td>172</td><td style="text-align:center;cursor:pointer;" onclick="goTo('learning-journeys','edu-free')">👁</td></tr>
-          <tr><td>Reid Hogbin</td><td>hunter 7</td><td style="font-family:'DM Mono',monospace;">RH3490</td><td style="font-family:'DM Mono',monospace;color:var(--amber-light);font-weight:700;filter:blur(4px);">83</td><td style="font-family:'DM Mono',monospace;color:var(--cyan);">1027</td><td>358</td><td style="text-align:center;cursor:pointer;" onclick="goTo('learning-journeys','edu-free')">👁</td></tr>
-          <tr><td>Kat Joule</td><td>jack9th</td><td style="font-family:'DM Mono',monospace;">KJ4890</td><td style="font-family:'DM Mono',monospace;color:var(--amber-light);font-weight:700;filter:blur(4px);">55</td><td style="font-family:'DM Mono',monospace;color:var(--cyan);">965</td><td>158</td><td style="text-align:center;cursor:pointer;" onclick="goTo('learning-journeys','edu-free')">👁</td></tr>
+          <tr><td>Jesse Bear</td><td>jbb</td><td style="font-family:'DM Mono',monospace;">JH1064</td><td style="font-family:'DM Mono',monospace;color:var(--amber-light);font-weight:700;filter:blur(4px);">78</td><td>206</td><td style="text-align:center;cursor:pointer;" onclick="goTo('learning-journeys','edu-free')">👁</td></tr>
+          <tr><td>Benjamin Choong</td><td>benchoong</td><td style="font-family:'DM Mono',monospace;">BC8275</td><td style="font-family:'DM Mono',monospace;color:var(--amber-light);font-weight:700;filter:blur(4px);">91</td><td>476</td><td style="text-align:center;cursor:pointer;" onclick="goTo('learning-journeys','edu-free')">👁</td></tr>
+          <tr><td>Annika Harvey</td><td>bella12</td><td style="font-family:'DM Mono',monospace;">AH5858</td><td style="font-family:'DM Mono',monospace;color:var(--amber-light);font-weight:700;filter:blur(4px);">64</td><td>172</td><td style="text-align:center;cursor:pointer;" onclick="goTo('learning-journeys','edu-free')">👁</td></tr>
+          <tr><td>Reid Hogbin</td><td>hunter 7</td><td style="font-family:'DM Mono',monospace;">RH3490</td><td style="font-family:'DM Mono',monospace;color:var(--amber-light);font-weight:700;filter:blur(4px);">83</td><td>358</td><td style="text-align:center;cursor:pointer;" onclick="goTo('learning-journeys','edu-free')">👁</td></tr>
+          <tr><td>Kat Joule</td><td>jack9th</td><td style="font-family:'DM Mono',monospace;">KJ4890</td><td style="font-family:'DM Mono',monospace;color:var(--amber-light);font-weight:700;filter:blur(4px);">55</td><td>158</td><td style="text-align:center;cursor:pointer;" onclick="goTo('learning-journeys','edu-free')">👁</td></tr>
         </tbody>
       </table>
       <div style="padding:.5rem 0;font-size:.72rem;color:var(--text-dim);text-align:center;">+ 5 more students</div>
@@ -2946,6 +3149,11 @@ body.m-flows #flows-view{display:block;}
       <div style="flex:1;font-size:.78rem;"><b style="color:var(--amber-light);">Your teacher set:</b> Multiplication ×6 &amp; ×7 this week</div>
       <button class="ex-btn pri" style="font-size:.68rem;padding:.25rem .6rem;" onclick="goTo('learning-journeys','student')">Start →</button>
     </div>
+    <div class="wcard grn" style="display:flex;align-items:center;gap:.7rem;">
+      <span style="font-size:1.1rem;">📨</span>
+      <div style="flex:1;font-size:.76rem;">Proud of a win or a new badge? <b style="color:var(--green-light);">Share it with your teacher</b> — it stays inside your class.</div>
+      <button class="ex-btn grn" style="font-size:.66rem;flex-shrink:0;">Share to teacher</button>
+    </div>
     <div class="g2">
       <div class="wcard" style="cursor:pointer;" onclick="goTo('learning-journeys','student')">
         <div style="font-size:1.5rem;margin-bottom:.3rem;">🗺️</div>
@@ -3027,6 +3235,90 @@ body.m-flows #flows-view{display:block;}
   </div>
 </div>
 
+<!-- ════════════════════════════════════════════
+     PROFILE (personal hub)
+════════════════════════════════════════════ -->
+<div id="s-profile" class="screen">
+  <div class="app-nav">
+    <div class="app-logo"><div class="app-hex"></div>Number Hive</div>
+    <span class="wlink" style="margin-left:auto;font-size:.72rem;" onclick="goTo('user-dashboard','registered')">← Dashboard</span>
+    <div class="nav-avatar" style="margin-left:.6rem;">B</div>
+  </div>
+  <div class="sc">
+    <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.85rem;">
+      <div style="width:44px;height:44px;border-radius:50%;background:var(--surface3);border:2px solid var(--amber);display:flex;align-items:center;justify-content:center;font-size:1.2rem;">🐝</div>
+      <div><div style="font-size:1rem;font-weight:800;">Bob</div><div style="font-size:.72rem;color:var(--text-muted);">Larva · personal profile</div></div>
+      <span class="wbadge wb-free" style="margin-left:auto;">Free</span>
+    </div>
+    <div class="hiveiq-bar">
+      <span class="hiq-badge">Hive IQ 742</span>
+      <span class="hiq-rank">🐝 Worker Bee</span>
+      <span class="hiq-meta" style="margin-left:auto;">Peak 781 · personal &amp; private</span>
+    </div>
+    <div class="wlabel">Rival records</div>
+    <div class="wcard" style="padding:.75rem;">
+      <div class="trow"><div class="tav">🐝</div><div><div class="t-name">Dottie</div><div class="t-meta">Your first rival · Mild</div></div><div class="t-right"><span style="font-size:.74rem;color:var(--green);font-weight:700;">6W</span> <span style="font-size:.74rem;color:var(--text-dim);">·&nbsp;2L</span></div></div>
+      <div class="trow"><div class="tav">🐝</div><div><div class="t-name">Pip</div><div class="t-meta">Spicy</div></div><div class="t-right"><span style="font-size:.74rem;color:var(--green);font-weight:700;">1W</span> <span style="font-size:.74rem;color:var(--text-dim);">·&nbsp;3L</span></div></div>
+      <div class="trow"><div class="tav">🐝</div><div><div class="t-name">The Hexecutioner</div><div class="t-meta">Extreme</div></div><div class="t-right"><span style="font-size:.74rem;color:var(--text-dim);">0W</span> <span style="font-size:.74rem;color:var(--red);font-weight:700;">·&nbsp;4L</span></div></div>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;"><div class="wlabel">Achievements</div><span style="font-size:.7rem;color:var(--text-muted);">17 / 28 unlocked</span></div>
+    <div class="g4" style="margin-bottom:.85rem;">
+      <div class="play-opt" style="padding:.5rem;"><div class="po-icon">🥇</div><div class="po-name" style="font-size:.6rem;">First Win</div></div>
+      <div class="play-opt" style="padding:.5rem;"><div class="po-icon">🔥</div><div class="po-name" style="font-size:.6rem;">5 Streak</div></div>
+      <div class="play-opt" style="padding:.5rem;"><div class="po-icon">🧱</div><div class="po-name" style="font-size:.6rem;">Blocker</div></div>
+      <div class="play-opt" style="padding:.5rem;"><div class="po-icon">⚡</div><div class="po-name" style="font-size:.6rem;">4-move Win</div></div>
+      <div class="play-opt" style="padding:.5rem;"><div class="po-icon">🔷</div><div class="po-name" style="font-size:.6rem;">Squares</div></div>
+      <div class="play-opt" style="padding:.5rem;opacity:.45;"><div class="po-icon">🔒</div><div class="po-name" style="font-size:.6rem;">Comeback</div></div>
+      <div class="play-opt" style="padding:.5rem;opacity:.45;"><div class="po-icon">🔒</div><div class="po-name" style="font-size:.6rem;">Primes ×50</div></div>
+      <div class="play-opt" style="padding:.5rem;opacity:.45;"><div class="po-icon">🔒</div><div class="po-name" style="font-size:.6rem;">Beat Hex…</div></div>
+    </div>
+    <div class="wlabel">Lifetime stats</div>
+    <div class="stats-row">
+      <div class="stat"><div class="stat-v">27</div><div class="stat-k">Games</div></div>
+      <div class="stat"><div class="stat-v" style="color:var(--green);">63%</div><div class="stat-k">Win rate</div></div>
+      <div class="stat"><div class="stat-v">5</div><div class="stat-k">Best streak</div></div>
+      <div class="stat"><div class="stat-v">36</div><div class="stat-k">Blocks</div></div>
+    </div>
+    <div class="stats-row">
+      <div class="stat"><div class="stat-v">27</div><div class="stat-k">Squares</div></div>
+      <div class="stat"><div class="stat-v">34</div><div class="stat-k">Triangles</div></div>
+      <div class="stat"><div class="stat-v">18</div><div class="stat-k">Primes</div></div>
+      <div class="stat"><div class="stat-v">0</div><div class="stat-k">Comebacks</div></div>
+    </div>
+  </div>
+  <div class="exits">
+    <span class="ex-label">Go to</span>
+    <button class="ex-btn pri" onclick="goTo('clash-matchmaking','registered')">⚔ Hive Clash</button>
+    <button class="ex-btn" onclick="goTo('user-dashboard','registered')">← Dashboard</button>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     JOIN A HIVE (student enters class code)
+════════════════════════════════════════════ -->
+<div id="s-join-hive" class="screen">
+  <div class="app-nav">
+    <div class="app-logo"><div class="app-hex"></div>Number Hive</div>
+    <span class="wlink" style="margin-left:auto;font-size:.72rem;" onclick="goTo('landing','anon')">← Back</span>
+  </div>
+  <div class="sc center">
+    <div style="max-width:360px;width:100%;text-align:center;">
+      <div style="font-size:2rem;margin-bottom:.3rem;">🐝</div>
+      <div class="wh2">Join your class</div>
+      <div class="wsub">Enter the code your teacher gave you. You'll join their hive under their care.</div>
+      <input class="winput" placeholder="e.g. HV-4729" value="" style="text-align:center;font-family:'DM Mono',monospace;font-size:1.1rem;letter-spacing:.15em;">
+      <button class="wbtn grn full" onclick="goTo('first-game','student')">Join class →</button>
+      <div style="font-size:.66rem;color:var(--text-dim);margin-top:.7rem;">No email needed — your teacher sets you up.</div>
+    </div>
+  </div>
+  <div class="exits">
+    <span class="ex-label">Go to</span>
+    <button class="ex-btn pri" onclick="goTo('first-game','student')">▶ Join → First Game</button>
+    <div class="ex-sep"></div>
+    <button class="ex-btn dim" onclick="goTo('landing','anon')">← Landing</button>
+  </div>
+</div>
+
       </div><!-- /device-viewport -->
     </div><!-- /device-frame -->
   </div><!-- /device-wrap -->
@@ -3060,6 +3352,8 @@ const SCREENS = {
   'bot-difficulty':        { url:'numberhive.app/play/bot',         bc:['Dashboard','Play vs Bot'] },
   'play-friend-menu':      { url:'numberhive.app/play/friend',      bc:['Dashboard','Play a Friend'] },
   'join-game':             { url:'numberhive.app/play/join',        bc:['Dashboard','Play a Friend','Join'] },
+  'profile':               { url:'numberhive.app/profile',          bc:['Dashboard','Profile'] },
+  'join-hive':             { url:'numberhive.app/join',             bc:['Join a Hive'] },
   'my-hives':              { url:'numberhive.app/edu/hives',        bc:['Educator','My Hives'] },
   'create-hive':           { url:'numberhive.app/edu/hives/new',    bc:['Educator','My Hives','Create'] },
   'project-class':         { url:'numberhive.app/edu/hive/join',    bc:['Educator','Add Students'] },
@@ -3160,7 +3454,7 @@ function render() {
 }
 
 /* ── Mode switching ── */
-const MODES = ['strategy', 'pathways', 'flows', 'wireframes'];
+const MODES = ['strategy', 'model', 'pathways', 'flows', 'wireframes'];
 function flowGo(id){ setMode('wireframes'); jump(id); }
 
 /* ── Static game canvas (recreation of the live Number Hive board) ── */
@@ -3179,6 +3473,7 @@ function gameCanvasHTML(opp){
     <div class="gc-prompt">TAP LEFT OR RIGHT TO START</div>
     <div class="gc-sel">${grid}<span class="gc-x">×</span>${grid}</div>
     <div class="gc-eq">1 × 1 = 1</div>
+    <div style="text-align:center;font-size:.55rem;color:#7d8ea3;margin-top:.35rem;letter-spacing:.04em;">number facts &amp; representations pop as you play</div>
     <div class="gc-bees"><span>🐝🐝🐝</span><span>🐝🐝🐝</span></div>
   </div>`;
 }
