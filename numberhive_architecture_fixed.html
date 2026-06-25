@@ -313,13 +313,14 @@ body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(-
 .ms-btn.act{background:var(--amber);color:#07111E;}
 
 /* views — four modes */
-#wireframes-view,#strategy-view,#pathways-view,#flows-view,#model-view{display:none;}
-#strategy-view,#pathways-view,#flows-view,#model-view{height:calc(100vh - 46px);overflow:auto;background:radial-gradient(1200px 600px at 50% -10%,rgba(245,158,11,.05),transparent 60%),var(--bg);}
+#wireframes-view,#strategy-view,#pathways-view,#flows-view,#model-view,#matrix-view{display:none;}
+#strategy-view,#pathways-view,#flows-view,#model-view,#matrix-view{height:calc(100vh - 46px);overflow:auto;background:radial-gradient(1200px 600px at 50% -10%,rgba(245,158,11,.05),transparent 60%),var(--bg);}
 body.m-wireframes #wireframes-view{display:flex;}
 body.m-strategy #strategy-view{display:block;}
 body.m-pathways #pathways-view{display:block;}
 body.m-flows #flows-view{display:block;}
 body.m-model #model-view{display:block;}
+body.m-matrix #matrix-view{display:block;}
 
 /* ════════ USER FLOWS (swimlanes) ════════ */
 .flow-canvas{max-width:1240px;margin:0 auto;padding:1.5rem 1.6rem 4rem;}
@@ -772,6 +773,66 @@ body.m-model #model-view{display:block;}
 .later-tag{background:rgba(122,144,168,.16);color:var(--text-muted);}
 @media(max-width:880px){.role2-grid{grid-template-columns:1fr;}}
 .flow-lane.family{border-left-color:var(--orange);}
+
+/* ════════ FEATURE MATRIX TAB ════════ */
+#matrix-view .mx-head{text-align:center;padding:1.6rem 1.6rem 1.2rem;border-bottom:1px solid var(--border);}
+#matrix-view .mx-badge{display:inline-block;background:linear-gradient(135deg,var(--amber),#D97706);color:#07111E;font-size:.6rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:.32rem 1rem;border-radius:99px;margin-bottom:.9rem;}
+#matrix-view .mx-head h1{font-size:1.7rem;font-weight:800;letter-spacing:-.02em;margin-bottom:.4rem;}
+#matrix-view .mx-tag{font-size:.9rem;color:var(--text-muted);max-width:660px;margin:0 auto;line-height:1.5;}
+#matrix-view .mx-tag b{color:var(--amber-light);font-weight:600;}
+#matrix-view .mx-controls{max-width:1180px;margin:0 auto;padding:1.2rem 1.6rem 0;display:flex;flex-wrap:wrap;gap:.8rem;align-items:center;justify-content:space-between;}
+#matrix-view .mx-cgroup{display:flex;flex-wrap:wrap;gap:.45rem;align-items:center;}
+#matrix-view .mx-clabel{font-size:.58rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--text-dim);margin-right:.15rem;}
+#matrix-view .mx-chip{background:var(--surface);border:1px solid var(--border);color:var(--text-muted);font-family:inherit;font-size:.72rem;font-weight:600;padding:.38rem .8rem;border-radius:99px;cursor:pointer;transition:all .15s;}
+#matrix-view .mx-chip:hover{color:var(--text);border-color:var(--border-light);}
+#matrix-view .mx-chip.active{background:rgba(245,158,11,.12);border-color:var(--amber);color:var(--amber-light);}
+#matrix-view .mx-search{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:.42rem .8rem;color:var(--text);font-family:inherit;font-size:.76rem;outline:none;min-width:190px;}
+#matrix-view .mx-toggle-wrap{display:flex;align-items:center;gap:.5rem;font-size:.72rem;color:var(--text-muted);cursor:pointer;user-select:none;}
+#matrix-view .mx-toggle{width:34px;height:19px;border-radius:99px;background:var(--surface3);border:1px solid var(--border);position:relative;transition:background .2s;flex-shrink:0;}
+#matrix-view .mx-toggle::after{content:'';position:absolute;top:1px;left:1px;width:15px;height:15px;border-radius:50%;background:var(--text-dim);transition:all .2s;}
+#matrix-view .mx-toggle-wrap.on .mx-toggle{background:rgba(245,158,11,.25);border-color:var(--amber);}
+#matrix-view .mx-toggle-wrap.on .mx-toggle::after{left:16px;background:var(--amber);}
+#matrix-view .mx-toggle-wrap.on{color:var(--amber-light);}
+#matrix-view .mx-wrap{max-width:1180px;margin:1.2rem auto 0;padding:0 1.6rem;}
+#matrix-view .mx-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden;}
+#matrix-view .mx-scroll{overflow-x:auto;}
+#matrix-view table.mx-table{width:100%;min-width:860px;border-collapse:collapse;}
+#matrix-view table.mx-table thead th{position:sticky;top:0;z-index:3;padding:0;}
+#matrix-view .th-inner{padding:.8rem .85rem .9rem;text-align:center;border-bottom:1px solid var(--border);}
+#matrix-view .th-feat .th-inner{text-align:left;background:var(--surface2);}
+#matrix-view table.mx-table th:first-child{text-align:left;width:28%;}
+#matrix-view .th-feat .th-eyebrow{font-size:.62rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);}
+#matrix-view .tier-th{cursor:pointer;transition:opacity .15s;}
+#matrix-view .tier-th .th-world{font-size:.54rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;opacity:.85;}
+#matrix-view .tier-th .th-name{font-size:.84rem;font-weight:800;margin-top:.12rem;}
+#matrix-view .tier-th .th-price{font-family:'DM Mono',monospace;font-size:.6rem;margin-top:.18rem;opacity:.75;}
+#matrix-view .t-anon .th-inner{background:rgba(71,85,105,.14);} #matrix-view .t-anon .th-world,#matrix-view .t-anon .th-name{color:#94A3B8;}
+#matrix-view .t-reg .th-inner{background:rgba(34,211,238,.08);} #matrix-view .t-reg .th-world{color:var(--cyan);} #matrix-view .t-reg .th-name{color:#A5F3FC;}
+#matrix-view .t-free .th-inner{background:rgba(16,185,129,.08);} #matrix-view .t-free .th-world{color:var(--green);} #matrix-view .t-free .th-name{color:var(--green-light);}
+#matrix-view .t-class .th-inner{background:rgba(59,130,246,.09);} #matrix-view .t-class .th-world{color:var(--blue);} #matrix-view .t-class .th-name{color:var(--blue-light);}
+#matrix-view .t-school .th-inner{background:rgba(139,92,246,.09);} #matrix-view .t-school .th-world{color:var(--purple);} #matrix-view .t-school .th-name{color:var(--purple-light);}
+#matrix-view .world-divider{border-left:2px solid var(--border-light)!important;}
+#matrix-view tr.cat-row td{background:rgba(255,255,255,.025);padding:.5rem 1rem;font-size:.6rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);}
+#matrix-view tr.feat-row td{padding:0;border-bottom:1px solid rgba(255,255,255,.04);}
+#matrix-view tr.feat-row .cell{padding:.55rem .85rem;text-align:center;font-size:.8rem;}
+#matrix-view tr.feat-row .cell.feat-name{text-align:left;color:var(--text);font-weight:500;}
+#matrix-view tr.feat-row .cell.feat-name .fn-note{display:block;font-size:.68rem;color:var(--text-dim);font-weight:400;margin-top:.1rem;}
+#matrix-view tr.feat-row:hover .cell{background:rgba(255,255,255,.018);}
+#matrix-view .mk-yes{color:var(--green);font-size:1rem;font-weight:700;}
+#matrix-view .mk-yes .mk-q{display:block;font-size:.56rem;color:var(--text-dim);font-weight:500;margin-top:.05rem;}
+#matrix-view .mk-lock{color:rgba(255,255,255,.26);font-size:.85rem;}
+#matrix-view .mk-na{color:rgba(255,255,255,.1);}
+#matrix-view table.mx-table.focusing .cell:not(.focus-col):not(.feat-name){opacity:.28;}
+#matrix-view table.mx-table.focusing .tier-th:not(.focus-col){opacity:.4;}
+#matrix-view table.mx-table.show-unlocks .cell.first-unlock{background:rgba(245,158,11,.1);box-shadow:inset 0 0 0 1px rgba(245,158,11,.35);}
+#matrix-view .mx-legend{display:flex;gap:1.3rem;flex-wrap:wrap;padding:.9rem 1.3rem;border-top:1px solid var(--border);font-size:.72rem;color:var(--text-muted);align-items:center;}
+#matrix-view .mx-legend span{display:inline-flex;align-items:center;gap:.4rem;}
+#matrix-view .mx-empty{padding:2.2rem;text-align:center;color:var(--text-dim);font-size:.85rem;display:none;}
+#matrix-view .mx-ins-strip{max-width:1180px;margin:1.2rem auto 3rem;padding:0 1.6rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+#matrix-view .mx-ins{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:10px;padding:1rem 1.1rem;}
+#matrix-view .mx-ins-label{font-size:.6rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-bottom:.35rem;}
+#matrix-view .mx-ins-text{font-size:.8rem;color:var(--text);line-height:1.5;}
+@media(max-width:800px){#matrix-view .mx-ins-strip{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
@@ -783,6 +844,7 @@ body.m-model #model-view{display:block;}
   <div class="mode-switch">
     <button class="ms-btn act" id="ms-strategy" onclick="setMode('strategy')">◆ Strategy</button>
     <button class="ms-btn" id="ms-model" onclick="setMode('model')">$ Model</button>
+    <button class="ms-btn" id="ms-matrix" onclick="setMode('matrix')">▦ Matrix</button>
     <button class="ms-btn" id="ms-pathways" onclick="setMode('pathways')">⌥ Pathways</button>
     <button class="ms-btn" id="ms-flows" onclick="setMode('flows')">⇄ User Flows</button>
     <button class="ms-btn" id="ms-wireframes" onclick="setMode('wireframes')">▣ Wireframes</button>
@@ -1318,6 +1380,64 @@ body.m-model #model-view{display:block;}
     <div style="text-align:center;margin-top:2.4rem;">
       <button class="wbtn pri" onclick="setMode('pathways')">⌥ See the ecosystem map →</button>
     </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     FEATURE / PRODUCT MATRIX VIEW
+════════════════════════════════════════════ -->
+<div id="matrix-view">
+  <div class="mx-head">
+    <div class="mx-badge">Product Matrix v2</div>
+    <h1>Feature / Product Matrix</h1>
+    <div class="mx-tag">Every feature across the <b>Player</b> and <b>Admin</b> tiers — one world, umbrella-contained. Gameplay &amp; data generation are free; you pay to <b>see</b> and to <b>manage</b>.</div>
+  </div>
+  <div class="mx-controls">
+    <div class="mx-cgroup" id="mx-cats">
+      <span class="mx-clabel">Category</span>
+      <button class="mx-chip active" data-cat="all">All</button>
+      <button class="mx-chip" data-cat="Gameplay">Gameplay</button>
+      <button class="mx-chip" data-cat="Identity &amp; Persistence">Identity</button>
+      <button class="mx-chip" data-cat="Sharing &amp; Growth">Sharing</button>
+      <button class="mx-chip" data-cat="Run a Hive (Admin)">Hives</button>
+      <button class="mx-chip" data-cat="Insight (the gate)">Insight</button>
+      <button class="mx-chip" data-cat="Administration">Admin</button>
+    </div>
+    <div class="mx-cgroup">
+      <input type="text" class="mx-search" id="mx-search" placeholder="Search features…">
+      <div class="mx-toggle-wrap" id="mx-unlock"><div class="mx-toggle"></div>Highlight unlock points</div>
+    </div>
+  </div>
+  <div class="mx-wrap">
+    <div class="mx-card">
+      <div class="mx-scroll">
+        <table class="mx-table" id="mx-table">
+          <thead>
+            <tr>
+              <th class="th-feat"><div class="th-inner"><span class="th-eyebrow">Feature</span></div></th>
+              <th class="tier-th t-anon" data-col="0"><div class="th-inner"><div class="th-world">Player</div><div class="th-name">Anonymous</div><div class="th-price">no account</div></div></th>
+              <th class="tier-th t-reg" data-col="1"><div class="th-inner"><div class="th-world">Player</div><div class="th-name">Registered</div><div class="th-price">free · account</div></div></th>
+              <th class="tier-th t-free world-divider" data-col="2"><div class="th-inner"><div class="th-world">Admin</div><div class="th-name">Free Admin</div><div class="th-price">free · data hidden</div></div></th>
+              <th class="tier-th t-class" data-col="3"><div class="th-inner"><div class="th-world">Admin</div><div class="th-name">Paid Admin</div><div class="th-price">Single→Class · data shown</div></div></th>
+              <th class="tier-th t-school" data-col="4"><div class="th-inner"><div class="th-world">Admin</div><div class="th-name">School</div><div class="th-price">super-admin</div></div></th>
+            </tr>
+          </thead>
+          <tbody id="mx-body"></tbody>
+        </table>
+      </div>
+      <div class="mx-empty" id="mx-empty">No features match your search.</div>
+      <div class="mx-legend">
+        <span><span class="mk-yes">✓</span> Available</span>
+        <span><span class="mk-lock">🔒</span> Data exists — unlocks at a higher tier</span>
+        <span><span class="mk-na">—</span> Not applicable</span>
+        <span style="margin-left:auto;color:var(--text-dim);">Tip: click a tier header to focus its column</span>
+      </div>
+    </div>
+  </div>
+  <div class="mx-ins-strip">
+    <div class="mx-ins"><div class="mx-ins-label">The gate</div><div class="mx-ins-text">One boolean per hive: subscribed → analytics shown. You pay to <em>see</em> and to <em>manage</em> — never to play.</div></div>
+    <div class="mx-ins"><div class="mx-ins-label">Silent data</div><div class="mx-ins-text">Data accrues free from day one. The subscription unlocks the view (🔒), not the collection.</div></div>
+    <div class="mx-ins"><div class="mx-ins-label">One world, umbrella-contained</div><div class="mx-ins-text">Public play and the school layer are one world. Minors are contained under a teacher or parent umbrella — the only boundary is consent, not gameplay.</div></div>
   </div>
 </div>
 
@@ -3454,7 +3574,7 @@ function render() {
 }
 
 /* ── Mode switching ── */
-const MODES = ['strategy', 'model', 'pathways', 'flows', 'wireframes'];
+const MODES = ['strategy', 'model', 'matrix', 'pathways', 'flows', 'wireframes'];
 function flowGo(id){ setMode('wireframes'); jump(id); }
 
 /* ── Static game canvas (recreation of the live Number Hive board) ── */
@@ -3582,10 +3702,76 @@ function buildGrowthEngine() {
   });
 }
 
+/* ── Feature Matrix data + builder ── */
+const MX_DATA=[
+  {cat:'Gameplay',features:[
+    {name:'Play vs Bot (Mild→Extreme)',note:'Single-player vs the bot at any level',marks:['y','y','y','y','y']},
+    {name:'Play & Pass (one device)',note:'Two players share a device',marks:['na','y','y','y','y']},
+    {name:'Play a Friend (host / join)',note:'Invite by link, or join a code',marks:['na','y','y','y','y']},
+    {name:'Hive Clash (ranked)',note:'ELO matchmaking, one shared pool, no chat',marks:['na','y',['q','teacher toggle'],['q','teacher toggle'],['q','teacher toggle']]},
+    {name:'In-play representations + number-fact delight',note:'Arrays, area model, Fibonacci/primes — taught in play',marks:['y','y','y','y','y']},
+    {name:'Compete within the class hive',note:'Students play each other inside the hive',marks:['na','na','y','y','y']},
+  ]},
+  {cat:'Identity & Persistence',features:[
+    {name:'Instant play (no sign-up)',note:'No account, email or registration',marks:['y','na','na','na','na']},
+    {name:'Persistent progress',note:'Stats, history & progress saved',marks:['na','y','y','y','y']},
+    {name:'Account-level Hive IQ',note:'Personal ELO — never shown to an admin',marks:['na','y','y','y','y']},
+    {name:'Personal profile (rivals, achievements)',note:'Rival records, achievements, lifetime stats',marks:['na','y','y','y','y']},
+    {name:'Contained student identity',note:'Initials + hive code, no email, under an umbrella',marks:['na','na','y','y','y']},
+  ]},
+  {cat:'Sharing & Growth',features:[
+    {name:'Share-your-win card (public)',note:'Viral result card to Messages / WhatsApp',marks:['na','y','na','na','na']},
+    {name:'Share win to teacher',note:'Contained — students share inside the class only',marks:['na','na','y','y','y']},
+  ]},
+  {cat:'Run a Hive (Admin)',features:[
+    {name:'Create a hive',note:'Name only — sits Inactive until unlocked',marks:['na','na',['q','free'],['q','by seat bracket'],['q','unlimited']]},
+    {name:'Students join via code',note:'Provisioned under the admin umbrella',marks:['na','na','y','y','y']},
+    {name:'Super-admin (sub-admins)',note:'Manage many teachers under one school',marks:['na','na','na','na','y']},
+  ]},
+  {cat:'Insight (the gate)',features:[
+    {name:'Data collected (silent)',note:'Competency + mindset accrue from day one',marks:['na','na',['q','blurred'],'y','y']},
+    {name:'Per-student fluency + Buzz reports',note:'Efficacy, progress, speed',marks:['na','na','lock','y','y']},
+    {name:'Mindset surveys',note:'Confidence, self-efficacy, attitude, growth',marks:['na','na','lock','y','y']},
+    {name:'Heat maps + growth over time',note:'Fact-level gaps, cohort trends',marks:['na','na','lock','y','y']},
+    {name:'Cross-class / cohort reporting',note:'Compare classes & year groups',marks:['na','na','lock','lock','y']},
+  ]},
+  {cat:'Administration',features:[
+    {name:'Assign skills · competitions · export',note:'Classroom tools',marks:['na','na','na','y','y']},
+    {name:'School dashboard (usage, roll-ups)',note:'All teachers, seats, activity',marks:['na','na','na','na','y']},
+  ]},
+];
+function buildMatrix(){
+  const body=document.getElementById('mx-body'); if(!body||body.dataset.built) return; body.dataset.built='1';
+  const mk=m=>{let c=m,q='';if(Array.isArray(m)){c=m[0];q=m[1];} if(c==='y')return '<span class="mk-yes">✓</span>'; if(c==='q')return '<span class="mk-yes">✓<span class="mk-q">'+q+'</span></span>'; if(c==='lock')return '<span class="mk-lock">🔒</span>'; return '<span class="mk-na">—</span>';};
+  const av=m=>{const c=Array.isArray(m)?m[0]:m;return c==='y'||c==='q';};
+  MX_DATA.forEach(g=>{
+    const cr=document.createElement('tr');cr.className='cat-row';cr.dataset.cat=g.cat;cr.innerHTML='<td colspan="6">'+g.cat+'</td>';body.appendChild(cr);
+    g.features.forEach(f=>{
+      const tr=document.createElement('tr');tr.className='feat-row';tr.dataset.cat=g.cat;tr.dataset.name=f.name.toLowerCase();
+      const fu=f.marks.findIndex(av);
+      let cells='<td class="cell feat-name">'+f.name+'<span class="fn-note">'+f.note+'</span></td>';
+      f.marks.forEach((m,i)=>{cells+='<td class="cell'+(i===2?' world-divider':'')+(i===fu?' first-unlock':'')+'" data-col="'+i+'">'+mk(m)+'</td>';});
+      tr.innerHTML=cells;body.appendChild(tr);
+    });
+  });
+  const table=document.getElementById('mx-table'), search=document.getElementById('mx-search');
+  let activeCat='all';
+  function applyF(){const q=search.value.trim().toLowerCase();let any=false;
+    document.querySelectorAll('#matrix-view tr.feat-row').forEach(r=>{const ok=(activeCat==='all'||r.dataset.cat===activeCat)&&(!q||r.dataset.name.includes(q));r.style.display=ok?'':'none';if(ok)any=true;});
+    document.querySelectorAll('#matrix-view tr.cat-row').forEach(cr=>{const catOk=activeCat==='all'||cr.dataset.cat===activeCat;let has=false,n=cr.nextElementSibling;while(n&&!n.classList.contains('cat-row')){if(n.classList.contains('feat-row')&&n.style.display!=='none')has=true;n=n.nextElementSibling;}cr.style.display=(catOk&&has)?'':'none';});
+    document.getElementById('mx-empty').style.display=any?'none':'block';}
+  document.querySelectorAll('#mx-cats .mx-chip').forEach(ch=>ch.addEventListener('click',()=>{document.querySelectorAll('#mx-cats .mx-chip').forEach(c=>c.classList.remove('active'));ch.classList.add('active');activeCat=ch.dataset.cat;applyF();}));
+  search.addEventListener('input',applyF);
+  let fc=null;
+  document.querySelectorAll('#matrix-view .tier-th').forEach(th=>th.addEventListener('click',()=>{const col=th.dataset.col;if(fc===col){table.classList.remove('focusing');document.querySelectorAll('#matrix-view .focus-col').forEach(e=>e.classList.remove('focus-col'));fc=null;return;}fc=col;table.classList.add('focusing');document.querySelectorAll('#matrix-view .tier-th').forEach(x=>x.classList.toggle('focus-col',x.dataset.col===col));document.querySelectorAll('#matrix-view td.cell[data-col]').forEach(c=>c.classList.toggle('focus-col',c.dataset.col===col));}));
+  const ut=document.getElementById('mx-unlock');ut.addEventListener('click',()=>{ut.classList.toggle('on');table.classList.toggle('show-unlocks',ut.classList.contains('on'));});
+}
+
 document.body.classList.add('m-strategy');
 buildFlywheel();
 buildGrowthEngine();
 buildGameBoards();
+buildMatrix();
 render();
 </script>
 </body>
