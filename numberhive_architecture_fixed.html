@@ -796,11 +796,12 @@ body.m-matrix #matrix-view{display:block;}
 #matrix-view .mx-wrap{max-width:1180px;margin:1.2rem auto 0;padding:0 1.6rem;}
 #matrix-view .mx-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden;}
 #matrix-view .mx-scroll{overflow-x:auto;}
-#matrix-view table.mx-table{width:100%;min-width:860px;border-collapse:collapse;}
+#matrix-view table.mx-table{width:100%;min-width:860px;border-collapse:collapse;table-layout:fixed;}
 #matrix-view table.mx-table thead th{position:sticky;top:0;z-index:3;padding:0;}
 #matrix-view .th-inner{padding:.8rem .85rem .9rem;text-align:center;border-bottom:1px solid var(--border);}
 #matrix-view .th-feat .th-inner{text-align:left;background:var(--surface2);}
-#matrix-view table.mx-table th:first-child{text-align:left;width:28%;}
+#matrix-view table.mx-table th:first-child{text-align:left;width:30%;}
+#matrix-view tr.feat-row .cell.feat-name{width:30%;}
 #matrix-view .th-feat .th-eyebrow{font-size:.62rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);}
 #matrix-view .tier-th{cursor:pointer;transition:opacity .15s;}
 #matrix-view .tier-th .th-world{font-size:.54rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;opacity:.85;}
@@ -1412,6 +1413,7 @@ body.m-matrix #matrix-view{display:block;}
     <div class="mx-card">
       <div class="mx-scroll">
         <table class="mx-table" id="mx-table">
+          <colgroup><col style="width:26%"><col style="width:14.8%"><col style="width:14.8%"><col style="width:14.8%"><col style="width:14.8%"><col style="width:14.8%"></colgroup>
           <thead>
             <tr>
               <th class="th-feat"><div class="th-inner"><span class="th-eyebrow">Feature</span></div></th>
