@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Number Hive — 9-Month Bridge · Game Plan</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0B1120; --surface:#151D2E; --surface2:#1C2740; --border:#2A3A52; --border-light:#374968;
+  --text:#E8EDF5; --muted:#8896AE; --dim:#5A6B85;
+  --amber:#F59E0B; --amber-light:#FCD34D;
+  --green:#10B981; --green-light:#6EE7B7; --cyan:#22D3EE; --red:#EF4444; --purple:#8B5CF6;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;padding:2.5rem 1.25rem 5rem;}
+.wrap{max-width:820px;margin:0 auto;}
+.badge{display:inline-block;background:linear-gradient(135deg,var(--amber),#D97706);color:#0B1120;font-size:.6rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:.32rem 1rem;border-radius:99px;margin-bottom:1.1rem;}
+h1{font-size:2rem;font-weight:800;letter-spacing:-.025em;line-height:1.15;margin-bottom:.5rem;}
+.sub{color:var(--muted);font-size:.92rem;margin-bottom:.4rem;}
+.sub code{font-family:'DM Mono',monospace;font-size:.82rem;color:var(--amber-light);}
+hr{border:none;border-top:1px solid var(--border);margin:2rem 0;}
+h2{font-size:1.18rem;font-weight:800;letter-spacing:-.015em;margin:2.2rem 0 .9rem;display:flex;align-items:center;gap:.55rem;}
+h2 .k{font-size:.6rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:.18rem .45rem;}
+h3{font-size:.95rem;font-weight:800;margin:1.3rem 0 .5rem;color:var(--amber-light);}
+p{margin-bottom:.8rem;color:var(--text);}
+.lead{font-size:1.05rem;}
+.muted{color:var(--muted);}
+b,strong{color:#fff;font-weight:700;}
+ul{list-style:none;margin:.3rem 0 .9rem;}
+li{position:relative;padding-left:1.1rem;margin-bottom:.42rem;color:var(--muted);}
+li::before{content:'';position:absolute;left:0;top:.62rem;width:5px;height:5px;border-radius:50%;background:var(--amber);opacity:.65;}
+li b{color:var(--text);}
+li ul{margin:.4rem 0 .2rem;}
+.callout{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:0 10px 10px 0;padding:.85rem 1.1rem;margin:1rem 0;font-size:.95rem;color:var(--text);}
+.callout b{color:var(--amber-light);}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.3rem;margin:1rem 0;}
+table{width:100%;border-collapse:collapse;margin:.8rem 0 1.1rem;font-size:.9rem;}
+th,td{text-align:left;padding:.6rem .8rem;border-bottom:1px solid var(--border);}
+th{font-size:.64rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);background:var(--surface2);}
+td:last-child,th:last-child{text-align:right;}
+tr:last-child td{border-bottom:none;}
+code{font-family:'DM Mono',monospace;font-size:.84rem;background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:.08rem .35rem;color:var(--amber-light);}
+.tw{display:flex;flex-direction:column;gap:.5rem;margin:.6rem 0 1rem;}
+.tw-row{display:flex;gap:.7rem;align-items:flex-start;background:var(--surface);border:1px solid var(--border);border-radius:9px;padding:.7rem .9rem;}
+.tw-row.g{border-left:3px solid var(--green);}
+.tw-row.a{border-left:3px solid var(--amber);}
+.tw-row.r{border-left:3px solid var(--red);}
+.tw-row .dot{font-size:1rem;flex-shrink:0;}
+.tw-row .t{font-size:.86rem;}
+.tw-row .t b{color:#fff;}
+.curve{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin:.7rem 0 1rem;}
+@media(max-width:620px){.curve{grid-template-columns:1fr;}}
+.curve .c{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:.85rem 1rem;}
+.curve .c.hit{border-top:3px solid var(--green);}
+.curve .c.floor{border-top:3px solid var(--dim);}
+.curve .c h4{font-size:.82rem;font-weight:800;margin-bottom:.5rem;}
+.curve .c .row{display:flex;justify-content:space-between;font-size:.82rem;padding:.18rem 0;color:var(--muted);}
+.curve .c .row b{font-family:'DM Mono',monospace;color:var(--text);}
+.foot{margin-top:2.4rem;padding-top:1.2rem;border-top:1px solid var(--border);font-size:.78rem;color:var(--dim);}
+.seq{position:relative;padding-left:1.4rem;margin:.5rem 0 1rem;}
+.seq::before{content:'';position:absolute;left:5px;top:.4rem;bottom:.4rem;width:2px;background:var(--border-light);}
+.seq .s{position:relative;margin-bottom:.85rem;}
+.seq .s::before{content:'';position:absolute;left:-1.4rem;top:.45rem;width:9px;height:9px;border-radius:50%;background:var(--amber);border:2px solid var(--bg);}
+.seq .s .w{font-size:.7rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--amber);}
+.seq .s .d{font-size:.88rem;color:var(--muted);}
+.seq .s .d b{color:var(--text);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="badge">Number Hive · 9-Month Bridge</div>
+  <h1>Game Plan <span style="color:var(--dim);font-weight:600;font-size:1.1rem;">(loose)</span></h1>
+  <p class="sub">For James. Working draft — the full model, wireframes, flows &amp; matrix live in the applet (<code>numberhive_architecture_fixed.html</code>) + the model summary.</p>
+
+  <hr>
+
+  <h2><span class="k">01</span> The bet, in one line</h2>
+  <p class="lead"><b>The product is loved; the funnel is broken.</b> Build a free, viral, play-first <b>top-of-funnel</b> that lets anyone — especially teachers — experience the magic in two minutes, and <b>prove it can acquire at scale before we build the rest.</b></p>
+  <div class="callout">If we can't get a lot of users through the free B2C mouth, nothing else matters. So we test that first, cheaply.</div>
+
+  <h2><span class="k">02</span> Why this, why now</h2>
+  <ul>
+    <li><b>~£2–3k MRR, subs-only.</b> Once teachers use it, they love it. The bottleneck is <b>getting them to see the value.</b></li>
+    <li><b>The three frictions this kills:</b>
+      <ul>
+        <li>Sales calls blocked by admin gatekeepers → <span class="muted">product-led, bottom-up: a teacher adopts by playing; the school deal follows.</span></li>
+        <li>Teachers won't evaluate a tool → <span class="muted">they play a 2-minute game, not sit a demo.</span></li>
+        <li>No automated school process (promo-code hack) → <span class="muted">School super-admin replaces it (fast-follow).</span></li>
+        <li>Confusing onboarding → <span class="muted">"just play," no setup.</span></li>
+      </ul>
+    </li>
+    <li><b>Assets we're not using enough:</b> ~15k educator emails; a genuinely loved &amp; differentiated product; <b>TTRS as both positioning and proof</b> ("Number Hive is the best application of number operations — we just do drill-and-kill") — which also proves schools/kids already love competitive maths-fact games, <b>de-risking Hive Clash.</b></li>
+  </ul>
+
+  <h2><span class="k">03</span> The model (resolved)</h2>
+  <ul>
+    <li><b>Two roles:</b> Player &amp; Admin. <b>One gate:</b> free to play, pay to <i>see</i> and <i>manage</i> (one boolean per hive). <b>One world, umbrella-contained</b> (minors under a teacher/parent umbrella). Tiers = <b>price brackets</b> (Single / Group / Class / School), not feature gates.</li>
+    <li>Gameplay + data generation are always free. Win-share is <b>public for players, teacher-only for students.</b> Hive IQ is personal (never in an admin's reports).</li>
+  </ul>
+
+  <h2><span class="k">04</span> The 6-week MVP — "prove the mouth"</h2>
+  <p><b>Goal:</b> test the riskiest assumption — <i>can the free B2C funnel acquire &amp; spread?</i> — as cheaply as possible. <b>Not</b> the full monetisation (the current product already serves paying teachers).</p>
+  <h3>Ship</h3>
+  <ul>
+    <li><b>Free instant-play game</b> (no account) — the magic, in 2 minutes.</li>
+    <li><b>The viral loops:</b> share-your-win card (players, public), invite-a-friend (host / join / play &amp; pass), the profile hub.</li>
+    <li><b>Light account</b> + the player home.</li>
+    <li><b>Lean conversion:</b> let early teacher converts use the <i>existing</i> product/gate — don't rebuild it yet.</li>
+    <li><b>Heavy instrumentation:</b> activation, D1/D7 retention, K (invites + conversion), per-loop.</li>
+    <li><b>Launch motion:</b> point the <b>15k list</b> (sequenced touches, not one blast) + organic + in-product loops at it.</li>
+  </ul>
+  <div class="callout"><b>Explicitly NOT in the 6 weeks</b> (fast-follow): ranked Hive Clash (heaviest build), School super-admin automation, rebuilt teacher reporting, cosmetics/seasons.</div>
+
+  <h2><span class="k">05</span> How we judge the bet</h2>
+  <p><b>Anchor metric:</b> <i>activated</i> players = played ≥1 full game <b>and</b> came back once. (Not raw "plays.")</p>
+  <h3>Quality gates — these matter most</h3>
+  <table>
+    <thead><tr><th>Signal</th><th>Minimum to imply it works</th></tr></thead>
+    <tbody>
+      <tr><td>Activation (arrivals → full game)</td><td>≥ 50–60%</td></tr>
+      <tr><td>D7 retention</td><td>≥ 20–25%</td></tr>
+      <tr><td><b>K</b> (viral coefficient)</td><td><b>≥ 0.5 and trending up</b></td></tr>
+    </tbody>
+  </table>
+  <h3>Two curves</h3>
+  <div class="curve">
+    <div class="c hit"><h4>🟢 Stretch / "hit" <span class="muted" style="font-weight:400;">— needs K ≈ 0.75–0.9</span></h4>
+      <div class="row"><span>Week 2</span><b>1,000</b></div>
+      <div class="row"><span>Week 4</span><b>5,000</b></div>
+      <div class="row"><span>Week 6</span><b>20,000</b></div>
+    </div>
+    <div class="c floor"><h4>⚪ Minimum / "alive" <span class="muted" style="font-weight:400;">— K ≥ 0.5, D7 ≥ 20%</span></h4>
+      <div class="row"><span>Week 2</span><b>≥ 500</b></div>
+      <div class="row"><span>Week 4</span><b>≥ 1,500</b></div>
+      <div class="row"><span>Week 6</span><b>≥ 3–5k</b></div>
+    </div>
+  </div>
+  <h3>Tripwires</h3>
+  <div class="tw">
+    <div class="tw-row g"><span class="dot">🟢</span><span class="t"><b>On the 20k curve</b> → caught fire → <b>lean in</b> (ranked, more loops, maybe a little spend).</span></div>
+    <div class="tw-row a"><span class="dot">🟡</span><span class="t"><b>3–8k, K ≥ 0.5 and rising</b> → engine works, under-seeded/under-tuned → <b>keep going, tune the loop.</b></span></div>
+    <div class="tw-row r"><span class="dot">🔴</span><span class="t"><b>&lt; 2k and/or K ≈ 0</b> → mouth/magic isn't landing → <b>fix onboarding/magic/seed before building more.</b></span></div>
+  </div>
+  <div class="callout"><b>The maths to watch:</b> <code>K = i × c</code> (invites per user × invite→signup rate). Amplification on any seed = <code>1 / (1 − K)</code> — K=0.6 turns 1 user into 2.5, K=0.8 into 5. We don't need K&gt;1; we need it <i>as high as we can push it</i>. Keep <b>viral cycle time short</b> — loops fire right after a match (minutes, not days). <b>Judge the slope and loop quality, not the headline number.</b></div>
+
+  <h2><span class="k">06</span> The 9-month bridge — loose sequence</h2>
+  <div class="seq">
+    <div class="s"><div class="w">Weeks 0–6 · MVP</div><div class="d">Ship the free game + loops + instrumentation; <b>launch to the 15k.</b></div></div>
+    <div class="s"><div class="w">Weeks 6–12 · Read &amp; tune</div><div class="d">Measure K/retention; tune the share/invite flow to <b>push K</b>; <b>fast-follow ranked Hive Clash</b> (single-player now seeds the pool); start the <b>impact report</b> from existing data.</div></div>
+    <div class="s"><div class="w">Weeks 12–24 · Build the conversion (if 🟢/🟡)</div><div class="d">Polish the gate; <b>School super-admin</b> to replace the promo-code; automate the school process; harden teacher reporting; weaponise TTRS positioning.</div></div>
+    <div class="s"><div class="w">Weeks 24–36 · Scale what works</div><div class="d">Push the winning loops; decide B2C's "own life" via the tripwire; institutional/expansion motion; maybe a small efficacy study.</div></div>
+    <div class="s"><div class="w">Throughout</div><div class="d">Fletch (5h) on owned content/positioning + impact report; Jono (20h) on ops/billing/school process.</div></div>
+  </div>
+
+  <h2><span class="k">07</span> Positioning &amp; proof (low budget)</h2>
+  <ul>
+    <li><b>Line:</b> <i>"Number Hive — where kids <b>apply</b> number facts strategically. Not drill-and-kill."</i> (TTRS's own words about us.)</li>
+    <li><b>Proof, cheaply:</b> publish an aggregate <b>impact report</b> from our own pre/post Buzz + mindset data — owned marketing that directly attacks "teachers can't see the value." Frame as <i>indicators</i>, not an RCT (don't over-claim). Chase a small school/uni study later.</li>
+    <li><b>Channels:</b> the 15k list (sequenced), teacher communities, and the in-product viral loops doing the heavy lifting.</li>
+  </ul>
+
+  <h2><span class="k">08</span> Resourcing reality → keep scope ruthless</h2>
+  <p class="muted">Chris (FT) · James (FT, build) · Jono (20h, ops/school process/billing) · Fletch (5h, marketing/positioning).</p>
+  <ul>
+    <li>The 6-week MVP must be <b>brutally minimal.</b> The gate is cheap (reuse views + a blur). <b>Ranked is the one heavy thing — sequence it, don't let it block launch.</b></li>
+  </ul>
+
+  <h2><span class="k">09</span> Open items / risks to hold</h2>
+  <ul>
+    <li>Confirm "user" = <b>activated</b> (played a full game + returned).</li>
+    <li><b>20k is the hit case, not a forecast</b> — it assumes near-viral K.</li>
+    <li><b>Email-list warmth is unknown</b> → the wk2 number leans on it; plan multiple sequenced touches, not one blast.</li>
+    <li><b>Child safety:</b> safe generated handles for public minors, no chat (already true), umbrella containment for all minors.</li>
+    <li>Heat map = paid (decided). Comfort snapshot pulled from free.</li>
+    <li>Don't over-claim efficacy.</li>
+  </ul>
+
+  <div class="foot">Number Hive · 9-Month Bridge Game Plan · working draft · source of truth: the strategy applet (Strategy · Model · Matrix · Pathways · User Flows · Wireframes).</div>
+
+</div>
+</body>
+</html>
