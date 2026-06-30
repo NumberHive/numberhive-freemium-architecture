@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Number Hive — 9-Month Bridge · Game Plan v3</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0B1120; --surface:#151D2E; --surface2:#1C2740; --border:#2A3A52; --border-light:#374968;
+  --text:#E8EDF5; --muted:#8896AE; --dim:#5A6B85;
+  --amber:#F59E0B; --amber-light:#FCD34D;
+  --green:#10B981; --green-light:#6EE7B7; --cyan:#22D3EE; --red:#EF4444; --purple:#8B5CF6;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;padding:2.5rem 1.25rem 5rem;}
+.wrap{max-width:820px;margin:0 auto;}
+.badge{display:inline-block;background:linear-gradient(135deg,var(--amber),#D97706);color:#0B1120;font-size:.6rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:.32rem 1rem;border-radius:99px;margin-bottom:1.1rem;}
+h1{font-size:2rem;font-weight:800;letter-spacing:-.025em;line-height:1.15;margin-bottom:.5rem;}
+.sub{color:var(--muted);font-size:.92rem;margin-bottom:.4rem;}
+.sub code{font-family:'DM Mono',monospace;font-size:.82rem;color:var(--amber-light);}
+hr{border:none;border-top:1px solid var(--border);margin:2rem 0;}
+h2{font-size:1.18rem;font-weight:800;letter-spacing:-.015em;margin:2.2rem 0 .9rem;display:flex;align-items:center;gap:.55rem;}
+h2 .k{font-size:.6rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:.18rem .45rem;}
+h3{font-size:.95rem;font-weight:800;margin:1.3rem 0 .5rem;color:var(--amber-light);}
+p{margin-bottom:.8rem;color:var(--text);}
+.lead{font-size:1.05rem;}
+.muted{color:var(--muted);}
+b,strong{color:#fff;font-weight:700;}
+ul{list-style:none;margin:.3rem 0 .9rem;}
+li{position:relative;padding-left:1.1rem;margin-bottom:.42rem;color:var(--muted);}
+li::before{content:'';position:absolute;left:0;top:.62rem;width:5px;height:5px;border-radius:50%;background:var(--amber);opacity:.65;}
+li b{color:var(--text);}
+li ul{margin:.4rem 0 .2rem;}
+.callout{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:0 10px 10px 0;padding:.85rem 1.1rem;margin:1rem 0;font-size:.95rem;color:var(--text);}
+.callout b{color:var(--amber-light);}
+.callout.green{border-left-color:var(--green);}
+.callout.green b{color:var(--green-light);}
+.callout.cyan{border-left-color:var(--cyan);}
+.callout.cyan b{color:var(--cyan);}
+.callout.big{font-size:1.02rem;}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.3rem;margin:1rem 0;}
+table{width:100%;border-collapse:collapse;margin:.8rem 0 1.1rem;font-size:.9rem;}
+th,td{text-align:left;padding:.6rem .8rem;border-bottom:1px solid var(--border);}
+th{font-size:.64rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);background:var(--surface2);}
+tr:last-child td{border-bottom:none;}
+code{font-family:'DM Mono',monospace;font-size:.84rem;background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:.08rem .35rem;color:var(--amber-light);}
+.tw{display:flex;flex-direction:column;gap:.5rem;margin:.6rem 0 1rem;}
+.tw-row{display:flex;gap:.7rem;align-items:flex-start;background:var(--surface);border:1px solid var(--border);border-radius:9px;padding:.7rem .9rem;}
+.tw-row.g{border-left:3px solid var(--green);}
+.tw-row.a{border-left:3px solid var(--amber);}
+.tw-row.r{border-left:3px solid var(--red);}
+.tw-row .dot{font-size:1rem;flex-shrink:0;}
+.tw-row .t{font-size:.86rem;}
+.tw-row .t b{color:#fff;}
+.curve{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin:.7rem 0 1rem;}
+@media(max-width:620px){.curve{grid-template-columns:1fr;}}
+.curve .c{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:.85rem 1rem;}
+.curve .c.hit{border-top:3px solid var(--green);}
+.curve .c.floor{border-top:3px solid var(--dim);}
+.curve .c h4{font-size:.82rem;font-weight:800;margin-bottom:.5rem;}
+.curve .c .row{display:flex;justify-content:space-between;font-size:.82rem;padding:.18rem 0;color:var(--muted);}
+.curve .c .row b{font-family:'DM Mono',monospace;color:var(--text);}
+.foot{margin-top:2.4rem;padding-top:1.2rem;border-top:1px solid var(--border);font-size:.78rem;color:var(--dim);}
+.seq{position:relative;padding-left:1.4rem;margin:.5rem 0 1rem;}
+.seq::before{content:'';position:absolute;left:5px;top:.4rem;bottom:.4rem;width:2px;background:var(--border-light);}
+.seq .s{position:relative;margin-bottom:.85rem;}
+.seq .s::before{content:'';position:absolute;left:-1.4rem;top:.45rem;width:9px;height:9px;border-radius:50%;background:var(--amber);border:2px solid var(--bg);}
+.seq .s .w{font-size:.7rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--amber);}
+.seq .s .d{font-size:.88rem;color:var(--muted);}
+.seq .s .d b{color:var(--text);}
+/* v2 helpers */
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;margin:.9rem 0 1rem;}
+@media(max-width:620px){.three{grid-template-columns:1fr;}}
+.three .card{margin:0;padding:.85rem 1rem;}
+.three .card .l{font-size:.62rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-bottom:.35rem;}
+.three .card .v{font-size:.86rem;color:var(--text);}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin:.8rem 0 1rem;}
+@media(max-width:620px){.split{grid-template-columns:1fr;}}
+.pct{display:inline-block;font-family:'DM Mono',monospace;font-weight:500;font-size:.72rem;color:#0B1120;background:var(--amber-light);border-radius:5px;padding:.1rem .5rem;margin-bottom:.4rem;}
+.v2tag{display:inline-block;font-size:.6rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--green-light);background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.3);border-radius:5px;padding:.12rem .4rem;margin-left:.4rem;vertical-align:middle;}
+.dtag{display:inline-block;font-size:.6rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--cyan);background:rgba(34,211,238,.1);border:1px solid rgba(34,211,238,.3);border-radius:5px;padding:.12rem .4rem;margin-left:.4rem;vertical-align:middle;}
+.callout.discuss{border-left-color:var(--cyan);}
+.callout.discuss b{color:var(--cyan);}
+.lean{color:var(--amber-light);font-weight:600;}
+.disc-h{font-size:.95rem;font-weight:800;margin:1.3rem 0 .5rem;color:var(--cyan);}
+/* v3 helpers */
+.layer{margin:.8rem 0;border-top:3px solid var(--amber);}
+.layer .layer-l{font-size:.62rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.15rem;color:var(--amber);}
+.layer .pp{font-size:.82rem;color:var(--muted);margin-bottom:.5rem;}
+.layer ul{margin:0;}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem;margin:.8rem 0 1.1rem;}
+.flow .stp{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:.4rem .7rem;font-size:.8rem;color:var(--text);}
+.flow .stp .n{color:var(--amber-light);font-weight:800;font-family:'DM Mono',monospace;margin-right:.35rem;}
+.flow .arr{color:var(--amber);font-weight:800;}
+ol.steps{list-style:none;counter-reset:s;margin:.4rem 0 1rem;}
+ol.steps li{counter-increment:s;position:relative;padding-left:1.9rem;margin-bottom:.45rem;color:var(--muted);}
+ol.steps li::before{content:counter(s);position:absolute;left:0;top:.04rem;width:1.3rem;height:1.3rem;background:var(--surface2);border:1px solid var(--border);border-radius:6px;color:var(--amber-light);font-size:.7rem;font-weight:800;display:flex;align-items:center;justify-content:center;}
+ol.steps li b{color:var(--text);}
+.flags{font-family:'DM Mono',monospace;font-size:.78rem;line-height:1.9;}
+.flags .fl{display:block;color:var(--muted);}
+.flags .fl b{color:var(--amber-light);font-weight:500;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="badge">Number Hive · 9-Month Bridge</div>
+  <h1>Game Plan <span style="color:var(--dim);font-weight:600;font-size:1.1rem;">(v3 · loose)</span></h1>
+  <p class="sub">For James + the team. Working draft — v3 adds the <b style="color:var(--amber-light)">product architecture</b> (two surfaces + a thin Class Challenge bridge), the <b style="color:var(--amber-light)">teacher-play insight</b>, and a concrete first build slice. Builds on the DfE EdTech report (June 2026) + Fletch's market read. Full model, wireframes &amp; matrix live in the applet (<code>numberhive_architecture_fixed.html</code>).</p>
+
+  <hr>
+
+  <h2><span class="k">01</span> The bet, in one line</h2>
+  <p class="lead"><b>The product is loved; the funnel is broken.</b> Build a free, play-first front door that lets <b>students and teachers</b> experience the magic in two minutes, then <b>prove it can create repeat play, sharing and school-qualified demand</b> before we build the rest.</p>
+  <div class="callout">The free game is <b>not only a school funnel.</b> If the player loop catches fire, it may become its own consumer channel. The job of the MVP is to <b>preserve that upside</b> while making sure school value can still be captured.</div>
+  <div class="three">
+    <div class="card"><div class="l">Player layer</div><div class="v">Fun, fast, viral, competitive.</div></div>
+    <div class="card"><div class="l">Teacher layer</div><div class="v">Class challenge, basic insight, launch pathway.</div></div>
+    <div class="card"><div class="l">School layer</div><div class="v">Evidence, reporting, implementation, paid value.</div></div>
+  </div>
+
+  <h2><span class="k">02</span> Why this, why now</h2>
+  <ul>
+    <li><b>~£2–3k MRR, subs-only.</b> Once teachers use it, they love it. The bottleneck is <b>getting them to see the value.</b></li>
+    <li><b>The three frictions this kills:</b>
+      <ul>
+        <li>Sales calls blocked by admin gatekeepers → <span class="muted">product-led, bottom-up: a teacher adopts by playing; the school deal follows.</span></li>
+        <li>Teachers won't evaluate a tool → <span class="muted">they play a 2-minute game, not sit a demo.</span></li>
+        <li>No automated school process (promo-code hack) → <span class="muted">School super-admin replaces it (fast-follow).</span></li>
+        <li>Confusing onboarding → <span class="muted">"just play," no setup.</span></li>
+      </ul>
+    </li>
+    <li><b>Assets we're not using enough:</b> ~15k educator emails; a genuinely loved &amp; differentiated product; and a strong <b>"goes beyond recall"</b> story — schools and kids already love competitive maths-fact practice (TTRS proves the appetite), which <b>de-risks Hive Clash.</b> <span class="muted">(Keep the TTRS comparison internal/soft — see §14.)</span></li>
+  </ul>
+
+  <h3>Market timing <span class="v2tag">DfE report</span></h3>
+  <p class="muted">The June 2026 DfE/PUBLIC market assessment points the same direction we're already moving:</p>
+  <ul>
+    <li>The English EdTech market is <b>maturing</b> — schools are more <b>evidence-driven and more selective.</b></li>
+    <li>Buyers are shifting from "interesting technology" toward tools that <b>demonstrate impact, reduce workload, align with curriculum priorities and support implementation.</b></li>
+    <li>Procurement is increasingly influenced by <b>senior leaders, MATs, curriculum leads, digital-strategy leads and trust-level decision-makers</b> — and centralised at trust level.</li>
+    <li>The report describes our exact pain (educator-built SMEs drowned out by big marketing budgets; schools overwhelmed by free trials) and shows <b>word-of-mouth / peer networks</b> are what actually drive adoption when formal evidence is thin — i.e. our share loop <i>is</i> the documented mechanism.</li>
+  </ul>
+  <div class="callout"><b>The market is moving toward Number Hive, not away from it.</b> Schools increasingly want tools that demonstrate educational impact, reduce teacher workload, fit curriculum priorities and support consistent implementation across a school or trust. This validates the shift from "fun mathematics games" to a <b>whole-school mathematics fluency and improvement platform.</b></div>
+  <div class="callout"><b>AI is not the main threat here.</b> Generic AI can help teachers plan lessons, but it does not replace high-frequency fluency practice, deliberate retrieval, strategic application of number facts, healthy competition, long-term mastery tracking or whole-school participation. <span class="muted">(Public wording: prefer "intelligent practice pathways / targeted practice / adaptive recommendations / teacher insight / fluency data" — don't call it "AI practice" yet.)</span></div>
+
+  <h2><span class="k">03</span> Strategic positioning after the DfE report</h2>
+  <p><b>From</b> <span class="muted">"Fun mathematics games"</span> → <b>To</b> <i>"a game-based mathematics fluency platform that helps schools build confident mathematicians through engaging practice, measurable progress and whole-school participation."</i></p>
+  <div class="callout big"><b>Build fluency. Grow confidence. See progress.</b></div>
+  <h3>The positioning hierarchy</h3>
+  <ul>
+    <li>Students <b>love it.</b></li>
+    <li>Therefore they <b>practise more.</b></li>
+    <li>Therefore <b>fluency, confidence and strategic thinking grow.</b></li>
+    <li>Teachers can <b>see progress.</b></li>
+    <li>Schools can build a <b>culture of mathematical improvement.</b></li>
+  </ul>
+  <div class="callout"><b>Do not reduce Number Hive to dashboards.</b> The game is not just a delivery mechanism; <b>the game is the pedagogy.</b> But the data is what helps school leaders justify the purchase.</div>
+
+  <h2><span class="k">04</span> Product surfaces, not separate products <span class="v2tag">new</span></h2>
+  <p>We should think of this as <b>two product surfaces connected by a thin bridge</b>, not two completely separate products. The <b>B2C front door</b> is where players experience the magic. The <b>existing B2B product</b> is where schools get deeper assessment, reporting, implementation and paid value. The <b>bridge</b> is a lightweight <b>Class Challenge</b> wrapper that lets a teacher move from personal play to student play without requiring the full B2B setup.</p>
+
+  <div class="card layer" style="border-top-color:var(--amber);">
+    <div class="layer-l" style="color:var(--amber-light);">1 · B2C Game Layer</div>
+    <div class="pp">Purpose: fun, fast, viral, low-friction play.</div>
+    <ul>
+      <li>Play vs bot · play vs friend · play-and-pass (if useful)</li>
+      <li>Invite / challenge loop · share / win card</li>
+      <li>Light account · player home / profile · retention loops</li>
+      <li>Ranked Hive Clash <i>later</i>, if the signal justifies it</li>
+    </ul>
+  </div>
+  <div class="card layer" style="border-top-color:var(--cyan);">
+    <div class="layer-l" style="color:var(--cyan);">2 · Class Challenge Bridge Layer</div>
+    <div class="pp">Purpose: let a teacher launch the B2C game with students <i>without</i> turning it into a full classroom product.</div>
+    <ul>
+      <li>"Run this with your class"</li>
+      <li>Teacher creates a class challenge link / code</li>
+      <li>Students join under that teacher-created challenge (initials, nickname or generated handle)</li>
+      <li>Basic teacher activity view</li>
+      <li>CTA to Class Hive / School Hive / pilot pack / upgrade info</li>
+    </ul>
+  </div>
+  <div class="card layer" style="border-top-color:var(--green);">
+    <div class="layer-l" style="color:var(--green-light);">3 · B2B School Layer</div>
+    <div class="pp">Purpose: paid school value.</div>
+    <ul>
+      <li>Existing teacher / class product · Buzz / assessment · reporting</li>
+      <li>Learning Journeys · intervention insight · School Hive</li>
+      <li>Paid admin / management layer · implementation assets</li>
+      <li>Privacy / procurement support · whole-school fluency campaign</li>
+    </ul>
+  </div>
+  <div class="callout cyan"><b>The bridge is not a dashboard. The bridge is a class-shaped share link.</b></div>
+
+  <h2><span class="k">05</span> The model</h2>
+  <ul>
+    <li><b>Two roles:</b> Player &amp; Admin. <b>One gate:</b> <b>free to play, paid to manage, assess and act</b> (one boolean per hive). <b>One world, umbrella-contained</b> (minors under a teacher/parent umbrella). Tiers = <b>price brackets</b> (Single / Group / Class / School), not feature gates.</li>
+  </ul>
+  <div class="callout">The <b>B2C player experience must be allowed to stand on its own.</b> Players should not feel like they're being pushed into a school product. The school layer should sit <b>underneath and beside</b> the player loop — not in front of it.</div>
+  <ul>
+    <li>Gameplay and data generation are <b>free.</b></li>
+    <li>Player identity, wins, challenges, Hive&nbsp;IQ-style progress and sharing sit in the <b>player world.</b></li>
+    <li>Teacher / class functionality sits in the <b>bridge layer.</b></li>
+    <li>School insight, reporting, intervention signal, assessment, implementation and management sit in the <b>paid admin layer.</b></li>
+    <li>Public player data must be <b>safe, minimal and child-appropriate.</b></li>
+    <li>Student data visible to teachers must be <b>education-focused and privacy-conscious.</b></li>
+    <li>Hive&nbsp;IQ / personal competitive rating stays <b>personal and player-facing</b> — never part of a teacher-judgement report.</li>
+  </ul>
+  <h3>How the bridge actually works</h3>
+  <p>The bridge is <b>not</b> that the B2C player gets pushed into the full B2B product. The bridge is: <b>B2C creates conviction, demand and usage signals that make the B2B product easier to sell.</b></p>
+  <div class="flow">
+    <span class="stp"><span class="n">1</span>Teacher plays the B2C game</span><span class="arr">→</span>
+    <span class="stp"><span class="n">2</span>notices the educational richness</span><span class="arr">→</span>
+    <span class="stp"><span class="n">3</span>clicks "Run this with your class"</span><span class="arr">→</span>
+    <span class="stp"><span class="n">4</span>gets a Class Challenge link / code</span><span class="arr">→</span>
+    <span class="stp"><span class="n">5</span>students play under that umbrella</span><span class="arr">→</span>
+    <span class="stp"><span class="n">6</span>teacher sees basic activity only</span><span class="arr">→</span>
+    <span class="stp"><span class="n">7</span>invited into the full B2B product</span>
+  </div>
+  <div class="callout"><b>The B2C MVP does not need to become the B2B product.</b> It should remain clean: <b>play, enjoy, challenge, return.</b> The Class Challenge bridge should be thin: <b>run this with class, see basic activity, request full school product.</b></div>
+  <div class="callout big green"><b>Core principle for this version: let the B2C game stay pure enough to fly, but connected enough that teacher conviction can become school demand.</b></div>
+
+  <h2><span class="k">06</span> Teacher play — the hidden bridge <span class="v2tag">new</span></h2>
+  <p>Teachers are not just administrators or buyers — <b>teachers can be genuine players in the network.</b> One of Number Hive's unusual strengths is <b>adult playability</b>: teachers play it themselves, enjoy it, and then quickly notice the educational richness. The adoption pathway is not "read the pedagogy, then try the product." It is <b>"play first, notice the strategy, recognise the learning, then want it for students."</b></p>
+
+  <h3>The Teacher Realisation Loop</h3>
+  <div class="flow">
+    <span class="stp"><span class="n">1</span>plays casually</span><span class="arr">→</span>
+    <span class="stp"><span class="n">2</span>enjoys the game</span><span class="arr">→</span>
+    <span class="stp"><span class="n">3</span>notices the maths</span><span class="arr">→</span>
+    <span class="stp"><span class="n">4</span>"I've got to get my kids playing this"</span><span class="arr">→</span>
+    <span class="stp"><span class="n">5</span>launches a Class Challenge</span><span class="arr">→</span>
+    <span class="stp"><span class="n">6</span>students play</span><span class="arr">→</span>
+    <span class="stp"><span class="n">7</span>teacher / school conversation begins</span>
+  </div>
+  <p class="muted">Step 3 in full: factors, products, blocking, strategy, fluency, reasoning, number sense — the richness surfaces <i>through play</i>, not through a pitch.</p>
+  <div class="callout"><b>Teacher play becomes teacher conviction.</b></div>
+  <div class="callout"><b>Teachers are not just the route to students. Teachers are part of the player network.</b></div>
+
+  <h3>The Staffroom-to-Classroom Loop</h3>
+  <p>Number Hive has a <b>staffroom-to-classroom loop</b> that most EdTech products do not have. Teachers play it with students, then play it with colleagues. That creates <b>internal champions, social proof, and whole-school conversation</b> before a formal sales process begins.</p>
+  <div class="flow">
+    <span class="stp">teacher plays</span><span class="arr">→</span>
+    <span class="stp">challenges a colleague</span><span class="arr">→</span>
+    <span class="stp">staffroom competition</span><span class="arr">→</span>
+    <span class="stp">internal champion</span><span class="arr">→</span>
+    <span class="stp">class challenge</span><span class="arr">→</span>
+    <span class="stp">whole-school conversation</span>
+  </div>
+  <p class="muted">Marketing lines to test (copy only — <b>does not require a staffroom mode in the MVP</b>):</p>
+  <ul>
+    <li><i>"Fun enough for the staffroom. Rich enough for the classroom."</i></li>
+    <li><i>"The game teachers play first — then bring to their students."</i></li>
+    <li><i>"Play it once and you'll see why your students need it."</i></li>
+    <li><i>"Built for students. Addictive enough for the staffroom."</i></li>
+    <li><i>"When teachers keep playing after class, you know it's different."</i></li>
+  </ul>
+
+  <h2><span class="k">07</span> The 6-week MVP — prove the mouth <i>and</i> the bridge</h2>
+  <p><b>Goal:</b> test whether the free front door can create <b>repeat play and sharing</b>, while also testing whether that attention can generate <b>teacher / class / school intent.</b> This is <b>not</b> the full monetisation build — it's the smallest test of the growth loop and the school bridge.</p>
+  <h3>Ship</h3>
+  <ul>
+    <li><b>Free instant-play game</b> (no account) — the magic, in 2 minutes.</li>
+    <li><b>The viral loops:</b> share-your-win card (players, public), invite / challenge (host / join / play &amp; pass), the profile hub. The <b>same challenge-link mechanic carries multiple contexts</b> — <i>challenge a friend · challenge a colleague · staffroom challenge · class challenge</i> — as copy variations, not separate modes.</li>
+    <li><b>Light account</b> + the player home.</li>
+    <li><b>Lean conversion:</b> let early teacher converts use the <i>existing</i> product/gate — don't rebuild it yet.</li>
+    <li><b>Heavy instrumentation:</b> activation, D1/D7 retention, K (invites + conversion), per-loop — and the school-bridge signals (§10).</li>
+  </ul>
+  <div class="callout"><b>Do not build a separate staffroom mode yet.</b> Let the same challenge-link mechanic carry friend, colleague and class contexts. These are mostly copy/context variations on one mechanic in the first build.</div>
+  <h3>Add the thin Class Challenge bridge <span class="v2tag">new</span></h3>
+  <ul>
+    <li>Teacher-facing landing path connected to the free game.</li>
+    <li>Post-play CTA: <i>"Run this with your class"</i> / <i>"Create a class challenge."</i></li>
+    <li>Simple class <b>challenge link / code.</b></li>
+    <li>Basic teacher view: how many students joined / played.</li>
+    <li>CTA to request a <b>School Hive, pilot pack or upgrade info.</b></li>
+    <li>Automated follow-up email to teachers after class activity.</li>
+    <li><b>Keep it lightweight</b> — no full dashboard rebuild in the 6-week MVP. (Full spec in §09.)</li>
+  </ul>
+  <div class="callout"><b>Don't let the teacher bridge slow the player experience.</b> For players, the primary CTAs stay <b>challenge a friend, play again, share a win, climb / improve.</b> Teacher prompts appear contextually and lightly.</div>
+  <div class="callout green"><b>Launch framing — teacher as player first.</b> Don't lead with "give your students a challenge." First invite the teacher to <i>play and discover the richness</i>: <b>"Play this for two minutes. You'll see why your students need it."</b> <i>Then</i> the secondary CTA: <b>"Run it with your class."</b> The teacher should experience the game before being asked to administer it.</div>
+  <div class="callout"><b>Still NOT in 6 weeks:</b> ranked Hive Clash (unless it becomes a very clear unlock after initial signal) · full School super-admin automation · rebuilt teacher reporting · complex dashboards · deep integrations · cosmetics/seasons · full current-product redesign. <b>We are patching the school pathway, not rebuilding the whole school product yet.</b></div>
+  <div class="callout"><b>Ranked &amp; retention nuance.</b> Ranked may become the main retention engine — so if ranked is excluded from the first build, <b>don't over-interpret weak D7 retention.</b> First test challenge / rematch / play-again loops. If activation and challenge behaviour are strong, ranked becomes the obvious fast-follow. <i>Keep ranked out of the first build, but don't judge D7 too harshly without it.</i></div>
+  <div class="callout discuss"><b>💬 To discuss</b> — exactly how prominent the teacher bridge is without taxing consumer purity; and whether ranked is really deferrable. <span class="muted">See §19 (Must decide before build).</span></div>
+
+  <h2><span class="k">08</span> Immediate build brief — first 10 working days <span class="v2tag">new</span></h2>
+  <p class="muted">The brutally simple first slice for James. Everything else waits.</p>
+  <ol class="steps">
+    <li><b>Free instant-play game</b> working.</li>
+    <li><b>Play vs bot</b> working.</li>
+    <li><b>Play vs friend / challenge link</b> working or stubbed.</li>
+    <li><b>Share / win card loop</b> working or stubbed.</li>
+    <li><b>Light account / player home</b> scaffold.</li>
+    <li><b>Analytics events</b> firing.</li>
+    <li><b>"Run this with your class" CTA</b> added after the teacher/player experience.</li>
+    <li>Teacher can <b>create a Class Challenge link / code.</b></li>
+    <li>Students can <b>join</b> via the Class Challenge using initials / nickname / generated handle.</li>
+    <li>Teacher can see <b>basic count only:</b> students joined, games played, repeat players (if easy).</li>
+    <li>CTA from teacher view: <b>request pilot pack / School Hive / upgrade info.</b></li>
+  </ol>
+  <div class="callout"><b>If it doesn't help players play, teachers launch, or us measure the bridge — it's probably not first-slice work.</b></div>
+
+  <h2><span class="k">09</span> The Class Challenge bridge <span class="v2tag">new</span></h2>
+  <p>A <b>Class Challenge</b> (a.k.a. Hive Challenge) is a <b>teacher-launched version of the B2C game.</b> It is <b>not</b> a full class setup. It is a <b>class-shaped challenge link</b> that lets students play the same simple game experience under a teacher-created umbrella.</p>
+  <h3>Three levels — build Level 1</h3>
+  <div class="three">
+    <div class="card"><div class="l" style="color:var(--dim);">Level 0</div><div class="v">Public game link only. Fastest, but <b>weak bridge, weak data.</b></div></div>
+    <div class="card" style="border:1px solid var(--cyan);"><div class="l" style="color:var(--cyan);">Level 1 · MVP</div><div class="v">Lightweight <b>Class Challenge.</b> Recommended.</div></div>
+    <div class="card"><div class="l" style="color:var(--dim);">Level 2</div><div class="v">Full classroom mode. <b>Later / paid B2B layer.</b></div></div>
+  </div>
+  <div class="callout cyan"><b>Build Level 1.</b> Not a disconnected public game. Not a full classroom product.</div>
+  <h3>The v0 spec</h3>
+  <div class="split">
+    <div class="card" style="margin:0;">
+      <h3 style="margin-top:0;">Teacher</h3>
+      <ul style="margin-bottom:0;">
+        <li>Clicks "Run this with your class"</li>
+        <li>Enters name / email</li>
+        <li>Optionally adds school / class label</li>
+        <li>Receives challenge link / code</li>
+      </ul>
+    </div>
+    <div class="card" style="margin:0;">
+      <h3 style="margin-top:0;">Student</h3>
+      <ul style="margin-bottom:0;">
+        <li>Joins through the link / code</li>
+        <li>Enters initials / nickname or gets a generated handle</li>
+        <li>Plays the B2C game</li>
+        <li><b>No email. No public profile.</b></li>
+      </ul>
+    </div>
+    <div class="card" style="margin:0;">
+      <h3 style="margin-top:0;">System</h3>
+      <ul style="margin-bottom:0;">
+        <li>Tags activity with <code>challenge_id</code></li>
+        <li>Records games played</li>
+        <li>Records basic engagement</li>
+        <li>Attaches activity to the teacher-created challenge</li>
+      </ul>
+    </div>
+    <div class="card" style="margin:0;">
+      <h3 style="margin-top:0;">Teacher v0 view</h3>
+      <ul style="margin-bottom:0;">
+        <li>Number of students joined</li>
+        <li>Number of games played</li>
+        <li>Repeat players (if easy)</li>
+        <li>CTA: <i>"Want full class insight? Try Class Hive / School Hive / request pilot pack."</i></li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Privacy-shaped from day one</h3>
+  <div class="callout cyan"><b>The bridge is a class-shaped share link — but it must be privacy-shaped from day one.</b></div>
+  <div class="callout"><b>A public player link is for friends. A Class Challenge link is for students under a teacher umbrella.</b> Same game engine, <b>different data handling.</b></div>
+  <p class="muted">Student data rules for Class Challenge v0:</p>
+  <ul>
+    <li>Students join under a teacher-created challenge.</li>
+    <li>Initials, nickname or safe generated handle only.</li>
+    <li><b>No student email · no full name · no date of birth.</b></li>
+    <li>No public student profile · no chat.</li>
+    <li>No public leaderboard with identifiable student info (unless designed safely).</li>
+    <li>Student activity scoped to the class challenge.</li>
+    <li>Teacher sees <b>only basic activity</b> in v0.</li>
+    <li>Richer student-level reporting stays inside the <b>paid B2B product.</b></li>
+  </ul>
+  <h3>Data model flags</h3>
+  <div class="split">
+    <div class="card" style="margin:0;border-top:3px solid var(--cyan);">
+      <div class="layer-l" style="color:var(--cyan);">Teacher-supervised</div>
+      <div class="flags">
+        <span class="fl"><b>challenge_type:</b> teacher_class</span>
+        <span class="fl"><b>created_by_teacher:</b> true</span>
+        <span class="fl"><b>student_data_mode:</b> minimal</span>
+        <span class="fl"><b>public_visibility:</b> off</span>
+        <span class="fl"><b>teacher_visible:</b> aggregate_only</span>
+        <span class="fl"><b>challenge_id · teacher_id</b></span>
+        <span class="fl"><b>student_display_handle</b></span>
+        <span class="fl"><b>games_played · repeat_play · timestamps</b></span>
+      </div>
+    </div>
+    <div class="card" style="margin:0;border-top:3px solid var(--amber);">
+      <div class="layer-l" style="color:var(--amber-light);">Public friend</div>
+      <div class="flags">
+        <span class="fl"><b>challenge_type:</b> public_friend</span>
+        <span class="fl">public share allowed</span>
+        <span class="fl">no class umbrella</span>
+        <span class="fl">no teacher view</span>
+      </div>
+    </div>
+  </div>
+  <div class="callout"><b>This preserves the same game experience</b> while respecting the different privacy expectations of public play vs teacher-supervised student play.</div>
+
+  <h2><span class="k">10</span> How we judge it</h2>
+  <p><b>Anchor metric:</b> <i>activated</i> players = played ≥1 full game <b>and</b> came back once. (Not raw "plays.")</p>
+  <h3>Player gates — these matter most</h3>
+  <table>
+    <thead><tr><th>Signal</th><th>Minimum to imply it works</th></tr></thead>
+    <tbody>
+      <tr><td>Activation (arrivals → full game)</td><td>≥ 50–60%</td></tr>
+      <tr><td>D7 retention <span class="muted">(read with ranked caveat)</span></td><td>≥ 20–25%</td></tr>
+      <tr><td><b>K</b> (viral coefficient)</td><td><b>≥ 0.5 and trending up</b></td></tr>
+    </tbody>
+  </table>
+  <h3>School bridge signals + provisional thresholds <span class="v2tag">new</span></h3>
+  <table>
+    <thead><tr><th>Signal</th><th>What it means</th><th>Provisional bar</th></tr></thead>
+    <tbody>
+      <tr><td>Teacher activation</td><td>Teacher creates a Class Challenge</td><td>50+ teachers</td></tr>
+      <tr><td>Class spread</td><td>A challenge reaches 10+ students</td><td>20+ challenges</td></tr>
+      <tr><td>Teacher return</td><td>Returns to view activity</td><td>30%+ of activated</td></tr>
+      <tr><td>School intent</td><td>Clicks pilot / pricing / School Hive / upgrade</td><td>10+ teachers</td></tr>
+      <tr><td>Commercial signal</td><td>Serious School Hive conv. / pilot / quote</td><td>3–5</td></tr>
+    </tbody>
+  </table>
+  <div class="callout"><b>These are provisional thresholds, not forecasts.</b> They exist to stop us interpreting the data emotionally after launch.</div>
+  <div class="callout"><b>Don't judge the MVP on raw player numbers alone.</b> A smaller number of players with strong teacher/class conversion may be <b>more commercially valuable</b> than a larger number of isolated casual players.</div>
+  <div class="callout"><b>Separate the B2C signal from the school signal.</b> If B2C flies but school intent is weak → <b>preserve the consumer opportunity</b> and redesign the school bridge. If school intent is strong but virality is modest → <b>strengthen the teacher-led classroom challenge path.</b></div>
+  <div class="callout discuss"><b>💬 To discuss</b> — what's the <b>single primary signal</b> that means "go"? And note the test is rigged: a teacher-list launch under-tests <i>cold</i> consumer virality — do we carve out a non-teacher seed? <span class="muted">See §19.</span></div>
+  <h3>Two curves <span class="muted" style="font-weight:400;font-size:.8rem;">(player reach)</span></h3>
+  <div class="curve">
+    <div class="c hit"><h4>🟢 Stretch / "hit" <span class="muted" style="font-weight:400;">— needs K ≈ 0.75–0.9</span></h4>
+      <div class="row"><span>Week 2</span><b>1,000</b></div>
+      <div class="row"><span>Week 4</span><b>5,000</b></div>
+      <div class="row"><span>Week 6</span><b>20,000</b></div>
+    </div>
+    <div class="c floor"><h4>⚪ Minimum / "alive" <span class="muted" style="font-weight:400;">— K ≥ 0.5, D7 ≥ 20%</span></h4>
+      <div class="row"><span>Week 2</span><b>≥ 500</b></div>
+      <div class="row"><span>Week 4</span><b>≥ 1,500</b></div>
+      <div class="row"><span>Week 6</span><b>≥ 3–5k</b></div>
+    </div>
+  </div>
+  <h3>Tripwires</h3>
+  <div class="tw">
+    <div class="tw-row g"><span class="dot">🟢</span><span class="t"><b>Green.</b> B2C loop is spreading <b>and</b> the school bridge is producing teacher/class signals → <b>lean in</b> (ranked, more loops, maybe a little spend).</span></div>
+    <div class="tw-row a"><span class="dot">🟡</span><span class="t"><b>Yellow.</b> Either B2C <b>or</b> the teacher bridge is working, but not both yet → <b>don't overreact; tune the weak side.</b></span></div>
+    <div class="tw-row r"><span class="dot">🔴</span><span class="t"><b>Red.</b> Low activation, low retention, low sharing <b>and</b> low teacher intent → <b>fix onboarding / magic / positioning before building more.</b></span></div>
+  </div>
+  <div class="callout"><b>A weak 6-week viral result does not automatically invalidate the strategy.</b> It may mean the email list was cold, the seed audience was wrong, the teacher framing was off, the share loop was weak, or the challenge wasn't clear enough. Diagnose before you pivot.</div>
+  <div class="callout"><b>The maths to watch:</b> <code>K = i × c</code> (invites per user × invite→signup rate). Amplification on any seed = <code>1 / (1 − K)</code> — K=0.6 turns 1 player into 2.5, K=0.8 into 5. We don't need K&gt;1; we need it <i>as high as we can push it</i>. Keep <b>viral cycle time short</b> — loops fire right after a match. <b>Judge the slope and loop quality, not the headline number.</b></div>
+
+  <h2><span class="k">11</span> Attention split — first 6 weeks</h2>
+  <div class="card">
+    <span class="pct">60%</span>
+    <h3 style="margin-top:0;">New B2C front door</h3>
+    <ul style="margin-bottom:0;">
+      <li>Free game · invite loop · share loop</li>
+      <li>Light accounts · player home / profile</li>
+      <li>Instrumentation</li>
+    </ul>
+  </div>
+  <div class="card">
+    <span class="pct">20%</span>
+    <h3 style="margin-top:0;">Current-product critical friction fixes</h3>
+    <ul style="margin-bottom:0;">
+      <li>Only fix what <b>blocks</b> teacher activation, paid conversion, school setup, retention or admin sanity</li>
+      <li>Improve class setup / student join where necessary</li>
+      <li>Clarify the upgrade / payment path where necessary</li>
+      <li><b>No deep current-product rebuild</b></li>
+    </ul>
+  </div>
+  <div class="card">
+    <span class="pct">20%</span>
+    <h3 style="margin-top:0;">School bridge, evidence &amp; launch motion</h3>
+    <ul style="margin-bottom:0;">
+      <li>Class Challenge path · teacher landing page · basic school CTA</li>
+      <li>Launch email sequence</li>
+      <li>Evidence / impact framing · privacy / procurement messaging</li>
+    </ul>
+  </div>
+  <div class="callout big"><b>Build the new mouth. Patch the old throat. Don't rebuild the whole stomach yet.</b></div>
+
+  <h2><span class="k">12</span> How much do we fix the current product?</h2>
+  <p class="lead"><b>Enough to stop warm demand leaking. Not enough to distract from testing the new growth hypothesis.</b></p>
+  <div class="callout"><b>Rule:</b> fix current-product friction only where it <b>directly protects revenue or converts new demand.</b></div>
+  <div class="callout green"><b>The current B2B product remains the paid depth layer for now.</b> We are not rebuilding it in the first six weeks. We are only patching the parts that would cause warm demand from the B2C / Class Challenge path to leak.</div>
+  <div class="split">
+    <div class="card" style="border-top:3px solid var(--green);margin:0;">
+      <h3 style="margin-top:0;color:var(--green-light);">Worth doing now</h3>
+      <ul style="margin-bottom:0;">
+        <li>Class setup / student join clarity</li>
+        <li>Clearer "what do I do first?"</li>
+        <li>Upgrade / payment pathway</li>
+        <li>School Hive positioning</li>
+        <li>Privacy / procurement page</li>
+        <li>Basic reporting clarity</li>
+        <li>Admin / billing fixes that save manual chaos</li>
+      </ul>
+    </div>
+    <div class="card" style="border-top:3px solid var(--dim);margin:0;">
+      <h3 style="margin-top:0;color:var(--dim);">Not worth doing now</h3>
+      <ul style="margin-bottom:0;">
+        <li>Full redesign</li>
+        <li>Perfect dashboards</li>
+        <li>Complex integrations</li>
+        <li>Full school-admin automation before signal</li>
+        <li>Advanced reporting rebuild</li>
+        <li>Every onboarding edge case</li>
+        <li>Cosmetic polish that doesn't lift activation/conversion</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout"><b>Don't build full Class Challenge reporting in the bridge</b> if the current B2B product already contains the deeper reporting story. <b>The bridge should create desire for the full product, not replace it.</b></div>
+
+  <h2><span class="k">13</span> The 9-month bridge — loose sequence</h2>
+  <div class="seq">
+    <div class="s"><div class="w">Weeks 0–6 · MVP</div><div class="d">Ship the free game + loops + instrumentation + <b>thin Class Challenge bridge.</b> Launch to the 15k with <b>teacher-as-player framing</b> (play first → run with class), not generic consumer-game framing.</div></div>
+    <div class="s"><div class="w">Weeks 6–12 · Read, tune &amp; bridge</div><div class="d">Measure <b>B2C health and school-bridge signals separately.</b> Tune share/invite loops. Improve the Class Challenge flow. Start/continue the <b>impact report</b> from existing data. Fast-follow <b>ranked Hive Clash only if the player loop justifies it.</b></div></div>
+    <div class="s"><div class="w">Weeks 12–24 · Build conversion (if 🟢/🟡)</div><div class="d">Polish the gate. Build/automate <b>School super-admin</b> if there's enough teacher/school signal. Harden reporting around <b>the insights schools actually value.</b> Improve onboarding from observed friction. <b>Turn implementation into a product asset.</b></div></div>
+    <div class="s"><div class="w">Weeks 24–36 · Scale what works</div><div class="d">Lean into whichever shows the strongest evidence: B2C consumer growth, teacher-led classroom challenges, whole-school fluency campaigns, MAT/district expansion — or a combination. Consider a small efficacy study or formal pilot if the data justifies it.</div></div>
+    <div class="s"><div class="w">Throughout</div><div class="d"><b>Preserve optionality.</b> Don't force the B2C game to become merely a school funnel; don't let consumer excitement distract from school revenue. <b>Keep both lanes visible.</b> Fletch (5h) on owned content/positioning + impact report; Jono (20h) on ops/billing/school process.</div></div>
+  </div>
+
+  <h2><span class="k">14</span> Positioning, proof &amp; implementation</h2>
+  <h3>Fletch's strongest implications</h3>
+  <ul>
+    <li><b>Own mathematics fluency</b>, not "educational games."</li>
+    <li><b>Sell improvement, not software.</b></li>
+    <li><b>Lead with evidence.</b></li>
+    <li>Build the <b>Whole-School Hive</b> story.</li>
+    <li><b>Implementation becomes part of the product.</b></li>
+  </ul>
+  <div class="callout big"><b>Number Hive is a game-based mathematics fluency platform that helps schools build confident mathematicians through engaging practice, measurable progress and whole-school participation.</b></div>
+  <p class="muted">Shorter lines to test:</p>
+  <ul>
+    <li><i>"Build fluency. Grow confidence. See progress."</i></li>
+    <li><i>"Where students apply number facts strategically."</i></li>
+    <li><i>"More than recall: game-based fluency, reasoning and measurable progress."</i></li>
+    <li><i>"A whole-school fluency culture, not another maths app."</i></li>
+  </ul>
+  <div class="callout"><b>Careful with the TTRS comparison.</b> Schools may already like and use TTRS — don't be combative publicly. Lead with <b>"goes beyond recall"</b>, not an attack: <i>"Number Hive goes beyond recall. Students apply number facts strategically through game-based fluency practice."</i></div>
+  <h3>Evidence pack <span class="muted" style="font-weight:400;font-size:.8rem;">— align to the EdTech Evidence Board criteria (need · theory of change · impact · implementation · value for money)</span></h3>
+  <ul>
+    <li>Pre/post Buzz data</li>
+    <li>Mindset / confidence indicators</li>
+    <li>Usage and repeat play</li>
+    <li>Teacher testimonials</li>
+    <li>School / district case studies <span class="muted">(Allen County story if available)</span></li>
+    <li>Value-for-money argument</li>
+    <li>Privacy &amp; data-protection statement</li>
+    <li>Implementation model</li>
+    <li><b>Honest caveat:</b> indicators, not RCT-level claims yet</li>
+  </ul>
+  <h3>Implementation assets</h3>
+  <ul>
+    <li>Launch kit · 4-week pilot plan</li>
+    <li>Teacher guide · class challenge guide · tournament kit</li>
+    <li>Parent letter · posters · certificates</li>
+    <li>Simple end-of-month school report</li>
+  </ul>
+
+  <h2><span class="k">15</span> The social campaign — the warm-up</h2>
+  <p>The launch isn't a single "it's live" post — it's a <b>3-week, organic, story-led warm-up</b> that earns belief before it asks for anything. Arc: <b>Believe it → See it → Play it.</b> Week 1 sells the idea (recall ≠ fluency); week 2 shows the game and the proof; week 3 builds the day-one crowd.</p>
+  <ul>
+    <li><b>Why this shape:</b> the DfE read says <b>word-of-mouth and peer networks</b> drive adoption when formal evidence is thin — so we lead with a belief worth sharing, not a hard sell. The free game is the word-of-mouth artifact.</li>
+    <li><b>One belief, three audiences:</b> teachers (the engine + amplifiers — "stop drilling, start applying"), parents ("screen time you don't feel bad about"), and maths-curious adults ("chess, but built on numbers").</li>
+    <li><b>Channels (organic only):</b> Instagram/Facebook · X/LinkedIn · email + community. Realistic founder cadence; <b>repurpose one idea across surfaces.</b></li>
+    <li><b>Proof we already own:</b> real testimonials from <b>Pam Harris, Dan Finkel and Liesl McConchie.</b></li>
+  </ul>
+  <div class="callout green"><b>Launch the 15k as teacher-as-player.</b> Lead: <i>"Play this for two minutes. You'll see why your students need it."</i> Then: <i>"Run it with your class."</i> Hooks to test: <i>"Play first. You'll see the maths." · "Try the game teachers keep playing in the staffroom." · "Fun enough for the staffroom. Rich enough for the classroom." · "The fastest way to understand Number Hive is to play it." · "This is not another maths quiz. It's strategic fluency practice."</i> <b>The teacher should experience the game before being asked to administer it.</b></div>
+  <div class="callout"><b>Built &amp; ready to run:</b> the campaign plan (<code>numberhive_social_campaign.html</code>), every post drafted to final (<code>numberhive_posts_final.md</code>), and an 8-card branded graphics pack incl. the refreshed free-to-play quote (<code>numberhive_social_graphics.html</code>). Gameplay-clip selection pending raw video.</div>
+  <div class="callout discuss"><b>💬 To discuss</b> — who runs the campaign (Fletch's 5h enough?); which market we lead in (UK/AU "maths" vs the US "math" of our testimonials); paid reserve for over-performing organic. <span class="muted">See §19.</span></div>
+
+  <h2><span class="k">16</span> Privacy &amp; trust</h2>
+  <div class="callout"><b>Privacy and trust are now purchasing criteria</b> — make our relatively lightweight data model <b>visible</b>, not assumed. (Class Challenge data rules in §09.)</div>
+  <ul>
+    <li>No public chat.</li>
+    <li>Safe generated handles for minors.</li>
+    <li>Minimal public student data.</li>
+    <li>Teacher-only student insight.</li>
+    <li>Clear data-protection / privacy page.</li>
+    <li><b>Child-safe design is part of the product, not an afterthought.</b></li>
+  </ul>
+
+  <h2><span class="k">17</span> Resourcing reality → keep scope ruthless</h2>
+  <p class="muted">Chris (FT) · James (FT, build) · Jono (20h, ops/school process/billing) · Fletch (5h, marketing/positioning).</p>
+  <ul>
+    <li>The 6-week MVP must be <b>brutally minimal.</b> The gate is cheap (reuse views + a blur). The Class Challenge bridge is light (a link/code + a count + a CTA). <b>Ranked is the one heavy thing — sequence it, don't let it block launch.</b></li>
+  </ul>
+
+  <h2><span class="k">18</span> Open items / risks to hold</h2>
+  <ul>
+    <li>Confirm "player" = <b>activated</b> (played a full game + returned).</li>
+    <li><b>20k is the hit case, not a forecast</b> — it assumes near-viral K.</li>
+    <li><b>Email-list warmth is unknown</b> → the wk2 number leans on it; sequence and segment, don't blast.</li>
+    <li><b>Measure school intent from day one</b> — don't discover the bridge works (or doesn't) only in week 8.</li>
+    <li><b>Child safety:</b> safe generated handles for public minors, no chat (already true), umbrella containment for all minors.</li>
+    <li>Heat map = paid (decided). Comfort snapshot pulled from free.</li>
+    <li>Align the impact report to the <b>EdTech Evidence Board</b> framework early; don't over-claim efficacy.</li>
+  </ul>
+
+  <h2><span class="k">19</span> Things to discuss — as a team <span class="dtag">open</span></h2>
+  <p class="muted">Split into what blocks the build and what can wait for data. Leans are <b>starting points to argue with</b>, not conclusions.</p>
+
+  <div class="disc-h">Must decide before build</div>
+  <ul>
+    <li><b>What is the exact first build slice?</b> <span class="muted">Lock §08 (or trim it) so James starts with zero ambiguity.</span></li>
+    <li><b>v0 definition of "activated player"?</b> <span class="muted">Played a full game <i>and</i> returned once?</span></li>
+    <li><b>v0 definition of "activated teacher"?</b> <span class="muted">Created a Class Challenge? Or challenge + ≥1 student joined?</span></li>
+    <li><b>What exactly is in Class Challenge v0?</b> <span class="muted">Confirm §09 — link/code, minimal student data, basic teacher count, upgrade CTA.</span></li>
+    <li><b>Is ranked Hive Clash definitely out of the first 6 weeks?</b> <span class="lean">Lean: yes — async challenge stands in; don't judge D7 without it.</span></li>
+    <li><b>Which current-product fixes are in the 20% bucket?</b> <span class="muted">Pick the specific shortlist from §12.</span></li>
+    <li><b>What privacy/data rules apply to teacher-created Class Challenges?</b> <span class="muted">Confirm the §09 flags and student-data minimums before any code ships.</span></li>
+  </ul>
+
+  <div class="disc-h">Can decide after early data</div>
+  <ul>
+    <li><b>Whether B2C becomes its own standalone channel.</b> <span class="muted">Depends on cold-virality signal (carve out a non-teacher seed to read it).</span></li>
+    <li><b>Whether to add paid amplification.</b> <span class="muted">Hold a small budget to boost over-performing organic?</span></li>
+    <li><b>Whether to name or reference TTRS publicly.</b> <span class="lean">Lean: stay positive ("goes beyond recall"); don't name them publicly.</span></li>
+    <li><b>Whether to run a formal efficacy study.</b> <span class="muted">Only if the data justifies the cost/time.</span></li>
+    <li><b>Whether ranked becomes the fast-follow priority.</b> <span class="muted">If activation + challenge behaviour are strong, it's the obvious next build.</span></li>
+    <li><b>Whether Class Challenge becomes a deeper classroom product.</b> <span class="muted">Level 2 — only if teacher/school signal is strong.</span></li>
+  </ul>
+
+  <div class="callout green big"><b>The strategy is not B2C instead of schools.</b> It's <b>B2C as the demand engine, school insight as the revenue engine, and evidence/implementation as the trust engine.</b></div>
+  <div class="callout big"><b>Teacher play is the hidden bridge:</b> when teachers play, they feel the fun, see the maths, and become the internal champion.</div>
+  <div class="callout big"><b>The game wins attention. Teacher play creates conviction. The Class Challenge captures intent. The evidence builds trust. The school product captures revenue.</b></div>
+
+  <div class="foot">Number Hive · 9-Month Bridge Game Plan v3 · adds product architecture + Class Challenge bridge + teacher-play insight · informed by the DfE EdTech market assessment (June 2026) + Fletch's market read · working draft · source of truth: the strategy applet.</div>
+
+</div>
+</body>
+</html>
