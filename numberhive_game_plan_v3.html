@@ -107,7 +107,7 @@ ol.steps li b{color:var(--text);}
 
   <div class="badge">Number Hive · 9-Month Bridge</div>
   <h1>Game Plan <span style="color:var(--dim);font-weight:600;font-size:1.1rem;">(v3 · loose)</span></h1>
-  <p class="sub">For James + the team. Working draft — v3 adds the <b style="color:var(--amber-light)">product architecture</b> (two surfaces + a thin Class Challenge bridge), the <b style="color:var(--amber-light)">teacher-play insight</b>, and a concrete first build slice. Builds on the DfE EdTech report (June 2026) + Fletch's market read. Full model, wireframes &amp; matrix live in the applet (<code>numberhive_architecture_fixed.html</code>).</p>
+  <p class="sub">For James + the team. Working draft — v3 adds the <b style="color:var(--amber-light)">product architecture</b> (two air-gapped stacks + a thin Class Challenge bridge), the <b style="color:var(--amber-light)">teacher-play insight</b>, and a concrete first build slice. Builds on the DfE EdTech report (June 2026) + Fletch's market read. Full model, wireframes &amp; matrix live in the applet (<code>numberhive_architecture_v3.html</code>).</p>
 
   <hr>
 
@@ -158,8 +158,8 @@ ol.steps li b{color:var(--text);}
   </ul>
   <div class="callout"><b>Do not reduce Number Hive to dashboards.</b> The game is not just a delivery mechanism; <b>the game is the pedagogy.</b> But the data is what helps school leaders justify the purchase.</div>
 
-  <h2><span class="k">04</span> Product surfaces, not separate products <span class="v2tag">new</span></h2>
-  <p>We should think of this as <b>two product surfaces connected by a thin bridge</b>, not two completely separate products. The <b>B2C front door</b> is where players experience the magic. The <b>existing B2B product</b> is where schools get deeper assessment, reporting, implementation and paid value. The <b>bridge</b> is a lightweight <b>Class Challenge</b> wrapper that lets a teacher move from personal play to student play without requiring the full B2B setup.</p>
+  <h2><span class="k">04</span> Two air-gapped stacks, one thin bridge <span class="v2tag">new</span></h2>
+  <p>We should think of this as <b>two air-gapped stacks connected by a thin bridge</b> — a <b>Public game</b> and a teacher-owned <b>Classroom</b> — not two completely separate products. <b>People and conviction cross the gap; data never does</b> (a public player's history never becomes classroom data, and vice versa). The <b>B2C front door</b> is where players experience the magic. The <b>existing B2B product</b> is where schools get deeper assessment, reporting, implementation and paid value. The <b>bridge</b> is a lightweight <b>Class Challenge</b> wrapper that lets a teacher move from personal play to student play without requiring the full B2B setup.</p>
 
   <div class="card layer" style="border-top-color:var(--amber);">
     <div class="layer-l" style="color:var(--amber-light);">1 · B2C Game Layer</div>
@@ -264,10 +264,11 @@ ol.steps li b{color:var(--text);}
   <ul>
     <li><b>Free instant-play game</b> (no account) — the magic, in 2 minutes.</li>
     <li><b>The viral loops:</b> share-your-win card (players, public), invite / challenge (host / join / play &amp; pass), the profile hub. The <b>same challenge-link mechanic carries multiple contexts</b> — <i>challenge a friend · challenge a colleague · staffroom challenge · class challenge</i> — as copy variations, not separate modes.</li>
-    <li><b>Light account</b> + the player home.</li>
+    <li><b>Profile-less by default</b> + <b>optional Google sign-in</b> (no passwords) to protect your Hive IQ — an <b>exchange, not a gate</b>, prompted on an achievement unlock, never upfront. Player home/profile.</li>
     <li><b>Lean conversion:</b> let early teacher converts use the <i>existing</i> product/gate — don't rebuild it yet.</li>
     <li><b>Heavy instrumentation:</b> activation, D1/D7 retention, K (invites + conversion), per-loop — and the school-bridge signals (§10).</li>
   </ul>
+  <div class="callout"><b>The two numbers.</b> <b>Hive IQ (HiQ)</b> — a vs-AI Elo rating anchored to the rival ladder (Bumble → Queen Beatrix), live from day one, personal (never in an admin's report). <b>Challenge Score</b> — the per-seed "beat my score" share ("same board, same rival — beat it?"). BUZZ <i>score</i> is retired; the classroom Buzz <i>assessment</i> is a separate thing and stays. Ranked Hive Clash later reuses the Hive IQ scale.</div>
   <div class="callout"><b>Do not build a separate staffroom mode yet.</b> Let the same challenge-link mechanic carry friend, colleague and class contexts. These are mostly copy/context variations on one mechanic in the first build.</div>
   <h3>Add the thin Class Challenge bridge <span class="v2tag">new</span></h3>
   <ul>
@@ -602,6 +603,7 @@ ol.steps li b{color:var(--text);}
     <li><b>Is ranked Hive Clash definitely out of the first 6 weeks?</b> <span class="lean">Lean: yes — async challenge stands in; don't judge D7 without it.</span></li>
     <li><b>Which current-product fixes are in the 20% bucket?</b> <span class="muted">Pick the specific shortlist from §12.</span></li>
     <li><b>What privacy/data rules apply to teacher-created Class Challenges?</b> <span class="muted">Confirm the §09 flags and student-data minimums before any code ships.</span></li>
+    <li><b>Minors + optional accounts on the public side.</b> <span class="muted">Public accounts (Google sign-in) are adult-intended, but older kids will hit the button. Legal read needed on what we can hold for a self-registered minor; kids route to the classroom for persistence. <span class="lean">Blocks anything with kid accounts.</span></span></li>
   </ul>
 
   <div class="disc-h">Can decide after early data</div>
