@@ -107,11 +107,11 @@ ol.steps li b{color:var(--text);}
 
   <div class="badge">Number Hive · 9-Month Bridge</div>
   <h1>Game Plan <span style="color:var(--dim);font-weight:600;font-size:1.1rem;">(v3 · loose)</span></h1>
-  <p class="sub">For James + the team. Working draft — v3 adds the <b style="color:var(--amber-light)">product architecture</b> (two air-gapped stacks + a thin Class Challenge bridge), the <b style="color:var(--amber-light)">teacher-play insight</b>, and a concrete first build slice. Builds on the DfE EdTech report (June 2026) + Fletch's market read. Full model, wireframes &amp; matrix live in the applet (<code>numberhive_architecture_v3.html</code>).</p>
+  <p class="sub">For James + the team. Working draft — v3 adds the <b style="color:var(--amber-light)">product architecture</b> (two stacks + a direct edu CTA), the <b style="color:var(--amber-light)">teacher-play insight</b>, and a concrete first build slice. Builds on the DfE EdTech report (June 2026) + Fletch's market read. Full model, wireframes &amp; matrix live in the applet (<code>numberhive_architecture_v3.html</code>).</p>
 
   <hr>
 
-  <div class="callout big" style="border-color:var(--amber);"><b>Update, 21 July 2026:</b> the Class Challenge intermediate layer described in §04, §05, §07–§09 has been retired. There is no separate teacher-launched bridge object anymore. The path is now a direct, frictionless CTA straight from the B2C game into the existing edu product — a popup or in-game prompt that takes a teacher there in one step. §04 and §10 below have been updated to match. §05, §07, §08 and §09 still describe the old Class Challenge mechanic in detail and haven't been rewritten yet — read them as historical/pending reconciliation, not current plan, until they're updated. This is still being refined, so treat this note as the current best understanding rather than a final answer.</div>
+  <div class="callout big" style="border-color:var(--amber);"><b>Correction, 21 July 2026:</b> earlier drafts of this doc described a separate Class Challenge layer between the B2C game and the edu product. That was a documentation gap, not an agreed plan — James was never building toward it. The actual plan has always been a direct, frictionless CTA straight from the B2C game into the existing edu product, a popup or in-game prompt that takes a teacher there in one step. This doc has been cleaned up to reflect that.</div>
 
   <h2><span class="k">01</span> The bet, in one line</h2>
   <p class="lead"><b>The product is loved; the funnel is broken.</b> Build a free, play-first front door that lets <b>students and teachers</b> experience the magic in two minutes, then <b>prove it can create repeat play, sharing and school-qualified demand</b> before we build the rest.</p>
@@ -160,7 +160,7 @@ ol.steps li b{color:var(--text);}
   </ul>
   <div class="callout"><b>Do not reduce Number Hive to dashboards.</b> The game is not just a delivery mechanism; <b>the game is the pedagogy.</b> But the data is what helps school leaders justify the purchase.</div>
 
-  <h2><span class="k">04</span> Two stacks, one frictionless CTA <span class="v2tag">updated 21 Jul</span></h2>
+  <h2><span class="k">04</span> Two stacks, one frictionless CTA</h2>
   <p>We should think of this as <b>two stacks connected by a direct prompt</b> — a <b>Public game</b> and the <b>existing edu product</b> — not three products with a bridge feature in between. <b>People and conviction cross the gap; data never does</b> (a public player's history never becomes classroom data, and vice versa). The <b>B2C front door</b> is where players experience the magic. The <b>existing B2B product</b> is where schools get deeper assessment, reporting, implementation and paid value. There is no separate intermediate layer anymore — a teacher moves from personal play straight into the edu product via an in-game popup or prompt at the moment they're most bought in, with no extra setup step in between.</p>
 
   <div class="card layer" style="border-top-color:var(--amber);">
@@ -183,7 +183,7 @@ ol.steps li b{color:var(--text);}
       <li>Privacy / procurement support · whole-school fluency campaign</li>
     </ul>
   </div>
-  <div class="callout cyan"><b>The bridge is not a feature anymore. The bridge is a well-timed CTA.</b> Exactly how that CTA works, what triggers it, what a teacher sees on the other side of it, is still being refined. This section states the direction, not the finished spec.</div>
+  <div class="callout cyan"><b>The bridge is not a feature. The bridge is a well-timed CTA.</b> Exactly how that CTA works, what triggers it, what a teacher sees on the other side of it, is still being refined. This section states the direction, not the finished spec.</div>
 
   <h2><span class="k">05</span> The model</h2>
   <ul>
@@ -199,7 +199,7 @@ ol.steps li b{color:var(--text);}
     <li>Student data visible to teachers must be <b>education-focused and privacy-conscious.</b></li>
     <li>Hive&nbsp;IQ / personal competitive rating stays <b>personal and player-facing</b> — never part of a teacher-judgement report.</li>
   </ul>
-  <h3>How the bridge actually works <span class="v2tag">updated 21 Jul</span></h3>
+  <h3>How the bridge actually works</h3>
   <p>The bridge is <b>not</b> a separate feature the player has to set up. The bridge is: <b>B2C creates conviction, and a well-timed CTA turns that conviction straight into edu-product usage, with nothing in between.</b></p>
   <div class="flow">
     <span class="stp"><span class="n">1</span>Teacher plays the B2C game</span><span class="arr">→</span>
@@ -219,8 +219,8 @@ ol.steps li b{color:var(--text);}
     <span class="stp"><span class="n">2</span>enjoys the game</span><span class="arr">→</span>
     <span class="stp"><span class="n">3</span>notices the maths</span><span class="arr">→</span>
     <span class="stp"><span class="n">4</span>"I've got to get my kids playing this"</span><span class="arr">→</span>
-    <span class="stp"><span class="n">5</span>launches a Class Challenge</span><span class="arr">→</span>
-    <span class="stp"><span class="n">6</span>students play</span><span class="arr">→</span>
+    <span class="stp"><span class="n">5</span>clicks the CTA into the edu product</span><span class="arr">→</span>
+    <span class="stp"><span class="n">6</span>tries it with students</span><span class="arr">→</span>
     <span class="stp"><span class="n">7</span>teacher / school conversation begins</span>
   </div>
   <p class="muted">Step 3 in full: factors, products, blocking, strategy, fluency, reasoning, number sense — the richness surfaces <i>through play</i>, not through a pitch.</p>
@@ -234,7 +234,7 @@ ol.steps li b{color:var(--text);}
     <span class="stp">challenges a colleague</span><span class="arr">→</span>
     <span class="stp">staffroom competition</span><span class="arr">→</span>
     <span class="stp">internal champion</span><span class="arr">→</span>
-    <span class="stp">class challenge</span><span class="arr">→</span>
+    <span class="stp">tries it with a class</span><span class="arr">→</span>
     <span class="stp">whole-school conversation</span>
   </div>
   <p class="muted">Marketing lines to test (copy only — <b>does not require a staffroom mode in the MVP</b>):</p>
@@ -251,25 +251,23 @@ ol.steps li b{color:var(--text);}
   <h3>Ship</h3>
   <ul>
     <li><b>Free instant-play game</b> (no account) — the magic, in 2 minutes.</li>
-    <li><b>The viral loops:</b> share-your-win card (players, public), invite / challenge (host / join / play &amp; pass), the profile hub. The <b>same challenge-link mechanic carries multiple contexts</b> — <i>challenge a friend · challenge a colleague · staffroom challenge · class challenge</i> — as copy variations, not separate modes.</li>
+    <li><b>The viral loops:</b> share-your-win card (players, public), invite / challenge (host / join / play &amp; pass), the profile hub. The <b>same challenge-link mechanic carries multiple contexts</b> — <i>challenge a friend · challenge a colleague · staffroom challenge</i> — as copy variations, not separate modes. Teacher-to-classroom crossover is a different thing entirely, the direct edu CTA, not a challenge-link variation.</li>
     <li><b>Profile-less by default</b> + <b>optional Google sign-in</b> (no passwords) to protect your Hive IQ — an <b>exchange, not a gate</b>, prompted on an achievement unlock, never upfront. Player home/profile.</li>
     <li><b>Lean conversion:</b> let early teacher converts use the <i>existing</i> product/gate — don't rebuild it yet.</li>
     <li><b>Heavy instrumentation:</b> activation, D1/D7 retention, K (invites + conversion), per-loop — and the school-bridge signals (§10).</li>
   </ul>
   <div class="callout"><b>The two numbers.</b> <b>Hive IQ (HiQ)</b> — a vs-AI Elo rating anchored to the rival ladder (Bumble → Queen Beatrix), live from day one, personal (never in an admin's report). <b>Challenge Score</b> — the per-seed "beat my score" share ("same board, same rival — beat it?"). BUZZ <i>score</i> is retired; the classroom Buzz <i>assessment</i> is a separate thing and stays. Ranked Hive Clash later reuses the Hive IQ scale.</div>
   <div class="callout"><b>Do not build a separate staffroom mode yet.</b> Let the same challenge-link mechanic carry friend, colleague and class contexts. These are mostly copy/context variations on one mechanic in the first build.</div>
-  <h3>Add the thin Class Challenge bridge <span class="v2tag">new</span></h3>
+  <h3>Add the direct edu CTA</h3>
   <ul>
-    <li>Teacher-facing landing path connected to the free game.</li>
-    <li>Post-play CTA: <i>"Run this with your class"</i> / <i>"Create a class challenge."</i></li>
-    <li>Simple class <b>challenge link / code.</b></li>
-    <li>Basic teacher view: how many students joined / played.</li>
-    <li>CTA to request a <b>School Hive, pilot pack or upgrade info.</b></li>
-    <li>Automated follow-up email to teachers after class activity.</li>
-    <li><b>Keep it lightweight</b> — no full dashboard rebuild in the 6-week MVP. (Full spec in §09.)</li>
+    <li>Teacher-facing prompt connected to the free game.</li>
+    <li>Post-play CTA: <i>"Try this with your class."</i></li>
+    <li>One click, straight into the existing edu product, no intermediate object.</li>
+    <li>CTA to request a <b>School Hive, pilot pack or upgrade info</b> once inside.</li>
+    <li><b>Keep it lightweight</b> — no full dashboard rebuild in the 6-week MVP.</li>
   </ul>
-  <div class="callout"><b>Don't let the teacher bridge slow the player experience.</b> For players, the primary CTAs stay <b>challenge a friend, play again, share a win, climb / improve.</b> Teacher prompts appear contextually and lightly.</div>
-  <div class="callout green"><b>Launch framing — teacher as player first.</b> Don't lead with "give your students a challenge." First invite the teacher to <i>play and discover the richness</i>: <b>"Play this for two minutes. You'll see why your students need it."</b> <i>Then</i> the secondary CTA: <b>"Run it with your class."</b> The teacher should experience the game before being asked to administer it.</div>
+  <div class="callout"><b>Don't let the teacher CTA slow the player experience.</b> For players, the primary CTAs stay <b>challenge a friend, play again, share a win, climb / improve.</b> Teacher prompts appear contextually and lightly.</div>
+  <div class="callout green"><b>Launch framing — teacher as player first.</b> Don't lead with "give your students a challenge." First invite the teacher to <i>play and discover the richness</i>: <b>"Play this for two minutes. You'll see why your students need it."</b> <i>Then</i> the secondary CTA: <b>"Try it with your class."</b> The teacher should experience the game before being asked to administer it.</div>
   <div class="callout"><b>Still NOT in 6 weeks:</b> ranked Hive Clash (unless it becomes a very clear unlock after initial signal) · full School super-admin automation · rebuilt teacher reporting · complex dashboards · deep integrations · cosmetics/seasons · full current-product redesign. <b>We are patching the school pathway, not rebuilding the whole school product yet.</b></div>
   <div class="callout"><b>Ranked &amp; retention nuance.</b> Ranked may become the main retention engine — so if ranked is excluded from the first build, <b>don't over-interpret weak D7 retention.</b> First test challenge / rematch / play-again loops. If activation and challenge behaviour are strong, ranked becomes the obvious fast-follow. <i>Keep ranked out of the first build, but don't judge D7 too harshly without it.</i></div>
   <div class="callout discuss"><b>💬 To discuss</b> — exactly how prominent the teacher bridge is without taxing consumer purity; and whether ranked is really deferrable. <span class="muted">See §19 (Must decide before build).</span></div>
@@ -283,104 +281,14 @@ ol.steps li b{color:var(--text);}
     <li><b>Share / win card loop</b> working or stubbed.</li>
     <li><b>Light account / player home</b> scaffold.</li>
     <li><b>Analytics events</b> firing.</li>
-    <li><b>"Run this with your class" CTA</b> added after the teacher/player experience.</li>
-    <li>Teacher can <b>create a Class Challenge link / code.</b></li>
-    <li>Students can <b>join</b> via the Class Challenge using initials / nickname / generated handle.</li>
-    <li>Teacher can see <b>basic count only:</b> students joined, games played, repeat players (if easy).</li>
-    <li>CTA from teacher view: <b>request pilot pack / School Hive / upgrade info.</b></li>
+    <li><b>"Try this with your class" CTA</b> added after the teacher/player experience, linking straight into the existing edu product.</li>
+    <li>Teacher landing in the edu product from that CTA is tagged, so the funnel below is measurable.</li>
+    <li>CTA from within the edu product: <b>request pilot pack / School Hive / upgrade info.</b></li>
   </ol>
-  <div class="callout"><b>If it doesn't help players play, teachers launch, or us measure the bridge — it's probably not first-slice work.</b></div>
+  <div class="callout"><b>If it doesn't help players play, teachers cross over, or us measure that crossover — it's probably not first-slice work.</b></div>
 
-  <h2><span class="k">09</span> The Class Challenge bridge <span class="v2tag">superseded, see note at top</span></h2>
-  <div class="callout" style="border-color:var(--amber);"><b>This whole section describes the retired Class Challenge object</b> (see the update note at the top of the doc). Kept below as reference for now since some of the thinking, particularly the privacy/data rules, may still be relevant once the direct-CTA flow is specced properly. Don't treat the levels, the v0 spec or the data model below as the current build target.</div>
-  <p>A <b>Class Challenge</b> (a.k.a. Hive Challenge) is a <b>teacher-launched version of the B2C game.</b> It is <b>not</b> a full class setup. It is a <b>class-shaped challenge link</b> that lets students play the same simple game experience under a teacher-created umbrella.</p>
-  <h3>Three levels — build Level 1</h3>
-  <div class="three">
-    <div class="card"><div class="l" style="color:var(--dim);">Level 0</div><div class="v">Public game link only. Fastest, but <b>weak bridge, weak data.</b></div></div>
-    <div class="card" style="border:1px solid var(--cyan);"><div class="l" style="color:var(--cyan);">Level 1 · MVP</div><div class="v">Lightweight <b>Class Challenge.</b> Recommended.</div></div>
-    <div class="card"><div class="l" style="color:var(--dim);">Level 2</div><div class="v">Full classroom mode. <b>Later / paid B2B layer.</b></div></div>
-  </div>
-  <div class="callout cyan"><b>Build Level 1.</b> Not a disconnected public game. Not a full classroom product.</div>
-  <h3>The v0 spec</h3>
-  <div class="split">
-    <div class="card" style="margin:0;">
-      <h3 style="margin-top:0;">Teacher</h3>
-      <ul style="margin-bottom:0;">
-        <li>Clicks "Run this with your class"</li>
-        <li>Enters name / email</li>
-        <li>Optionally adds school / class label</li>
-        <li>Receives challenge link / code</li>
-      </ul>
-    </div>
-    <div class="card" style="margin:0;">
-      <h3 style="margin-top:0;">Student</h3>
-      <ul style="margin-bottom:0;">
-        <li>Joins through the link / code</li>
-        <li>Enters initials / nickname or gets a generated handle</li>
-        <li>Plays the B2C game</li>
-        <li><b>No email. No public profile.</b></li>
-      </ul>
-    </div>
-    <div class="card" style="margin:0;">
-      <h3 style="margin-top:0;">System</h3>
-      <ul style="margin-bottom:0;">
-        <li>Tags activity with <code>challenge_id</code></li>
-        <li>Records games played</li>
-        <li>Records basic engagement</li>
-        <li>Attaches activity to the teacher-created challenge</li>
-      </ul>
-    </div>
-    <div class="card" style="margin:0;">
-      <h3 style="margin-top:0;">Teacher v0 view</h3>
-      <ul style="margin-bottom:0;">
-        <li>Number of students joined</li>
-        <li>Number of games played</li>
-        <li>Repeat players (if easy)</li>
-        <li>CTA: <i>"Want full class insight? Try Class Hive / School Hive / request pilot pack."</i></li>
-      </ul>
-    </div>
-  </div>
-
-  <h3>Privacy-shaped from day one</h3>
-  <div class="callout cyan"><b>The bridge is a class-shaped share link — but it must be privacy-shaped from day one.</b></div>
-  <div class="callout"><b>A public player link is for friends. A Class Challenge link is for students under a teacher umbrella.</b> Same game engine, <b>different data handling.</b></div>
-  <p class="muted">Student data rules for Class Challenge v0:</p>
-  <ul>
-    <li>Students join under a teacher-created challenge.</li>
-    <li>Initials, nickname or safe generated handle only.</li>
-    <li><b>No student email · no full name · no date of birth.</b></li>
-    <li>No public student profile · no chat.</li>
-    <li>No public leaderboard with identifiable student info (unless designed safely).</li>
-    <li>Student activity scoped to the class challenge.</li>
-    <li>Teacher sees <b>only basic activity</b> in v0.</li>
-    <li>Richer student-level reporting stays inside the <b>paid B2B product.</b></li>
-  </ul>
-  <h3>Data model flags</h3>
-  <div class="split">
-    <div class="card" style="margin:0;border-top:3px solid var(--cyan);">
-      <div class="layer-l" style="color:var(--cyan);">Teacher-supervised</div>
-      <div class="flags">
-        <span class="fl"><b>challenge_type:</b> teacher_class</span>
-        <span class="fl"><b>created_by_teacher:</b> true</span>
-        <span class="fl"><b>student_data_mode:</b> minimal</span>
-        <span class="fl"><b>public_visibility:</b> off</span>
-        <span class="fl"><b>teacher_visible:</b> aggregate_only</span>
-        <span class="fl"><b>challenge_id · teacher_id</b></span>
-        <span class="fl"><b>student_display_handle</b></span>
-        <span class="fl"><b>games_played · repeat_play · timestamps</b></span>
-      </div>
-    </div>
-    <div class="card" style="margin:0;border-top:3px solid var(--amber);">
-      <div class="layer-l" style="color:var(--amber-light);">Public friend</div>
-      <div class="flags">
-        <span class="fl"><b>challenge_type:</b> public_friend</span>
-        <span class="fl">public share allowed</span>
-        <span class="fl">no class umbrella</span>
-        <span class="fl">no teacher view</span>
-      </div>
-    </div>
-  </div>
-  <div class="callout"><b>This preserves the same game experience</b> while respecting the different privacy expectations of public play vs teacher-supervised student play.</div>
+  <h2><span class="k">09</span> Privacy and data, direct-CTA model</h2>
+  <p>Same game engine, same data-handling distinction as before: a public player link is for friends, a classroom-facing prompt is for students under a teacher. <b>Public player data must be safe, minimal and child-appropriate.</b> <b>Student data visible to teachers must be education-focused and privacy-conscious</b>, and lives inside the existing edu product's data model once a teacher crosses over, not in a separate object. <b>Hive IQ / personal competitive rating stays personal and player-facing</b> — never part of a teacher-facing report. Full data rules for what a teacher sees on arrival in the edu product still need specifying against the actual CTA flow once it's built — that's real work, not yet done, and shouldn't be assumed from this doc alone.</p>
 
   <h2><span class="k">10</span> How we judge it</h2>
   <p><b>Anchor metric:</b> <i>activated</i> players = played ≥1 full game <b>and</b> came back once. (Not raw "plays.")</p>
@@ -393,8 +301,8 @@ ol.steps li b{color:var(--text);}
       <tr><td><b>K</b> (viral coefficient)</td><td><b>≥ 0.5 and trending up</b></td></tr>
     </tbody>
   </table>
-  <h3>School bridge signals + provisional thresholds <span class="v2tag">updated 21 Jul</span></h3>
-  <div class="callout" style="border-color:var(--amber);">Re-keyed to the direct-CTA mechanism, replacing the old Class Challenge-based table. Same spirit, activation through to commercial signal, judged separately from the player-side numbers, but matched to what the funnel actually looks like now. Thresholds carried over from the old table as a starting point, not re-derived, so treat these as provisional in both senses, the number and the definition.</div>
+  <h3>School bridge signals + provisional thresholds</h3>
+  <div class="callout" style="border-color:var(--amber);">Keyed to the direct-CTA mechanism: activation through to commercial signal, judged separately from the player-side numbers, matched to what the funnel actually looks like. Thresholds are a starting point, not re-derived from anything, so treat these as provisional in both senses, the number and the definition.</div>
   <table>
     <thead><tr><th>Signal</th><th>What it means</th><th>Provisional bar</th></tr></thead>
     <tbody>
@@ -455,7 +363,7 @@ ol.steps li b{color:var(--text);}
     <span class="pct">20%</span>
     <h3 style="margin-top:0;">School bridge, evidence &amp; launch motion</h3>
     <ul style="margin-bottom:0;">
-      <li>Class Challenge path · teacher landing page · basic school CTA</li>
+      <li>Direct edu CTA · teacher landing page · basic school CTA</li>
       <li>Launch email sequence</li>
       <li>Evidence / impact framing · privacy / procurement messaging</li>
     </ul>
@@ -465,7 +373,7 @@ ol.steps li b{color:var(--text);}
   <h2><span class="k">12</span> How much do we fix the current product?</h2>
   <p class="lead"><b>Enough to stop warm demand leaking. Not enough to distract from testing the new growth hypothesis.</b></p>
   <div class="callout"><b>Rule:</b> fix current-product friction only where it <b>directly protects revenue or converts new demand.</b></div>
-  <div class="callout green"><b>The current B2B product remains the paid depth layer for now.</b> We are not rebuilding it in the first six weeks. We are only patching the parts that would cause warm demand from the B2C / Class Challenge path to leak.</div>
+  <div class="callout green"><b>The current B2B product remains the paid depth layer for now.</b> We are not rebuilding it in the first six weeks. We are only patching the parts that would cause warm demand from the B2C / direct CTA path to leak.</div>
   <div class="split">
     <div class="card" style="border-top:3px solid var(--green);margin:0;">
       <h3 style="margin-top:0;color:var(--green-light);">Worth doing now</h3>
@@ -492,12 +400,12 @@ ol.steps li b{color:var(--text);}
       </ul>
     </div>
   </div>
-  <div class="callout"><b>Don't build full Class Challenge reporting in the bridge</b> if the current B2B product already contains the deeper reporting story. <b>The bridge should create desire for the full product, not replace it.</b></div>
+  <div class="callout"><b>Don't build a separate reporting view for the CTA moment</b> if the current B2B product already contains the deeper reporting story. <b>The CTA should create desire for the full product, not replace it.</b></div>
 
   <h2><span class="k">13</span> The 9-month bridge — loose sequence</h2>
   <div class="seq">
-    <div class="s"><div class="w">Weeks 0–6 · MVP</div><div class="d">Ship the free game + loops + instrumentation + <b>thin Class Challenge bridge.</b> Launch to the 15k with <b>teacher-as-player framing</b> (play first → run with class), not generic consumer-game framing.</div></div>
-    <div class="s"><div class="w">Weeks 6–12 · Read, tune &amp; bridge</div><div class="d">Measure <b>B2C health and school-bridge signals separately.</b> Tune share/invite loops. Improve the Class Challenge flow. Start/continue the <b>impact report</b> from existing data. Fast-follow <b>ranked Hive Clash only if the player loop justifies it.</b></div></div>
+    <div class="s"><div class="w">Weeks 0–6 · MVP</div><div class="d">Ship the free game + loops + instrumentation + <b>direct edu CTA.</b> Launch to the 15k with <b>teacher-as-player framing</b> (play first → try with class), not generic consumer-game framing.</div></div>
+    <div class="s"><div class="w">Weeks 6–12 · Read, tune &amp; bridge</div><div class="d">Measure <b>B2C health and school-bridge signals separately.</b> Tune share/invite loops. Improve the CTA flow. Start/continue the <b>impact report</b> from existing data. Fast-follow <b>ranked Hive Clash only if the player loop justifies it.</b></div></div>
     <div class="s"><div class="w">Weeks 12–24 · Build conversion (if 🟢/🟡)</div><div class="d">Polish the gate. Build/automate <b>School super-admin</b> if there's enough teacher/school signal. Harden reporting around <b>the insights schools actually value.</b> Improve onboarding from observed friction. <b>Turn implementation into a product asset.</b></div></div>
     <div class="s"><div class="w">Weeks 24–36 · Scale what works</div><div class="d">Lean into whichever shows the strongest evidence: B2C consumer growth, teacher-led classroom challenges, whole-school fluency campaigns, MAT/district expansion — or a combination. Consider a small efficacy study or formal pilot if the data justifies it.</div></div>
     <div class="s"><div class="w">Throughout</div><div class="d"><b>Preserve optionality.</b> Don't force the B2C game to become merely a school funnel; don't let consumer excitement distract from school revenue. <b>Keep both lanes visible.</b> Fletch (5h) on owned content/positioning + impact report; Jono (20h) on ops/billing/school process.</div></div>
@@ -536,7 +444,7 @@ ol.steps li b{color:var(--text);}
   <h3>Implementation assets</h3>
   <ul>
     <li>Launch kit · 4-week pilot plan</li>
-    <li>Teacher guide · class challenge guide · tournament kit</li>
+    <li>Teacher guide · classroom setup guide · tournament kit</li>
     <li>Parent letter · posters · certificates</li>
     <li>Simple end-of-month school report</li>
   </ul>
@@ -554,7 +462,7 @@ ol.steps li b{color:var(--text);}
   <div class="callout discuss"><b>💬 To discuss</b> — who runs the campaign (Fletch's 5h enough?); which market we lead in (UK/AU "maths" vs the US "math" of our testimonials); paid reserve for over-performing organic. <span class="muted">See §19.</span></div>
 
   <h2><span class="k">16</span> Privacy &amp; trust</h2>
-  <div class="callout"><b>Privacy and trust are now purchasing criteria</b> — make our relatively lightweight data model <b>visible</b>, not assumed. (Class Challenge data rules in §09.)</div>
+  <div class="callout"><b>Privacy and trust are now purchasing criteria</b> — make our relatively lightweight data model <b>visible</b>, not assumed. (Direct-CTA data rules in §09.)</div>
   <ul>
     <li>No public chat.</li>
     <li>Safe generated handles for minors.</li>
@@ -567,7 +475,7 @@ ol.steps li b{color:var(--text);}
   <h2><span class="k">17</span> Resourcing reality → keep scope ruthless</h2>
   <p class="muted">Chris (FT) · James (FT, build) · Jono (20h, ops/school process/billing) · Fletch (5h, marketing/positioning).</p>
   <ul>
-    <li>The 6-week MVP must be <b>brutally minimal.</b> The gate is cheap (reuse views + a blur). The Class Challenge bridge is light (a link/code + a count + a CTA). <b>Ranked is the one heavy thing — sequence it, don't let it block launch.</b></li>
+    <li>The 6-week MVP must be <b>brutally minimal.</b> The gate is cheap (reuse views + a blur). The teacher CTA is light (a prompt + a click through). <b>Ranked is the one heavy thing — sequence it, don't let it block launch.</b></li>
   </ul>
 
   <h2><span class="k">18</span> Open items / risks to hold</h2>
@@ -588,11 +496,11 @@ ol.steps li b{color:var(--text);}
   <ul>
     <li><b>What is the exact first build slice?</b> <span class="muted">Lock §08 (or trim it) so James starts with zero ambiguity.</span></li>
     <li><b>v0 definition of "activated player"?</b> <span class="muted">Played a full game <i>and</i> returned once?</span></li>
-    <li><b>v0 definition of "activated teacher"?</b> <span class="muted">Created a Class Challenge? Or challenge + ≥1 student joined?</span></li>
-    <li><b>What exactly is in Class Challenge v0?</b> <span class="muted">Confirm §09 — link/code, minimal student data, basic teacher count, upgrade CTA.</span></li>
+    <li><b>v0 definition of "activated teacher"?</b> <span class="muted">Clicked the direct CTA? Or clicked through <i>and</i> did something inside the edu product?</span></li>
+    <li><b>What exactly does a teacher see when the CTA lands them in the edu product?</b> <span class="muted">Confirm §09 — this is real, unspecced product work, not yet designed.</span></li>
     <li><b>Is ranked Hive Clash definitely out of the first 6 weeks?</b> <span class="lean">Lean: yes — async challenge stands in; don't judge D7 without it.</span></li>
     <li><b>Which current-product fixes are in the 20% bucket?</b> <span class="muted">Pick the specific shortlist from §12.</span></li>
-    <li><b>What privacy/data rules apply to teacher-created Class Challenges?</b> <span class="muted">Confirm the §09 flags and student-data minimums before any code ships.</span></li>
+    <li><b>What privacy/data rules apply once a teacher crosses over via the CTA?</b> <span class="muted">Confirm the §09 principles and student-data minimums before any code ships.</span></li>
     <li><b>Minors + optional accounts on the public side.</b> <span class="muted">Public accounts (Google sign-in) are adult-intended, but older kids will hit the button. Legal read needed on what we can hold for a self-registered minor; kids route to the classroom for persistence. <span class="lean">Blocks anything with kid accounts.</span></span></li>
   </ul>
 
@@ -603,14 +511,14 @@ ol.steps li b{color:var(--text);}
     <li><b>Whether to name or reference TTRS publicly.</b> <span class="lean">Lean: stay positive ("goes beyond recall"); don't name them publicly.</span></li>
     <li><b>Whether to run a formal efficacy study.</b> <span class="muted">Only if the data justifies the cost/time.</span></li>
     <li><b>Whether ranked becomes the fast-follow priority.</b> <span class="muted">If activation + challenge behaviour are strong, it's the obvious next build.</span></li>
-    <li><b>Whether Class Challenge becomes a deeper classroom product.</b> <span class="muted">Level 2 — only if teacher/school signal is strong.</span></li>
+    <li><b>Exact placement, timing and wording of the direct edu CTA.</b> <span class="muted">Still to be specced properly against real product screens.</span></li>
   </ul>
 
   <div class="callout green big"><b>The strategy is not B2C instead of schools.</b> It's <b>B2C as the demand engine, school insight as the revenue engine, and evidence/implementation as the trust engine.</b></div>
   <div class="callout big"><b>Teacher play is the hidden bridge:</b> when teachers play, they feel the fun, see the maths, and become the internal champion.</div>
   <div class="callout big"><b>The game wins attention. Teacher play creates conviction. A direct CTA captures intent. The evidence builds trust. The school product captures revenue.</b></div>
 
-  <div class="foot">Number Hive · 9-Month Bridge Game Plan v3 · adds product architecture (updated 21 Jul: direct CTA replaces Class Challenge bridge) + teacher-play insight · informed by the DfE EdTech market assessment (June 2026) + Fletch's market read · working draft · source of truth: the strategy applet.</div>
+  <div class="foot">Number Hive · 9-Month Bridge Game Plan v3 · adds product architecture (direct CTA from B2C into the edu product) + teacher-play insight · informed by the DfE EdTech market assessment (June 2026) + Fletch's market read · working draft · source of truth: the strategy applet.</div>
 
 </div>
 </body>
